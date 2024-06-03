@@ -16,27 +16,27 @@ class HomeLayoutCubit extends Cubit<HomeLayoutStates>{
 
   int currentIndex=0;
   List<BottomNavigationBarItem>items=[
-    BottomNavigationBarItem(
+    const BottomNavigationBarItem(
         icon: Icon(Icons.home,),
         label: 'Home'
     ),
-    BottomNavigationBarItem(
+    const BottomNavigationBarItem(
         icon: Icon(Icons.shopping_bag_rounded),
         label: 'Meetings'
     ),
-    BottomNavigationBarItem(
+    const BottomNavigationBarItem(
         icon: Icon(Icons.search),
         label: 'Search'
     ),
-    BottomNavigationBarItem(
+    const BottomNavigationBarItem(
         icon: Icon(Icons.person),
         label: 'Profile'
     )
   ];
   List<Widget>screens=[
     HomeScreen(),
-    MeetingScreen(),
-    SearchScreen(),
+     MeetingScreen(),
+     SearchScreen(),
     ChairManProfile(),
   ];
   void clickButtonNavigation(int index)
