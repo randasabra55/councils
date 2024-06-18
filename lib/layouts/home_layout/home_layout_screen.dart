@@ -3,6 +3,9 @@ import 'package:councils/layouts/home_layout/cubit/states.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../modules/meeting_view/meeting_view.dart';
+import '../../modules/meeting_view/schedule_meeting.dart';
+
 class HomeLayoutScreen extends StatelessWidget {
 
  // int index=0;
@@ -25,6 +28,18 @@ class HomeLayoutScreen extends StatelessWidget {
               },
               selectedItemColor: Colors.blue,
               unselectedItemColor: Colors.grey,
+            ),
+            floatingActionButton: FloatingActionButton(
+              onPressed: () {
+                 Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) =>ScheduleMeeting(),
+                  ),
+                );
+              },
+              child: Icon(Icons.add,),
+              backgroundColor: Colors.blue,
             ),
             body: cubit.screens[cubit.currentIndex],
           );
