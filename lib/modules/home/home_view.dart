@@ -14,6 +14,7 @@ import '../../Widgets/components/home_component/drawer.dart';
 import '../../Widgets/components/home_component/upcoming_meeting.dart';
 import '../../Widgets/components/home_component/upcoming_meeting_title.dart';
 import '../../models/user_model/user_model.dart';
+import '../notifications/notification_screen.dart';
 // import '../Models/custom_icon.dart';
 
 class HomeView extends StatefulWidget {
@@ -70,7 +71,14 @@ class _HomeViewState extends State<HomeView> {
         ),
         actions: [
           InkWell(
-            onTap: () {},
+            onTap: () {
+               Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) =>  NotificationScreen(),
+                ),
+              );
+            },
             child: SvgPicture.string(
               _notification,
               fit: BoxFit.fill,
