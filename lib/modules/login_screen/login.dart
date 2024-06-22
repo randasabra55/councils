@@ -1,12 +1,10 @@
 import 'package:councils/modules/code_verify.dart';
-import 'package:councils/modules/forget_password_screen/forget_password.dart';
 import 'package:councils/shared/component/component.dart';
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../layouts/home_layout/home_layout_screen.dart';
-
 
 class LoginScreen extends StatelessWidget {
 
@@ -19,22 +17,7 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   leading: IconButton(
-      //     icon: const Icon(Icons.arrow_back_ios_new),
-      //     onPressed: (){
-      //       Navigator.pop(context);
-      //     },
-      //   ),
-      //   title: const Text(
-      //     'Login',
-      //     style: TextStyle(
-      //         fontWeight: FontWeight.bold
-      //     ),
-      //
-      //   ),
-      //   centerTitle: true,
-      // ),
+
       body: Form(
         key: formKey,
         child: SingleChildScrollView(
