@@ -41,6 +41,12 @@ class _ActivateScreenState extends State<ActivateScreen> {
                     builder: (context) => LoginScreen())
             );
           }
+          else if(state is ActivateErrorState)
+            {
+              ScaffoldMessenger.of(context).showSnackBar(
+                 SnackBar(content: Text(state.error)),
+              );
+            }
         },
         builder: (BuildContext context, state) {
           return Scaffold(

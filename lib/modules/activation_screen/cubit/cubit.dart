@@ -21,7 +21,7 @@ class ActivateCubit extends Cubit<ActivateStates>
   }
     ).then((value) {
       print(value);
-      emit(ActivateSuccessState(value.toString()));
+      emit(ActivateSuccessState(value.data['password']));
     }).catchError((error){
       print(error.toString());
       emit(ActivateErrorState(error));

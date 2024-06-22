@@ -1,14 +1,18 @@
+import 'package:bloc/bloc.dart';
 import 'package:councils/modules/logo_page/logo_page.dart';
+import 'package:councils/shared/network/remote/dio_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'modules/notifications/notification_screen.dart';
+import 'bloc_observer.dart';
 
 void main()async {
   WidgetsFlutterBinding.ensureInitialized();
+  Bloc.observer = MyBlocObserver();
  // final prefs=await SharedPreferences.getInstance();
  // final isFirstLoanch=prefs.getBool('isFirstLoanch')??true;
+  DioHelper.init();
   runApp(const MyApp());
  // runApp( MyApp(isFirstLoanch:isFirstLoanch));
 }
