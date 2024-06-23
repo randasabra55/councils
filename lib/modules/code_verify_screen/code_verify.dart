@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../shared/component/component.dart';
+import '../../shared/component/component.dart';
 
 class CodeVerifyScreen extends StatelessWidget {
 
@@ -20,17 +20,6 @@ class CodeVerifyScreen extends StatelessWidget {
   Widget build(BuildContext context) {
 
      return Scaffold(
-      // appBar: AppBar(
-      //
-      //   title: const Text(
-      //     'Reset Password',
-      //     style: TextStyle(
-      //         fontWeight: FontWeight.bold
-      //     ),
-      //
-      //   ),
-      //   centerTitle: true,
-      // ),
       body: Form(
         key: formKey,
         child: SingleChildScrollView(
@@ -142,7 +131,7 @@ class CodeVerifyScreen extends StatelessWidget {
                 height: 45.h,
               ),
               OtpTextField(
-                numberOfFields: 5,
+                numberOfFields: 6,
               // borderColor: const Color(0xffd4e7f4),
                // borderColor: Color(0xFF512DA8),
                 //set to true to show as box or false to show as dash

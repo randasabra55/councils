@@ -52,7 +52,7 @@ dependencies:
   cloud_firestore: ^4.9.1
   image_picker: ^1.0.4
   jiffy: ^6.2.1
-  http: ^1.1.0
+  http: ^1.2.1
   firebase_storage: ^11.2.6
   firebase_messaging: ^14.6.7
   google_sign_in: ^6.1.5

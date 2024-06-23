@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:councils/modules/activation_screen/cubit/cubit.dart';
 import 'package:councils/modules/activation_screen/cubit/states.dart';
 import 'package:councils/modules/login_screen/login.dart';
@@ -33,7 +35,7 @@ class _ActivateScreenState extends State<ActivateScreen> {
           if(state is ActivateSuccessState)
           {
             ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(content: Text('Activation successful!')),
+              const SnackBar(content: Text('Activation successful!',style: TextStyle(color: Colors.black))),
             );
             Navigator.push(
                 context,
@@ -44,7 +46,7 @@ class _ActivateScreenState extends State<ActivateScreen> {
           else if(state is ActivateErrorState)
             {
               ScaffoldMessenger.of(context).showSnackBar(
-                 SnackBar(content: Text(state.error)),
+                 SnackBar(content: Text(state.error,style: TextStyle(color: Colors.black),)),
               );
             }
         },
@@ -213,17 +215,19 @@ class _ActivateScreenState extends State<ActivateScreen> {
                       text: 'Next',
                       onpressed: ()
                       {
+
                         // if(isEmpty)
                         if(formKey.currentState!.validate()) {
+
                           ActivateCubit.get(context).userActivate(
                               email: emailController.text
                           );
 
-                          if (!isEmpty) {
+                       //   if (!isEmpty) {
                             formKey.currentState!.save();
                             // isEmpty=false;
 
-                          }
+                        //  }
                         }
                         else
                         {

@@ -1,4 +1,4 @@
-import 'package:councils/modules/code_verify.dart';
+import 'package:councils/modules/code_verify_screen/code_verify.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
