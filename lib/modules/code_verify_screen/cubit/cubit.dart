@@ -15,12 +15,13 @@ class VerifyCodeCubit extends Cubit<CodeVerificationStates>
   static VerifyCodeCubit get(context)=>BlocProvider.of(context);
   void OTP({
     required String token,
-    required int otp
+    required String otp
 })
   {
     DioHelper.postData(
      // url: Activate,
-        url: 'http://localhost:57500/api/User/ConfirmOTP',
+      url: CONFIRMOTP,
+      //  url: 'http://localhost:57500/api/User/ConfirmOTP',
         data: {
           'token':token,
           'otp':otp

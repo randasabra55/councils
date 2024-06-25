@@ -123,7 +123,7 @@ class DioHelper{
   {
     dio =Dio(
       BaseOptions(
-        baseUrl: 'http://localhost:57500/',
+        baseUrl: 'http://councilmanagementsystem1.somee.com/',
         receiveDataWhenStatusError: true,
       ),
     );

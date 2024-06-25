@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:councils/modules/login_after_forget/login_after_forget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -5,16 +7,18 @@ import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../shared/component/component.dart';
+import '../../shared/component/constants.dart';
+import '../enter_new_pass/confirm_change_pass_screen.dart';
 import 'cubit/cubit.dart';
 import 'cubit/states.dart';
 
 class CodeVerifyScreen extends StatelessWidget {
 
   var formKey=GlobalKey<FormState>();
-  var code1=TextEditingController();
-  var code2=TextEditingController();
-  var code3=TextEditingController();
-  var code4=TextEditingController();
+  // var code1=TextEditingController();
+  // var code2=TextEditingController();
+  // var code3=TextEditingController();
+  // var code4=TextEditingController();
 
   CodeVerifyScreen({super.key});
 
@@ -27,7 +31,16 @@ class CodeVerifyScreen extends StatelessWidget {
        create: (BuildContext context) =>VerifyCodeCubit(),
        child: BlocConsumer<VerifyCodeCubit,CodeVerificationStates>(
          
-         listener: (BuildContext context,  state) {  },
+         listener: (BuildContext context,  state) {
+           if (state is CodeVerSuccessState)
+             {
+               Navigator.pushAndRemoveUntil(
+                   context,
+                   MaterialPageRoute(builder: (context)=>NewPasswordScreen()),
+                       (route) => false
+               );
+             }
+         },
          builder: (BuildContext context,  state) { 
            return  Scaffold(
              body: Form(
@@ -151,12 +164,16 @@ class CodeVerifyScreen extends StatelessWidget {
                        fillColor: const Color(0xffd4e7f4),
                        //runs when a code is typed in
                        onCodeChanged: (String code) {
-                         print('randa');
+                         log('randa');
                          //handle validation or checks here
                        },
 
                        //runs when every textfield is filled
                        onSubmit: (String verificationCode){
+                         VerifyCodeCubit.get(context).OTP(
+                             token: token,
+                             otp: verificationCode
+                         );
                          // if(verificationCode.isEmpty)
                          // return "code not correct";
                          // showDialog(

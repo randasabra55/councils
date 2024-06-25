@@ -19,8 +19,8 @@ class UserLoginCubit extends Cubit<UserLoginStates>{
   }){
     emit(UserLoginLoadingState());
     DioHelper.postData(
-     // url: LOGIN,
-      url: 'http://localhost:57500/api/User/Login',
+      url: LOGIN,
+    //  url: 'http://localhost:57500/api/User/Login',
       data: {
 
         'email': email,

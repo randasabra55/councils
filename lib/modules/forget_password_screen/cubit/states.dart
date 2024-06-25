@@ -1,4 +1,4 @@
-import '../../../models/user_login_model/user_login.dart';
+import '../../../models/user_forget_password/user_forget_pass_model.dart';
 
 abstract class ForgetPassStates{}
 
@@ -7,14 +7,9 @@ class ForgetPassInitialState extends ForgetPassStates{}
 class ForgetPassLoadingState extends ForgetPassStates{}
 
 class ForgetPassSuccessState extends ForgetPassStates{
-  final UserLoginModel loginModel;
- // final int otp;
+  final UserForgetPasswordModel forgetModel;
 
-  ForgetPassSuccessState(this.loginModel);
-
-
- // ForgetPassSuccessState(this.loginModel);
-
+  ForgetPassSuccessState(this.forgetModel);
 }
 
 class ForgetPassErrorState extends ForgetPassStates{

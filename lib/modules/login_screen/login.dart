@@ -1,8 +1,6 @@
 import 'dart:developer';
-
-import 'package:councils/modules/code_verify_screen/code_verify.dart';
+import 'package:councils/modules/forget_password_screen/forget_password.dart';
 import 'package:councils/modules/login_screen/cubit/cubit.dart';
-import 'package:councils/modules/send_email_for_otp/send_email_to_send_otp.dart';
 import 'package:councils/shared/component/component.dart';
 
 import 'package:flutter/material.dart';
@@ -192,7 +190,7 @@ class LoginScreen extends StatelessWidget {
                         onPressed: (){
                           Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context)=>SendEmailToSendOTP())
+                              MaterialPageRoute(builder: (context)=>ForgetPasswordScreen())
                           );
                         },
                         child: const Padding(
