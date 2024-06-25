@@ -1,5 +1,4 @@
 import 'package:councils/models/meeting_model/meeting_item_model.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -20,6 +19,8 @@ class MeetingScreen extends StatelessWidget {
      MeetingModel(time: 'Wed,App 28.5:30 PM', name: 'Meeting 1', about: 'About University Students', hall:'Dr:Mohamed Refat Hall'),
      MeetingModel(time: 'Wed,App 28.5:30 PM', name: 'Meeting 1', about: 'About University Students', hall:'Dr:Mohamed Refat Hall'),
    ];
+
+  MeetingScreen({super.key});
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
@@ -78,7 +79,7 @@ Widget meetingItem(MeetingModel model,context){
   return GestureDetector(
     onTap: (){
       Navigator.push(
-        context, MaterialPageRoute(builder: (context)=>AddTopicScreen())
+        context, MaterialPageRoute(builder: (context)=>const AddTopicScreen())
       );
     },
     child: Padding(
@@ -137,7 +138,7 @@ Widget meetingItem(MeetingModel model,context){
               ),
               Row(
                 children: [
-                  Icon(
+                  const Icon(
                     Icons.location_on,
                     color: Colors.grey,
                   ),

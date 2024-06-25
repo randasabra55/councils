@@ -31,7 +31,7 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> {
     return NavigationBar(
       labelBehavior: NavigationDestinationLabelBehavior.onlyShowSelected,
       indicatorColor: Colors.transparent,
-      overlayColor: const MaterialStatePropertyAll(Colors.transparent),
+      overlayColor: const WidgetStatePropertyAll(Colors.transparent),
       elevation: 0,
       height: 80.h,
       selectedIndex: widget.selectedIndex,

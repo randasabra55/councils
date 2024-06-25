@@ -2,7 +2,6 @@ import 'package:councils/modules/code_verify_screen/code_verify.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../shared/component/component.dart';
 
 class ForgetPasswordScreen extends StatelessWidget {
  var emaillController=TextEditingController();
@@ -146,6 +145,7 @@ class ForgetPasswordScreen extends StatelessWidget {
                     {
                       return 'email is required';
                     }
+                  return null;
                 },
                 keyboardType: TextInputType.emailAddress,
               ),

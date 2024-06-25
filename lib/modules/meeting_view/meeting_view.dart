@@ -5,7 +5,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../Widgets/components/app_bar_custom.dart';
-import '../../Widgets/components/home_component/custom_navigation_bar.dart';
 import '../../models/custom_icon_model/custom_icon.dart';
 
 class MeetingView extends StatefulWidget {

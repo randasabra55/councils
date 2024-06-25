@@ -1,16 +1,16 @@
 
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../change_password/cubit/states.dart';
 import 'cubit/cubit.dart';
 import 'cubit/states.dart';
 
 
 class NewPasswordScreen extends StatelessWidget {
+  const NewPasswordScreen({super.key});
+
 
 
   @override
@@ -90,7 +90,7 @@ class NewPasswordScreen extends StatelessWidget {
                       SizedBox(
                         height: 6.h,
                       ),
-                      Container(
+                      SizedBox(
                         height: 45.h,
                         child: TextFormField(
                           controller: passController,
@@ -103,15 +103,15 @@ class NewPasswordScreen extends StatelessWidget {
                                 onPressed: (){
                                   cubit.passwordShow();
                                 },
-                                icon:isPass?Icon(Icons.visibility_off_outlined):Icon(Icons.visibility_outlined),
+                                icon:isPass?const Icon(Icons.visibility_off_outlined):const Icon(Icons.visibility_outlined),
                               ),
                               focusedBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(color: Colors.black,),
+                                  borderSide: const BorderSide(color: Colors.black,),
 
                                   borderRadius: BorderRadius.all(Radius.circular(16.r),)
                               ),
                               border: OutlineInputBorder(
-                                  borderSide: BorderSide(color: Colors.blue,),
+                                  borderSide: const BorderSide(color: Colors.blue,),
 
                                   borderRadius: BorderRadius.all(Radius.circular(12.r),)
                               )
@@ -142,7 +142,7 @@ class NewPasswordScreen extends StatelessWidget {
                       SizedBox(
                         height: 6.h,
                       ),
-                      Container(
+                      SizedBox(
                         height: 45.h,
                         child: TextFormField(
                           controller: configPassController,
@@ -155,15 +155,15 @@ class NewPasswordScreen extends StatelessWidget {
                                 onPressed: (){
                                   cubit.passwordConfirmShow();
                                 },
-                                icon:isConfirmPass?Icon(Icons.visibility_off_outlined):Icon(Icons.visibility_outlined),
+                                icon:isConfirmPass?const Icon(Icons.visibility_off_outlined):const Icon(Icons.visibility_outlined),
                               ),
                               focusedBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(color: Colors.black,),
+                                  borderSide: const BorderSide(color: Colors.black,),
 
                                   borderRadius: BorderRadius.all(Radius.circular(16.r),)
                               ),
                               border: OutlineInputBorder(
-                                  borderSide: BorderSide(color: Colors.blue,),
+                                  borderSide: const BorderSide(color: Colors.blue,),
 
                                   borderRadius: BorderRadius.all(Radius.circular(12.r),)
                               )

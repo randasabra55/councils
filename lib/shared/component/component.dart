@@ -20,7 +20,7 @@ Widget defaultTextfield({
       validator: validate,
       decoration: InputDecoration(
         hintText: hintText,
-        prefixIcon: Icon(prefix,color: Color(0xff519dd5),),
+        prefixIcon: Icon(prefix,color: const Color(0xff519dd5),),
         // errorBorder: InputBorder(
         //   borderSide: BorderSide(color: Colors.black)
         // )

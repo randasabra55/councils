@@ -1,10 +1,7 @@
-import 'package:councils/modules/topics/topics_screen.dart';
 import 'package:councils/modules/upload_topic_screen/upload_topic.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../chair_man_profile/chair_man_profile.dart';
 
 class AddTopicScreen extends StatelessWidget {
   const AddTopicScreen({super.key});
@@ -116,7 +113,7 @@ class AddTopicScreen extends StatelessWidget {
                   ),
                   child: Row(
                     children: [
-                      Icon(
+                      const Icon(
                         Icons.location_on,
                         color: Colors.grey,
                       ),
@@ -175,7 +172,7 @@ class AddTopicScreen extends StatelessWidget {
                   CircleAvatar(
                     radius: 15.r,
                       backgroundColor: Colors.blue,
-                      child: Icon(Icons.arrow_forward,color: Colors.white,)
+                      child: const Icon(Icons.arrow_forward,color: Colors.white,)
                   )
                 ],
               ),

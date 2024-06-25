@@ -8,7 +8,6 @@ import '../../../models/custom_icon_model/custom_icon.dart';
 import '../../../modules/chair_man_profile/chair_man_profile.dart';
 import '../../../modules/home/home_view.dart';
 import '../../../modules/meeting_view/meeting_view.dart';
-import '../../../modules/profile_view.dart';
 
 class CustomDrawer extends StatelessWidget {
   const CustomDrawer({
@@ -103,7 +102,7 @@ class CustomDrawer extends StatelessWidget {
               onTap: () => Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) =>  ChairManProfile(),
+                    builder: (context) =>  const ChairManProfile(),
                   ),
                   ),
               child: Row(
@@ -225,7 +224,7 @@ class CustomDrawer extends StatelessWidget {
               onTap: () => Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) =>  SettingScreen(),
+                  builder: (context) =>  const SettingScreen(),
                 ),
               ),
              // onTap: () => const NavigatorPopHandler(child: HomeView()),

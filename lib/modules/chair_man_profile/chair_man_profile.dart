@@ -1,12 +1,11 @@
 import 'package:councils/modules/edit_profile/edit_profile_screen.dart';
 import 'package:councils/modules/settings/settings_screen.dart';
-import 'package:councils/shared/component/component.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ChairManProfile extends StatelessWidget {
+  const ChairManProfile({super.key});
+
 
   @override
   Widget build(BuildContext context) {
@@ -84,7 +83,7 @@ class ChairManProfile extends StatelessWidget {
                   height: 180.h,
                   width: MediaQuery.sizeOf(context).width,
                   decoration: BoxDecoration(
-                    color: Color(0xffffffff),
+                    color: const Color(0xffffffff),
                     borderRadius: BorderRadiusDirectional.circular(5.r)
                   ),
                   child: Column(
@@ -117,7 +116,7 @@ class ChairManProfile extends StatelessWidget {
                                  // fontWeight: FontWeight.bold
                               ),
                             ),
-                            Spacer(),
+                            const Spacer(),
                             Text(
                               'Ahmed Ali',
                               style: TextStyle(
@@ -146,7 +145,7 @@ class ChairManProfile extends StatelessWidget {
                                 // fontWeight: FontWeight.bold
                               ),
                             ),
-                            Spacer(),
+                            const Spacer(),
                             Text(
                               'Bachelors',
                               style: TextStyle(
@@ -207,7 +206,7 @@ class ChairManProfile extends StatelessWidget {
                   height: 140.h,
                   width: MediaQuery.sizeOf(context).width,
                   decoration: BoxDecoration(
-                      color: Color(0xffffffff),
+                      color: const Color(0xffffffff),
                       borderRadius: BorderRadiusDirectional.circular(5.r)
                   ),
                   child: Column(
@@ -240,7 +239,7 @@ class ChairManProfile extends StatelessWidget {
                                 // fontWeight: FontWeight.bold
                               ),
                             ),
-                            Spacer(),
+                            const Spacer(),
                             Text(
                               '01102673638',
                               style: TextStyle(
@@ -269,7 +268,7 @@ class ChairManProfile extends StatelessWidget {
                                 // fontWeight: FontWeight.bold
                               ),
                             ),
-                            Spacer(),
+                            const Spacer(),
                             Text(
                               'ahmed@gmail.com',
                               style: TextStyle(
@@ -294,7 +293,7 @@ class ChairManProfile extends StatelessWidget {
               onTap: (){
                 Navigator.push(
                     context, 
-                    MaterialPageRoute(builder: (context)=>SettingScreen())
+                    MaterialPageRoute(builder: (context)=>const SettingScreen())
                 );
                 //print('randa');
               },
@@ -309,7 +308,7 @@ class ChairManProfile extends StatelessWidget {
                     height: 50.h,
                     width: MediaQuery.sizeOf(context).width,
                     decoration: BoxDecoration(
-                        color: Color(0xffffffff),
+                        color: const Color(0xffffffff),
                         borderRadius: BorderRadiusDirectional.circular(5.r)
                     ),
                     child: Row(
@@ -353,7 +352,7 @@ class ChairManProfile extends StatelessWidget {
                     height: 50.h,
                     width: MediaQuery.sizeOf(context).width,
                     decoration: BoxDecoration(
-                        color: Color(0xffffffff),
+                        color: const Color(0xffffffff),
                         borderRadius: BorderRadiusDirectional.circular(5.r)
                     ),
                     child: Row(

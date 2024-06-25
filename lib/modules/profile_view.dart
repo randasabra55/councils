@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../Widgets/components/home_component/custom_navigation_bar.dart';
 
 class ProfileView extends StatefulWidget {
   const ProfileView({super.key});

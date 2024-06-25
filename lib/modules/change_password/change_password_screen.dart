@@ -1,6 +1,5 @@
 import 'package:councils/modules/change_password/cubit/cubit.dart';
 import 'package:councils/modules/change_password/cubit/states.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -12,6 +11,8 @@ class ChangePasswordScreen extends StatelessWidget {
 
   var passController=TextEditingController();
   var formKey=GlobalKey<FormState>();
+
+  ChangePasswordScreen({super.key});
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -105,9 +106,9 @@ class ChangePasswordScreen extends StatelessWidget {
                             obscureText: isPass,
                             // keyboardType: TextInputType.number,
                             decoration: InputDecoration(
-                              contentPadding: EdgeInsets.symmetric(vertical: 10.0, horizontal:10),
+                              contentPadding: const EdgeInsets.symmetric(vertical: 10.0, horizontal:10),
                                 errorBorder:OutlineInputBorder(
-                                  borderSide: BorderSide(
+                                  borderSide: const BorderSide(
                                     color: Color(0xffbe4d25),
                                     
                                   ),
@@ -117,15 +118,15 @@ class ChangePasswordScreen extends StatelessWidget {
                                   onPressed: (){
                                     cubit.passwordShow();
                                   },
-                                  icon:isPass?Icon(Icons.visibility_off_outlined):Icon(Icons.visibility_outlined),
+                                  icon:isPass?const Icon(Icons.visibility_off_outlined):const Icon(Icons.visibility_outlined),
                                 ),
                                 focusedBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(color: Colors.black,),
+                                    borderSide: const BorderSide(color: Colors.black,),
 
                                     borderRadius: BorderRadius.all(Radius.circular(16.r),)
                                 ),
                                 border: OutlineInputBorder(
-                                    borderSide: BorderSide(color: Colors.blue,),
+                                    borderSide: const BorderSide(color: Colors.blue,),
 
                                     borderRadius: BorderRadius.all(Radius.circular(12.r),)
                                 )
@@ -149,7 +150,7 @@ class ChangePasswordScreen extends StatelessWidget {
                           {
                             Navigator.push(
                                 context,
-                                MaterialPageRoute(builder: (context)=>NewPasswordScreen())
+                                MaterialPageRoute(builder: (context)=>const NewPasswordScreen())
                             );
                           }
 

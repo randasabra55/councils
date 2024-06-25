@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutter_svg/svg.dart';
 
 import '../../Widgets/components/app_bar_custom.dart';
-import '../../Widgets/components/home_component/custom_navigation_bar.dart';
 
 class SearchView extends StatefulWidget {
   const SearchView({super.key});
@@ -48,12 +44,12 @@ class _SearchViewState extends State<SearchView> {
                 DropdownMenu(
                   inputDecorationTheme: InputDecorationTheme(
                       filled: true,
-                      fillColor: Color(0xff9747FF),
+                      fillColor: const Color(0xff9747FF),
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(15))),
-                  dropdownMenuEntries: [],
+                  dropdownMenuEntries: const [],
                   hintText: 'Topic',
-                  trailingIcon: Icon(Icons.keyboard_arrow_down),
+                  trailingIcon: const Icon(Icons.keyboard_arrow_down),
                 )
               ],
             ),

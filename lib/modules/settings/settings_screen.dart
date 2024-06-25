@@ -2,14 +2,13 @@ import 'package:councils/modules/change_password/change_password_screen.dart';
 import 'package:councils/modules/edit_profile/edit_profile_screen.dart';
 import 'package:councils/modules/settings/cubit/cubit.dart';
 import 'package:councils/modules/settings/cubit/states.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:searchfield/searchfield.dart';
 
 class SettingScreen extends StatelessWidget {
+  const SettingScreen({super.key});
+
 
   @override
   Widget build(BuildContext context) {
@@ -63,7 +62,7 @@ class SettingScreen extends StatelessWidget {
                       CircleAvatar(
                         // backgroundColor: Colors.white,
                         radius: 35.r,
-                        backgroundImage: NetworkImage('https://img.freepik.com/free-photo/waist-up-portrait-handsome-serious-unshaven-male-keeps-hands-together-dressed-dark-blue-shirt-has-talk-with-interlocutor-stands-against-white-wall-self-confident-man-freelancer_273609-16320.jpg?t=st=1710455070~exp=1710458670~hmac=b93e3f5338c24953a021bf8db8ce3c18cf68345fbf21fe810d5962b04b3d7595&w=996'),
+                        backgroundImage: const NetworkImage('https://img.freepik.com/free-photo/waist-up-portrait-handsome-serious-unshaven-male-keeps-hands-together-dressed-dark-blue-shirt-has-talk-with-interlocutor-stands-against-white-wall-self-confident-man-freelancer_273609-16320.jpg?t=st=1710455070~exp=1710458670~hmac=b93e3f5338c24953a021bf8db8ce3c18cf68345fbf21fe810d5962b04b3d7595&w=996'),
                       ),
                       SizedBox(
                         width: 10.w,
@@ -127,7 +126,7 @@ class SettingScreen extends StatelessWidget {
                                   children: [
               
                                     CircleAvatar(
-                                      backgroundColor: Color(0xff62c1e7),
+                                      backgroundColor: const Color(0xff62c1e7),
                                       radius: 11.r,
                                       child: Icon(
                                         Icons.edit,
@@ -169,7 +168,7 @@ class SettingScreen extends StatelessWidget {
                                   children: [
               
                                     CircleAvatar(
-                                      backgroundColor: Color(0xff62c1e7),
+                                      backgroundColor: const Color(0xff62c1e7),
                                       radius: 11.r,
                                       child: Icon(
                                         Icons.verified_user,
@@ -227,7 +226,7 @@ class SettingScreen extends StatelessWidget {
                                     width: 25.w,
                                   ),
                                   CircleAvatar(
-                                    backgroundColor: Color(0xff62c1e7),
+                                    backgroundColor: const Color(0xff62c1e7),
                                     radius: 12.r,
                                     child: Icon(
                                       Icons.notifications,
@@ -242,7 +241,7 @@ class SettingScreen extends StatelessWidget {
                                     'Notification',
                                     style: TextStyle(
                                         fontSize: 18.sp,
-                                        color: Color(0xff62c1e7)
+                                        color: const Color(0xff62c1e7)
                                       // fontWeight: FontWeight.w500,
                                       // color: Colors.grey[600]
                                     ),
@@ -276,11 +275,11 @@ class SettingScreen extends StatelessWidget {
                                         //  color: Colors.grey[600]
                                       ),
                                     ),
-                                    Spacer(),
+                                    const Spacer(),
                                     Switch(
                                       value: isSwitch,
                                      //  activeColor: Colors.blue,
-                                       activeTrackColor: Color(0xff62c1e7),
+                                       activeTrackColor: const Color(0xff62c1e7),
                                      
                                       onChanged: (value)
                                       {
@@ -305,7 +304,7 @@ class SettingScreen extends StatelessWidget {
                     height: 25.h,
                   ),
                   Padding(
-                    padding:  EdgeInsetsDirectional.only(
+                    padding:  const EdgeInsetsDirectional.only(
                         start: 20,
                         end: 20
                     ),
@@ -328,7 +327,7 @@ class SettingScreen extends StatelessWidget {
                               child: Row(
                                 children: [
                                   CircleAvatar(
-                                    backgroundColor: Color(0xff62c1e7),
+                                    backgroundColor: const Color(0xff62c1e7),
                                     radius: 11.r,
                                     child: Icon(
                                       Icons.light_mode_rounded,
@@ -349,7 +348,7 @@ class SettingScreen extends StatelessWidget {
                                       // color: Colors.grey[600]
                                     ),
                                   ),
-                                  Spacer(),
+                                  const Spacer(),
                                   IconButton(
                                       onPressed: (){
                                         cubit.showOption();
@@ -374,7 +373,7 @@ class SettingScreen extends StatelessWidget {
                                     start: 33.w,
                                     end: 40.w
                                   ),
-                                  child: Divider(
+                                  child: const Divider(
                                     thickness: 1,
                                     color: Colors.black,
                                   ),
@@ -442,7 +441,7 @@ class SettingScreen extends StatelessWidget {
                                 children: [
               
                                   CircleAvatar(
-                                    backgroundColor: Color(0xff62c1e7),
+                                    backgroundColor: const Color(0xff62c1e7),
                                     radius: 11.r,
                                     child: Icon(
                                       Icons.language,
@@ -461,7 +460,7 @@ class SettingScreen extends StatelessWidget {
                                       //  color: Colors.grey[600]
                                     ),
                                   ),
-                                  Spacer(),
+                                  const Spacer(),
                                   IconButton(
                                       onPressed: (){
                                         cubit.languageOption();
@@ -486,7 +485,7 @@ class SettingScreen extends StatelessWidget {
                                       start: 33.w,
                                       end: 40.w
                                   ),
-                                  child: Divider(
+                                  child: const Divider(
                                     thickness: 1,
                                     color: Colors.black,
                                   ),
@@ -560,7 +559,7 @@ class SettingScreen extends StatelessWidget {
                                   children: [
               
                                     CircleAvatar(
-                                      backgroundColor: Color(0xfff23535),
+                                      backgroundColor: const Color(0xfff23535),
                                       radius: 11.r,
                                       child: Icon(
                                         Icons.logout,

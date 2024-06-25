@@ -1,7 +1,6 @@
 import 'package:councils/modules/chair_man_profile/chair_man_profile.dart';
 import 'package:councils/modules/edit_profile/cubit/cubit.dart';
 import 'package:councils/modules/edit_profile/cubit/states.dart';
-import 'package:councils/shared/component/component.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -14,6 +13,8 @@ class EditProfileScreen extends StatelessWidget {
   var addressController=TextEditingController();
   var passwordController=TextEditingController();
   var confirmPassController=TextEditingController();
+
+  EditProfileScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +37,7 @@ class EditProfileScreen extends StatelessWidget {
                     backgroundColor: Colors.white,
 
                     radius: 14.r,
-                    child: Icon(
+                    child: const Icon(
                       Icons.arrow_back,
                       color: Colors.blue,
                     ),
@@ -46,7 +47,7 @@ class EditProfileScreen extends StatelessWidget {
                   Navigator.pop(context);
                 },
               ),
-              title: Text(
+              title: const Text(
                 'Edit',
               ),
               centerTitle: true,
@@ -65,7 +66,7 @@ class EditProfileScreen extends StatelessWidget {
                         CircleAvatar(
                           // backgroundColor: Colors.white,
                           radius: 55.r,
-                          backgroundImage: NetworkImage('https://img.freepik.com/free-photo/waist-up-portrait-handsome-serious-unshaven-male-keeps-hands-together-dressed-dark-blue-shirt-has-talk-with-interlocutor-stands-against-white-wall-self-confident-man-freelancer_273609-16320.jpg?t=st=1710455070~exp=1710458670~hmac=b93e3f5338c24953a021bf8db8ce3c18cf68345fbf21fe810d5962b04b3d7595&w=996'),
+                          backgroundImage: const NetworkImage('https://img.freepik.com/free-photo/waist-up-portrait-handsome-serious-unshaven-male-keeps-hands-together-dressed-dark-blue-shirt-has-talk-with-interlocutor-stands-against-white-wall-self-confident-man-freelancer_273609-16320.jpg?t=st=1710455070~exp=1710458670~hmac=b93e3f5338c24953a021bf8db8ce3c18cf68345fbf21fe810d5962b04b3d7595&w=996'),
                         ),
                         Card(
 
@@ -111,7 +112,7 @@ class EditProfileScreen extends StatelessWidget {
                         start: 25.0,
                         end: 25
                     ),
-                    child: Container(
+                    child: SizedBox(
                       height: 40.h,
 
                       child: TextFormField(
@@ -151,7 +152,7 @@ class EditProfileScreen extends StatelessWidget {
                         start: 25.0,
                         end: 25
                     ),
-                    child: Container(
+                    child: SizedBox(
                       height: 40.h,
                       child: TextFormField(
                         controller: emailController,
@@ -190,7 +191,7 @@ class EditProfileScreen extends StatelessWidget {
                         start: 25.0,
                         end: 25
                     ),
-                    child: Container(
+                    child: SizedBox(
                       height: 40.h,
                       child: TextFormField(
                         controller: numberController,
@@ -229,7 +230,7 @@ class EditProfileScreen extends StatelessWidget {
                         start: 25.0,
                         end: 25
                     ),
-                    child: Container(
+                    child: SizedBox(
                       height: 40.h,
                       child: TextFormField(
                         controller: addressController,
@@ -268,7 +269,7 @@ class EditProfileScreen extends StatelessWidget {
                         start: 25.0,
                         end: 25
                     ),
-                    child: Container(
+                    child: SizedBox(
                       height: 40.h,
                       child: TextFormField(
                         controller: passwordController,
@@ -279,7 +280,7 @@ class EditProfileScreen extends StatelessWidget {
                             onPressed: (){
                               cubit.passwordShow();
                             },
-                            icon:ispass?Icon(Icons.visibility_off):Icon(Icons.visibility),
+                            icon:ispass?const Icon(Icons.visibility_off):const Icon(Icons.visibility),
                           ),
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(12.r)
@@ -314,7 +315,7 @@ class EditProfileScreen extends StatelessWidget {
                         start: 25.0,
                         end: 25
                     ),
-                    child: Container(
+                    child: SizedBox(
                       height: 40.h,
                       child: TextFormField(
                         controller: confirmPassController,
@@ -325,7 +326,7 @@ class EditProfileScreen extends StatelessWidget {
                             onPressed: (){
                               cubit.passwordConfirmShow();
                             },
-                            icon:isConfirmPass?Icon(Icons.visibility_off):Icon(Icons.visibility),
+                            icon:isConfirmPass?const Icon(Icons.visibility_off):const Icon(Icons.visibility),
                           ),
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(12.r)
@@ -347,7 +348,7 @@ class EditProfileScreen extends StatelessWidget {
                       onPressed: (){
                         Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context)=>ChairManProfile())
+                            MaterialPageRoute(builder: (context)=>const ChairManProfile())
                         );
                       },
                       color: const Color(0xff2752e7),

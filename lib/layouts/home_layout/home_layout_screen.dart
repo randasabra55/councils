@@ -3,10 +3,11 @@ import 'package:councils/layouts/home_layout/cubit/states.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../modules/meeting_view/meeting_view.dart';
 import '../../modules/meeting_view/schedule_meeting.dart';
 
 class HomeLayoutScreen extends StatelessWidget {
+  const HomeLayoutScreen({super.key});
+
 
  // int index=0;
   @override
@@ -34,12 +35,12 @@ class HomeLayoutScreen extends StatelessWidget {
                  Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) =>ScheduleMeeting(),
+                    builder: (context) =>const ScheduleMeeting(),
                   ),
                 );
               },
-              child: Icon(Icons.add,),
               backgroundColor: Colors.blue,
+              child: const Icon(Icons.add,),
             ),
             body: cubit.screens[cubit.currentIndex],
           );

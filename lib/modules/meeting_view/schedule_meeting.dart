@@ -19,7 +19,7 @@ class _ScheduleMeetingState extends State<ScheduleMeeting> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xffF5F7FB),
+      backgroundColor: const Color(0xffF5F7FB),
       appBar: appBarCustom(pageName: pageName, fontSize: 22),
       body: Container(
         color: Colors.transparent,
@@ -182,22 +182,22 @@ class _ScheduleMeetingState extends State<ScheduleMeeting> {
               children: [
                 TextButton(
                   style: ButtonStyle(
-                    side: MaterialStatePropertyAll(
+                    side: WidgetStatePropertyAll(
                       BorderSide(color: Colors.grey.shade300),
                     ),
-                    shape: MaterialStatePropertyAll(
+                    shape: WidgetStatePropertyAll(
                       RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(18),
                       ),
                     ),
-                    padding: MaterialStatePropertyAll(
+                    padding: WidgetStatePropertyAll(
                       EdgeInsets.symmetric(horizontal: 25.w, vertical: 20.w),
                     ),
-                    textStyle: MaterialStatePropertyAll(
+                    textStyle: WidgetStatePropertyAll(
                       TextStyle(color: Colors.black, fontSize: 20.sp),
                     ),
                     backgroundColor:
-                        const MaterialStatePropertyAll(Colors.white),
+                        const WidgetStatePropertyAll(Colors.white),
                   ),
                   onPressed: () {},
                   child: const Text(
@@ -207,18 +207,18 @@ class _ScheduleMeetingState extends State<ScheduleMeeting> {
                 20.horizontalSpace,
                 TextButton(
                   style: ButtonStyle(
-                    shape: MaterialStatePropertyAll(
+                    shape: WidgetStatePropertyAll(
                       RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(18),
                       ),
                     ),
-                    padding: MaterialStatePropertyAll(
+                    padding: WidgetStatePropertyAll(
                       EdgeInsets.symmetric(horizontal: 55.w, vertical: 20.w),
                     ),
-                    textStyle: MaterialStatePropertyAll(
+                    textStyle: WidgetStatePropertyAll(
                       TextStyle(color: Colors.black, fontSize: 20.sp),
                     ),
-                    backgroundColor: const MaterialStatePropertyAll(
+                    backgroundColor: const WidgetStatePropertyAll(
                       Color(0xff5669FF),
                     ),
                   ),

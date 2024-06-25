@@ -73,7 +73,7 @@ class _HomeViewState extends State<HomeView> {
                Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) =>  NotificationScreen(),
+                  builder: (context) =>  const NotificationScreen(),
                 ),
               );
             },

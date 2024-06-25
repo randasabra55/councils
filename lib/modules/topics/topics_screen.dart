@@ -2,13 +2,13 @@
 import 'package:councils/models/topic_item_model/topic_item_model.dart';
 import 'package:councils/modules/topics/cubit/cubit.dart';
 import 'package:councils/modules/topics/cubit/states.dart';
-import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:path/path.dart';
 
 class TopicsScreen extends StatelessWidget {
+  const TopicsScreen({super.key});
+
  // TopicsScreen({super.key});
  //  bool? isDes;
   @override
@@ -89,7 +89,7 @@ class TopicsScreen extends StatelessWidget {
                           height: 35.h,
                           width: 98.w,
                           decoration: BoxDecoration(
-                            color: Color(0xff5669ff),
+                            color: const Color(0xff5669ff),
                             borderRadius: BorderRadius.circular(20.r),
 
                           ),
@@ -99,12 +99,12 @@ class TopicsScreen extends StatelessWidget {
                               CircleAvatar(
                                   radius:10.r,
                                   backgroundColor: Colors.white,
-                                  child: Icon(Icons.filter_list,size: 16.sp,color: Color(0xff5669ff),)
+                                  child: Icon(Icons.filter_list,size: 16.sp,color: const Color(0xff5669ff),)
                               ),
                               SizedBox(
                                 width: 2.w,
                               ),
-                              Text(
+                              const Text(
                                 'Categories',
                                 style: TextStyle(
                                     color: Colors.white
@@ -153,7 +153,7 @@ class TopicsScreen extends StatelessWidget {
                                         'Priority',
                                         style: TextStyle(
                                           fontSize: 16.sp,
-                                          color: selectedCategory=='Priority'?Color(0xff5669ff):Colors.black,
+                                          color: selectedCategory=='Priority'?const Color(0xff5669ff):Colors.black,
 
                                         ),
                                       ),
@@ -163,7 +163,7 @@ class TopicsScreen extends StatelessWidget {
                                     ),
                                     Icon(
                                       Icons.check,
-                                      color: selectedCategory=='Priority'?Color(0xff5669ff):Colors.white,
+                                      color: selectedCategory=='Priority'?const Color(0xff5669ff):Colors.white,
                                     )
                                   ],
                                 ),
@@ -181,7 +181,7 @@ class TopicsScreen extends StatelessWidget {
                                           'Date',
                                         style: TextStyle(
                                             fontSize: 16.sp,
-                                          color: selectedCategory=='Date'?Color(0xff5669ff):Colors.black,
+                                          color: selectedCategory=='Date'?const Color(0xff5669ff):Colors.black,
 
                                         ),
                                       ),
@@ -191,7 +191,7 @@ class TopicsScreen extends StatelessWidget {
                                     ),
                                     Icon(
                                       Icons.check,
-                                      color: selectedCategory=='Date'?Color(0xff5669ff):Colors.white,
+                                      color: selectedCategory=='Date'?const Color(0xff5669ff):Colors.white,
                                     )
                                   ],
                                 ),
@@ -209,7 +209,7 @@ class TopicsScreen extends StatelessWidget {
                                           'Name',
                                         style: TextStyle(
                                             fontSize: 16.sp,
-                                            color: selectedCategory=='Name'?Color(0xff5669ff):Colors.black,
+                                            color: selectedCategory=='Name'?const Color(0xff5669ff):Colors.black,
 
                                         ),
                                       ),
@@ -219,7 +219,7 @@ class TopicsScreen extends StatelessWidget {
                                     ),
                                     Icon(
                                       Icons.check,
-                                      color: selectedCategory=='Name'?Color(0xff5669ff):Colors.white,
+                                      color: selectedCategory=='Name'?const Color(0xff5669ff):Colors.white,
                                     )
                                   ],
                                 ),

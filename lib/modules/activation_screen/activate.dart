@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:developer';
 
 import 'package:councils/modules/activation_screen/cubit/cubit.dart';
 import 'package:councils/modules/activation_screen/cubit/states.dart';
@@ -13,7 +12,7 @@ import 'package:http/http.dart' as http;
 class ActivateScreen extends StatefulWidget {
 
 
-  ActivateScreen({super.key});
+  const ActivateScreen({super.key});
 
   @override
   State<ActivateScreen> createState() => _ActivateScreenState();
@@ -48,7 +47,7 @@ class _ActivateScreenState extends State<ActivateScreen> {
           else if(state is ActivateErrorState)
             {
               ScaffoldMessenger.of(context).showSnackBar(
-                 SnackBar(content: Text(state.error,style: TextStyle(color: Colors.black),)),
+                 SnackBar(content: Text(state.error,style: const TextStyle(color: Colors.black),)),
               );
             }
         },

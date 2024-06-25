@@ -1,9 +1,7 @@
 
-import 'package:councils/shared/component/component.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-import 'package:video_player/video_player.dart';
 import 'package:lottie/lottie.dart';
 
 import '../activation_screen/activate.dart';
@@ -117,7 +115,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                                 duration: const Duration(milliseconds: 750),
                                 curve: Curves.fastOutSlowIn);
                           },
-                          icon: Icon(Icons.arrow_back_ios_new)
+                          icon: const Icon(Icons.arrow_back_ios_new)
                       ),
                       // TextButton(
                       //     onPressed: (){
@@ -135,14 +133,14 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                       //       ),
                       //     )
                       // ),
-                      Spacer(),
+                      const Spacer(),
                       MaterialButton(
                         onPressed: () {
                           if (isLast) {
                             Navigator.pushAndRemoveUntil(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => ActivateScreen()),
+                                    builder: (context) => const ActivateScreen()),
                                     (route) => false);
                           } else {
                             boardingController.nextPage(
@@ -178,7 +176,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10.r)
                       ),
-                      color: Color(0xff2752e7),
+                      color: const Color(0xff2752e7),
                       child: Text(
                         'Continue',
                         style: TextStyle(

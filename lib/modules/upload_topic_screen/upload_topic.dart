@@ -1,5 +1,3 @@
-import 'package:councils/modules/topics/cubit/cubit.dart';
-import 'package:councils/modules/topics/cubit/states.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -13,6 +11,8 @@ class UploadTopic extends StatelessWidget {
  // const UploadTopic({super.key});
   var typeController=TextEditingController();
   var titleController=TextEditingController();
+
+  UploadTopic({super.key});
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -91,7 +91,7 @@ class UploadTopic extends StatelessWidget {
                         start: 20.w,
                         end: 20.w
                     ),
-                    child: Container(
+                    child: SizedBox(
                       height: 45.h,
                       child: TextFormField(
                         controller: titleController,
@@ -107,12 +107,12 @@ class UploadTopic extends StatelessWidget {
                             // //  icon:isConfirmPass?Icon(Icons.visibility_off_outlined):Icon(Icons.visibility_outlined),
                             // ),
                             focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(color: Colors.black,),
+                                borderSide: const BorderSide(color: Colors.black,),
               
                                 borderRadius: BorderRadius.all(Radius.circular(16.r),)
                             ),
                             border: OutlineInputBorder(
-                                borderSide: BorderSide(color: Colors.blue,),
+                                borderSide: const BorderSide(color: Colors.blue,),
               
                                 borderRadius: BorderRadius.all(Radius.circular(12.r),)
                             )
@@ -144,7 +144,7 @@ class UploadTopic extends StatelessWidget {
                         start: 20.w,
                         end: 20.w
                     ),
-                    child: Container(
+                    child: SizedBox(
                       height: 45.h,
                       child: TextFormField(
                         controller: typeController,
@@ -161,12 +161,12 @@ class UploadTopic extends StatelessWidget {
                             // //  icon:isConfirmPass?Icon(Icons.visibility_off_outlined):Icon(Icons.visibility_outlined),
                             // ),
                             focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(color: Colors.black,),
+                                borderSide: const BorderSide(color: Colors.black,),
               
                                 borderRadius: BorderRadius.all(Radius.circular(16.r),)
                             ),
                             border: OutlineInputBorder(
-                                borderSide: BorderSide(color: Colors.blue,),
+                                borderSide: const BorderSide(color: Colors.blue,),
               
                                 borderRadius: BorderRadius.all(Radius.circular(12.r),)
                             )
@@ -200,9 +200,9 @@ class UploadTopic extends StatelessWidget {
                     child: DottedBorder(
                       borderType: BorderType.RRect,
                       radius: Radius.circular(12.r),
-                      dashPattern: [6, 3],
+                      dashPattern: const [6, 3],
                       color: Colors.grey,
-                      child: Container(
+                      child: SizedBox(
                         width: double.infinity,
                         height: 140.h,
                         child: Column(
@@ -330,7 +330,7 @@ class UploadTopic extends StatelessWidget {
                       onPressed: (){
                         Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context)=>TopicsScreen())
+                            MaterialPageRoute(builder: (context)=>const TopicsScreen())
                         );
                       },
                       color: const Color(0xff2752e7),
