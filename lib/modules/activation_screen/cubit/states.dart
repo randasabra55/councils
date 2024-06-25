@@ -5,9 +5,9 @@ class ActivateInitialState extends ActivateStates{}
 class ActivateLoadingState extends ActivateStates{}
 
 class ActivateSuccessState extends ActivateStates{
-  final String password;
+ // final int password;
 
-  ActivateSuccessState(this.password);
+ // ActivateSuccessState(this.password);
 
 }
 
