@@ -8,8 +8,12 @@ class ForgetPassLoadingState extends ForgetPassStates{}
 
 class ForgetPassSuccessState extends ForgetPassStates{
   final UserLoginModel loginModel;
+ // final int otp;
 
   ForgetPassSuccessState(this.loginModel);
+
+
+ // ForgetPassSuccessState(this.loginModel);
 
 }
 

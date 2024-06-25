@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:councils/modules/code_verify_screen/code_verify.dart';
 import 'package:councils/modules/login_screen/cubit/cubit.dart';
 import 'package:councils/modules/send_email_for_otp/send_email_to_send_otp.dart';
@@ -31,7 +33,7 @@ class LoginScreen extends StatelessWidget {
             if (state.loginModel.result!)
             {
               //print(state.loginModel.message);
-              print(state.loginModel.token);
+              log('${state.loginModel.token}');
               CacheHelper.saveData(key: 'token', value: state.loginModel.token).then((value) {
                 token= state.loginModel.token!;
                 Navigator.pushAndRemoveUntil(
@@ -48,7 +50,32 @@ class LoginScreen extends StatelessWidget {
               showToast(text: 'email or password not correct', state: ToastStates.ERROR);
             }
           }
+          // if (state is UserLoginSuccessState) {
+          //   if (state.loginModel.status!) {
+          //     log(state.loginModel.message);
+          //     //  log(state.loginModel.data?.token);
+          //     CacheHelper.saveData(
+          //         key: 'token', value: state.loginModel.data?.token).then((
+          //         value) {
+          //       token = state.loginModel.data!.token!;
+          //       Navigator.pushAndRemoveUntil(
+          //           context,
+          //           MaterialPageRoute(builder: (context) => HomeLayoutScreen()),
+          //               (route) => false
+          //       );
+          //       // Navigator.push(context, route)
+          //       //  navigateAndFinish(context, ShopLayout());
+          //     });
+          //   }
+          //   //  );
+          //
+          //   else {
+          //     log(state.loginModel.message);
+          //     showToast(text: 'error', state: ToastStates.ERROR);
+          //   }
+          // }
         },
+       // }},
         builder: (BuildContext context, Object? state) {
           return  Scaffold(
 

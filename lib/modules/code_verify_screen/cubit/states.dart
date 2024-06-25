@@ -5,9 +5,9 @@ class CodeVerInitialState extends CodeVerificationStates{}
 class CodeVerLoadingState extends CodeVerificationStates{}
 
 class CodeVerSuccessState extends CodeVerificationStates{
-  final String password;
+  final int code;
 
-  CodeVerSuccessState(this.password);
+  CodeVerSuccessState(this.code);
 
 }
 

@@ -22,8 +22,8 @@ class SendEmailToSendOTP extends StatelessWidget {
         listener: (BuildContext context,  state) {
           if(state is ForgetPassSuccessState)
             {
-              CacheHelper.saveData(key: 'token', value: state.loginModel.token);
-              token=state.loginModel.token!;
+            //  CacheHelper.saveData(key: 'token', value: state.loginModel.token);
+            //  token=state.loginModel.token!;
               Navigator.pushAndRemoveUntil(
                   context,
                   MaterialPageRoute(builder: (context)=>CodeVerifyScreen()),

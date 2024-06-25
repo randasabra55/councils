@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:developer';
 
 import 'package:councils/modules/activation_screen/cubit/cubit.dart';
@@ -7,6 +8,7 @@ import 'package:councils/shared/component/component.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:http/http.dart' as http;
 
 class ActivateScreen extends StatefulWidget {
 
@@ -214,15 +216,17 @@ class _ActivateScreenState extends State<ActivateScreen> {
                       // color: const Color(0xff2752e7),
                       text: 'Next',
                       onpressed: ()
-                      {
+                      async{
 
                         // if(isEmpty)
                         if(formKey.currentState!.validate()) {
 
+                          log('pressed');
+                      //    ActivateCubit.get(context).p
                           ActivateCubit.get(context).userActivate(
                               email: emailController.text
                           );
-
+                          
                        //   if (!isEmpty) {
                             formKey.currentState!.save();
                             // isEmpty=false;

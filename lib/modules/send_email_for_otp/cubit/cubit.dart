@@ -10,6 +10,7 @@ class ForgetPassCubit extends Cubit<ForgetPassStates>{
   static ForgetPassCubit get(context)=>BlocProvider.of(context);
 
   UserLoginModel? loginModel;
+  int? otp;
 
   void forgetPass({
     required String email
@@ -22,6 +23,7 @@ class ForgetPassCubit extends Cubit<ForgetPassStates>{
           'email':email
         },
     ).then((value) {
+     // otp=value.data;
       loginModel=UserLoginModel.fromjson(value.data);
       emit(ForgetPassSuccessState(loginModel!));
     }).catchError((error){

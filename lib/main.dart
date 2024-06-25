@@ -1,5 +1,7 @@
 import 'package:bloc/bloc.dart';
+import 'package:councils/modules/login_screen/login.dart';
 import 'package:councils/modules/logo_page/logo_page.dart';
+import 'package:councils/shared/network/local/cache_helper.dart';
 import 'package:councils/shared/network/remote/dio_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -13,6 +15,9 @@ void main()async {
  // final prefs=await SharedPreferences.getInstance();
  // final isFirstLoanch=prefs.getBool('isFirstLoanch')??true;
   DioHelper.init();
+  await CacheHelper.init();
+  String token;
+  //token=CacheHelper.getData(key: 'token');
   runApp(const MyApp());
  // runApp( MyApp(isFirstLoanch:isFirstLoanch));
 }
@@ -54,6 +59,7 @@ class MyApp extends StatelessWidget {
           //  scaffoldBackgroundColor:  Colors.blue,
         ),
         debugShowCheckedModeBanner: false,
+      // home: LoginScreen(),
         home: const LogoPage(),
       ),
     );
