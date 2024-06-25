@@ -1,7 +1,8 @@
-import 'package:councils/modules/send_email_for_otp/cubit/states.dart';
+import 'package:councils/models/user_forget_password/user_forget_pass_model.dart';
+import 'package:councils/modules/forget_password_screen/cubit/states.dart';
+import 'package:councils/shared/network/end_point.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../models/user_login_model/user_login.dart';
 import '../../../shared/network/remote/dio_helper.dart';
 
 class ForgetPassCubit extends Cubit<ForgetPassStates>{
@@ -9,8 +10,7 @@ class ForgetPassCubit extends Cubit<ForgetPassStates>{
 
   static ForgetPassCubit get(context)=>BlocProvider.of(context);
 
-  UserLoginModel? loginModel;
-  int? otp;
+  UserForgetPasswordModel? forgetModel;
 
   void forgetPass({
     required String email
@@ -18,14 +18,17 @@ class ForgetPassCubit extends Cubit<ForgetPassStates>{
   {
     emit(ForgetPassLoadingState());
     DioHelper.postData(
-        url: 'http://localhost:57500/api/User/ForgetPassword',
+      url: FORGETPASSWORD,
+       // url: 'http://localhost:57500/api/User/ForgetPassword',
         data: {
           'email':email
         },
     ).then((value) {
+      forgetModel=UserForgetPasswordModel.fromjson(value.data);
+      emit(ForgetPassSuccessState(forgetModel!));
      // otp=value.data;
-      loginModel=UserLoginModel.fromjson(value.data);
-      emit(ForgetPassSuccessState(loginModel!));
+    //  loginModel=UserLoginModel.fromjson(value.data);
+    //  emit(ForgetPassSuccessState(forgetModel));
     }).catchError((error){
       emit(ForgetPassErrorState(error));
     });

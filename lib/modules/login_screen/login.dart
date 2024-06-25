@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:councils/modules/code_verify_screen/code_verify.dart';
 import 'package:councils/modules/login_screen/cubit/cubit.dart';
 import 'package:councils/modules/send_email_for_otp/send_email_to_send_otp.dart';
 import 'package:councils/shared/component/component.dart';
@@ -37,7 +38,7 @@ class LoginScreen extends StatelessWidget {
                 token= state.loginModel.token!;
                 Navigator.pushAndRemoveUntil(
                     context,
-                    MaterialPageRoute(builder: (context)=>const HomeLayoutScreen()),
+                    MaterialPageRoute(builder: (context)=>HomeLayoutScreen()),
                         (route) => false
                 );
                // navigateAndFinish(context, HomeLayoutScreen());
@@ -119,7 +120,7 @@ class LoginScreen extends StatelessWidget {
                             {
                               Navigator.push(
                                   context,
-                                  MaterialPageRoute(builder: (context)=>const HomeLayoutScreen())
+                                  MaterialPageRoute(builder: (context)=>HomeLayoutScreen())
                               );
                             }
                             //Navigator.pop(context);
@@ -217,7 +218,7 @@ class LoginScreen extends StatelessWidget {
 
 
                         radius:30,
-                        color: const Color(0xff2752e7),
+                        color: Color(0xff2752e7),
                         text:'Login',
                         onpressed: (){
                           if(formKey.currentState!.validate())

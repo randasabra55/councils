@@ -1,35 +1,30 @@
 
-import 'dart:developer';
-
-import 'package:councils/modules/activation_screen/cubit/states.dart';
+import 'package:councils/modules/code_verify_screen/cubit/states.dart';
 import 'package:councils/shared/network/remote/dio_helper.dart';
-import 'package:dio/dio.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class ActivateCubit extends Cubit<ActivateStates>
+import '../../../shared/network/end_point.dart';
+
+
+
+class VerifyCodeCubit extends Cubit<CodeVerificationStates>
 {
-  ActivateCubit():super(ActivateInitialState());
+  VerifyCodeCubit():super(CodeVerInitialState());
 
-  static ActivateCubit get(context)=>BlocProvider.of(context);
-
-  Future<void> userActivate({
-    required String email
+  static VerifyCodeCubit get(context)=>BlocProvider.of(context);
+  void OTP({
+    required String token,
+    required int otp
 })
-  async {
-    emit(ActivateLoadingState());
-    log('ad');
+  {
     DioHelper.postData(
-        url: 'http://localhost:57500/api/User/ActivateEmail',
+     // url: Activate,
+        url: 'http://localhost:57500/api/User/ConfirmOTP',
         data: {
-          'email': email,
+          'token':token,
+          'otp':otp
+        }
+    );
   }
-    ).then((value) {
-      print(value);
-      emit(ActivateSuccessState(value.data['password']));
-    }).catchError((error){
-      print(error.toString());
-      emit(ActivateErrorState(error));
-    });
-  }
-
 }

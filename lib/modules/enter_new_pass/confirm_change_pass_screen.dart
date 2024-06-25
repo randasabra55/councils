@@ -19,7 +19,7 @@ class NewPasswordScreen extends StatelessWidget {
     var configPassController=TextEditingController();
     return BlocProvider(
 
-      create: (BuildContext context) =>ConfirmChangePassCubit(),
+      create: (BuildContext context) => ConfirmChangePassCubit(),
       child: BlocConsumer<ConfirmChangePassCubit,ConfirmChangePassStates>(
 
         listener: (context,  state) {  },

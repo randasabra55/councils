@@ -3,6 +3,7 @@ import 'package:councils/modules/send_email_for_otp/cubit/cubit.dart';
 import 'package:councils/shared/component/component.dart';
 import 'package:councils/shared/component/constants.dart';
 import 'package:councils/shared/network/local/cache_helper.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -13,8 +14,6 @@ class SendEmailToSendOTP extends StatelessWidget {
   //const SendEmailToSendOTP({super.key});
   var emailController=TextEditingController();
   var formKey=GlobalKey<FormState>();
-
-  SendEmailToSendOTP({super.key});
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -58,7 +57,7 @@ class SendEmailToSendOTP extends StatelessWidget {
                 ),
                 defaultBottom(
                     radius:30,
-                    color: const Color(0xff2752e7),
+                    color: Color(0xff2752e7),
                     text:'send code',
                     onpressed: (){
                       if(formKey.currentState!.validate())
