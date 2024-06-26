@@ -1,8 +1,15 @@
-abstract class AppStates {}
+abstract class EditProfileStates {}
 
-class AppInitialState extends AppStates{}
+class EditProfileInitialState extends EditProfileStates{}
 
-class AppShowPasswordState extends AppStates{}
+class EditProfileLoadingState extends EditProfileStates{}
 
-class AppShowConfirmPasswordState extends AppStates{}
+class EditProfileSuccessState extends EditProfileStates{}
+
+class EditProfileErrorState extends EditProfileStates{}
+
+class EditProfileShowPasswordState extends EditProfileStates{}
+
+class EditProfileShowConfirmPasswordState extends EditProfileStates{}
+
 

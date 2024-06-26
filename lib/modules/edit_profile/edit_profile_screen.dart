@@ -20,11 +20,11 @@ class EditProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
 
-      create: (BuildContext context) =>AppCubit(),
-      child: BlocConsumer<AppCubit,AppStates>(
-        listener: (BuildContext context, AppStates state) {  },
-        builder: (BuildContext context, AppStates state) {
-          AppCubit cubit=AppCubit.get(context);
+      create: (BuildContext context) =>EditProfileCubit(),
+      child: BlocConsumer<EditProfileCubit,EditProfileStates>(
+        listener: (BuildContext context, EditProfileStates state) {  },
+        builder: (BuildContext context, EditProfileStates state) {
+          EditProfileCubit cubit=EditProfileCubit.get(context);
           bool ispass=cubit.isPass;
           bool isConfirmPass=cubit.isConfirmPass;
           return Scaffold(
@@ -372,7 +372,6 @@ class EditProfileScreen extends StatelessWidget {
             ),
           );
         },
-
 
       ),
     );
