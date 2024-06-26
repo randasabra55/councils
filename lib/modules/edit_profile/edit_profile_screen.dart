@@ -348,7 +348,7 @@ class EditProfileScreen extends StatelessWidget {
                       onPressed: (){
                         Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context)=>const ChairManProfile())
+                            MaterialPageRoute(builder: (context)=> ChairManProfile())
                         );
                       },
                       color: const Color(0xff2752e7),

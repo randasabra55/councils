@@ -1,5 +1,4 @@
 import 'package:councils/modules/code_verify_screen/code_verify.dart';
-import 'package:councils/modules/send_email_for_otp/cubit/cubit.dart';
 import 'package:councils/shared/component/component.dart';
 import 'package:councils/shared/component/constants.dart';
 import 'package:councils/shared/network/local/cache_helper.dart';
@@ -8,7 +7,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'cubit/states.dart';
+import '../forget_password_screen/cubit/cubit.dart';
+import '../forget_password_screen/cubit/states.dart';
+
 
 class SendEmailToSendOTP extends StatelessWidget {
   //const SendEmailToSendOTP({super.key});

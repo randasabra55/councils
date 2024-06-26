@@ -102,7 +102,7 @@ class CustomDrawer extends StatelessWidget {
               onTap: () => Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) =>  const ChairManProfile(),
+                    builder: (context) =>  ChairManProfile(),
                   ),
                   ),
               child: Row(

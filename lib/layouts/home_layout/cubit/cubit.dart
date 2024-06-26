@@ -37,7 +37,7 @@ class HomeLayoutCubit extends Cubit<HomeLayoutStates>{
     const HomeView(),
      MeetingScreen(),
     const SearchView(),
-    const ChairManProfile(),
+    ChairManProfile(),
   ];
   void clickButtonNavigation(int index)
   {
