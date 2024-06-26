@@ -182,22 +182,22 @@ class _ScheduleMeetingState extends State<ScheduleMeeting> {
               children: [
                 TextButton(
                   style: ButtonStyle(
-                    side: WidgetStatePropertyAll(
+                    side: MaterialStatePropertyAll(
                       BorderSide(color: Colors.grey.shade300),
                     ),
-                    shape: WidgetStatePropertyAll(
+                    shape: MaterialStatePropertyAll(
                       RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(18),
                       ),
                     ),
-                    padding: WidgetStatePropertyAll(
+                    padding: MaterialStatePropertyAll(
                       EdgeInsets.symmetric(horizontal: 25.w, vertical: 20.w),
                     ),
-                    textStyle: WidgetStatePropertyAll(
+                    textStyle: MaterialStatePropertyAll(
                       TextStyle(color: Colors.black, fontSize: 20.sp),
                     ),
                     backgroundColor:
-                        const WidgetStatePropertyAll(Colors.white),
+                        const MaterialStatePropertyAll(Colors.white),
                   ),
                   onPressed: () {},
                   child: const Text(
@@ -207,18 +207,18 @@ class _ScheduleMeetingState extends State<ScheduleMeeting> {
                 20.horizontalSpace,
                 TextButton(
                   style: ButtonStyle(
-                    shape: WidgetStatePropertyAll(
+                    shape: MaterialStatePropertyAll(
                       RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(18),
                       ),
                     ),
-                    padding: WidgetStatePropertyAll(
+                    padding: MaterialStatePropertyAll(
                       EdgeInsets.symmetric(horizontal: 55.w, vertical: 20.w),
                     ),
-                    textStyle: WidgetStatePropertyAll(
+                    textStyle: MaterialStatePropertyAll(
                       TextStyle(color: Colors.black, fontSize: 20.sp),
                     ),
-                    backgroundColor: const WidgetStatePropertyAll(
+                    backgroundColor: const MaterialStatePropertyAll(
                       Color(0xff5669FF),
                     ),
                   ),

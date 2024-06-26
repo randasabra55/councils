@@ -31,13 +31,13 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> {
     return NavigationBar(
       labelBehavior: NavigationDestinationLabelBehavior.onlyShowSelected,
       indicatorColor: Colors.transparent,
-      overlayColor: const WidgetStatePropertyAll(Colors.transparent),
+      overlayColor:  MaterialStatePropertyAll(Colors.transparent),
       elevation: 0,
       height: 80.h,
       selectedIndex: widget.selectedIndex,
       onDestinationSelected: (value) {
         setState(
-          () {
+              () {
             Navigator.pushReplacement(
               context,
               MaterialPageRoute(

@@ -26,17 +26,20 @@ class UpcomingMeetingTitle extends StatelessWidget {
             width: 45.w,
           ),
           ElevatedButton(
-            style: const ButtonStyle(
-                backgroundColor: WidgetStatePropertyAll(Colors.transparent),
-                elevation: WidgetStatePropertyAll(0)),
-            onPressed: () {
-              Navigator.pushAndRemoveUntil(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const MeetingView(),
-                  ),
-                  (route) => false);
-            },
+            style:  ButtonStyle(
+                backgroundColor:MaterialStatePropertyAll( Colors.transparent),
+                elevation: MaterialStatePropertyAll(0)),
+              onPressed: () {
+                Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const MeetingView(),
+                    ),
+                        (route) => false);
+              },
+
+
+
             child: Row(
               children: [
                 Text(
