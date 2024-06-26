@@ -1,5 +1,4 @@
 import 'dart:developer';
-
 import 'package:councils/models/profile_model/profile_model.dart';
 import 'package:councils/modules/chair_man_profile/cubit/states.dart';
 import 'package:councils/shared/network/end_point.dart';
@@ -8,7 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ProfileCubit extends Cubit<ProfileStates>{
   ProfileCubit():super(ProfileInitialState());
-  ProfileCubit get(context)=>BlocProvider.of(context);
+  static ProfileCubit get(context)=>BlocProvider.of(context);
 
   ProfileModel? profileModel;
   void userProfile()
