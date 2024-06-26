@@ -2,21 +2,21 @@ import 'package:bloc/bloc.dart';
 import 'package:councils/modules/edit_profile/cubit/states.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class AppCubit extends Cubit<AppStates>{
+class EditProfileCubit extends Cubit<EditProfileStates>{
 
-  AppCubit():super(AppInitialState());
+  EditProfileCubit():super(EditProfileInitialState());
 
-  static AppCubit get(context)=>BlocProvider.of(context);
+  static EditProfileCubit get(context)=>BlocProvider.of(context);
   bool isPass=false;
   void passwordShow(){
     isPass=!isPass;
-    emit(AppShowPasswordState());
+    emit(EditProfileShowPasswordState());
   }
 
   bool isConfirmPass=false;
   void passwordConfirmShow(){
     isConfirmPass=!isConfirmPass;
-    emit(AppShowConfirmPasswordState());
+    emit(EditProfileShowConfirmPasswordState());
   }
 //  static AppCubit get(context)=>BlocProvider.of(context);
 

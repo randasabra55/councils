@@ -3,7 +3,7 @@ class ProfileModel{
   UserData? userData;
   ProfileModel.fromjson(Map<String,dynamic>json){
     id=json['id'];
-    userData=(json['userData'] != null ? UserData.fromjson(json['userData']) : null)!;
+    userData=(json['userData'] != null ? UserData.fromjson(json['userData']) : null);
   }
 }
 

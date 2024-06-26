@@ -19,11 +19,11 @@ class EditProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
 
-      create: (BuildContext context) =>AppCubit(),
-      child: BlocConsumer<AppCubit,AppStates>(
-        listener: (BuildContext context, AppStates state) {  },
-        builder: (BuildContext context, AppStates state) {
-          AppCubit cubit=AppCubit.get(context);
+      create: (BuildContext context) =>EditProfileCubit(),
+      child: BlocConsumer<EditProfileCubit,EditProfileStates>(
+        listener: (BuildContext context, EditProfileStates state) {  },
+        builder: (BuildContext context, EditProfileStates state) {
+          EditProfileCubit cubit=EditProfileCubit.get(context);
           bool ispass=cubit.isPass;
           bool isConfirmPass=cubit.isConfirmPass;
           return Scaffold(
@@ -36,7 +36,7 @@ class EditProfileScreen extends StatelessWidget {
                     backgroundColor: Colors.white,
 
                     radius: 14.r,
-                    child: Icon(
+                    child: const Icon(
                       Icons.arrow_back,
                       color: Colors.blue,
                     ),
@@ -46,7 +46,7 @@ class EditProfileScreen extends StatelessWidget {
                   Navigator.pop(context);
                 },
               ),
-              title: Text(
+              title: const Text(
                 'Edit',
               ),
               centerTitle: true,
@@ -65,7 +65,7 @@ class EditProfileScreen extends StatelessWidget {
                         CircleAvatar(
                           // backgroundColor: Colors.white,
                           radius: 55.r,
-                          backgroundImage: NetworkImage('https://img.freepik.com/free-photo/waist-up-portrait-handsome-serious-unshaven-male-keeps-hands-together-dressed-dark-blue-shirt-has-talk-with-interlocutor-stands-against-white-wall-self-confident-man-freelancer_273609-16320.jpg?t=st=1710455070~exp=1710458670~hmac=b93e3f5338c24953a021bf8db8ce3c18cf68345fbf21fe810d5962b04b3d7595&w=996'),
+                          backgroundImage: const NetworkImage('https://img.freepik.com/free-photo/waist-up-portrait-handsome-serious-unshaven-male-keeps-hands-together-dressed-dark-blue-shirt-has-talk-with-interlocutor-stands-against-white-wall-self-confident-man-freelancer_273609-16320.jpg?t=st=1710455070~exp=1710458670~hmac=b93e3f5338c24953a021bf8db8ce3c18cf68345fbf21fe810d5962b04b3d7595&w=996'),
                         ),
                         Card(
 
@@ -279,7 +279,7 @@ class EditProfileScreen extends StatelessWidget {
                             onPressed: (){
                               cubit.passwordShow();
                             },
-                            icon:ispass?Icon(Icons.visibility_off):Icon(Icons.visibility),
+                            icon:ispass?const Icon(Icons.visibility_off):const Icon(Icons.visibility),
                           ),
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(12.r)
@@ -325,7 +325,7 @@ class EditProfileScreen extends StatelessWidget {
                             onPressed: (){
                               cubit.passwordConfirmShow();
                             },
-                            icon:isConfirmPass?Icon(Icons.visibility_off):Icon(Icons.visibility),
+                            icon:isConfirmPass?const Icon(Icons.visibility_off):const Icon(Icons.visibility),
                           ),
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(12.r)
@@ -347,7 +347,7 @@ class EditProfileScreen extends StatelessWidget {
                       onPressed: (){
                         Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context)=>ChairManProfile())
+                            MaterialPageRoute(builder: (context)=>const ChairManProfile())
                         );
                       },
                       color: const Color(0xff2752e7),
@@ -371,7 +371,6 @@ class EditProfileScreen extends StatelessWidget {
             ),
           );
         },
-
 
       ),
     );
