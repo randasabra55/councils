@@ -27,8 +27,8 @@ class UpcomingMeetingTitle extends StatelessWidget {
           ),
           ElevatedButton(
             style: const ButtonStyle(
-                backgroundColor: WidgetStatePropertyAll(Colors.transparent),
-                elevation: WidgetStatePropertyAll(0)),
+                backgroundColor: MaterialStatePropertyAll(Colors.transparent),
+                elevation: MaterialStatePropertyAll(0)),
             onPressed: () {
               Navigator.pushAndRemoveUntil(
                   context,
