@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:councils/models/profile_model/profile_model.dart';
 import 'package:councils/modules/chair_man_profile/cubit/cubit.dart';
 import 'package:councils/modules/chair_man_profile/cubit/states.dart';
 import 'package:councils/modules/edit_profile/edit_profile_screen.dart';
@@ -16,9 +17,19 @@ class ChairManProfile extends StatelessWidget {
     return  BlocProvider(
       create: (BuildContext context) =>ProfileCubit(),
       child: BlocConsumer<ProfileCubit,ProfileStates>(
-        listener: (BuildContext context, ProfileStates state) {  },
+        listener: (BuildContext context, ProfileStates state) {
+          if(state is ProfileErrorState)
+            {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(content: Text('Error: ${state.error.toString()}')),
+              );
+            }
+        },
         builder: (BuildContext context, ProfileStates state) {
-          ProfileCubit cubit=ProfileCubit().get(context);
+        //  ProfileCubit cubit = ProfileCubit.of(context);
+          ProfileCubit cubit=ProfileCubit.get(context);
+          ProfileModel? profileModel=cubit.profileModel;
+       //   ProfileCubit cubit=ProfileCubit
           return Scaffold(
             // backgroundColor: Colors.white,
             appBar: AppBar(
@@ -129,7 +140,7 @@ class ChairManProfile extends StatelessWidget {
                                   ),
                                   const Spacer(),
                                   Text(
-                                    cubit.profileModel?.userData?.FullName??'',
+                                    cubit.profileModel?.userData?.FullName??'randa',
                                     //'Ahmed Ali',
                                     style: TextStyle(
                                       fontSize: 16.sp,
@@ -159,7 +170,7 @@ class ChairManProfile extends StatelessWidget {
                                   ),
                                   const Spacer(),
                                   Text(
-                                    cubit.profileModel?.userData?.academic_degree??'',
+                                    cubit.profileModel?.userData?.academic_degree??'rr',
                                    // 'Bachelors',
                                     style: TextStyle(
                                       fontSize: 16.sp,
