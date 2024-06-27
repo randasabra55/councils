@@ -7,9 +7,9 @@ class ProfileInitialState extends ProfileStates{}
 class ProfileLoadingState extends ProfileStates{}
 
 class ProfileSuccessState extends ProfileStates{
-  final ProfileModel profileModel;
-
-  ProfileSuccessState(this.profileModel);
+  // final ProfileModel profileModel;
+  //
+  // ProfileSuccessState(this.profileModel);
 
 }
 

@@ -3,7 +3,7 @@ class ProfileModel{
   UserData? userData;
   ProfileModel.fromjson(Map<String,dynamic>json){
     id=json['id'];
-    userData=(json['userData'] != null ? UserData.fromjson(json['userData']) : null);
+    userData= UserData.fromjson(json['user']) ;
   }
 }
 
@@ -11,14 +11,14 @@ class UserData{
   String? id;
   String? FullName;
  // String otp;
- // bool isVerified;
+//  bool isVerified;
   String? birthday;
   String? functional_characteristic;
   String? academic_degree;
   String? administrative_degree;
- // String discription;
+//  String discription;
   String? img;
- // int departmentId;
+//  int departmentId;
   departmentInfo? department;
   String? userName;
   String? email;
@@ -27,14 +27,14 @@ class UserData{
   UserData.fromjson(Map<String,dynamic>json)
   {
     id=json['id'];
-    FullName=json['FullName'];
+    FullName=json['fullName'];
     birthday=json['birthday'];
     functional_characteristic=json['functional_characteristic'];
     academic_degree=json['academic_degree'];
     administrative_degree=json['administrative_degree'];
     img=json['img'];
     id=json['id'];
-    department=(json['department'] != null ? departmentInfo.fromjson(json['depart']) : null)!;
+    department= departmentInfo.fromjson(json['department']) ;
     userName=json['userName'];
     email=json['email'];
     phoneNumber=json['phoneNumber'];

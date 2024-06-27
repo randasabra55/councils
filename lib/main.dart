@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:councils/modules/logo_page/logo_page.dart';
+import 'package:councils/shared/component/constants.dart';
 import 'package:councils/shared/network/local/cache_helper.dart';
 import 'package:councils/shared/network/remote/dio_helper.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +16,7 @@ void main() async {
   // final isFirstLoanch=prefs.getBool('isFirstLoanch')??true;
   DioHelper.init();
   await CacheHelper.init();
-  String token;
+ // String token;
   //token=CacheHelper.getData(key: 'token');
   runApp(const MyApp());
   // runApp( MyApp(isFirstLoanch:isFirstLoanch));

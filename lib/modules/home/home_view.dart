@@ -85,17 +85,23 @@ class _HomeViewState extends State<HomeView> {
             ),
           ),
           14.horizontalSpace,
+
           Builder(
             builder: (context) => InkWell(
               onTap: () {
                 Scaffold.of(context).openDrawer();
               },
-              child: SvgPicture.asset(
-                fit: BoxFit.fill,
-                height: 18.h,
-                width: 14.w,
-                'assets/icons/side_menu.svg',
+              child: IconButton(
+                icon: Icon(Icons.menu),
+                onPressed: (){},
               ),
+              // child: SvgPicture.asset(
+              //   fit: BoxFit.fill,
+              //   height: 18.h,
+              //   width: 14.w,
+              //
+              //   'assets/icons/side_menu.svg',
+              // ),
             ),
           ),
           14.horizontalSpace,

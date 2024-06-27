@@ -72,6 +72,7 @@ class ForgetPasswordScreen extends StatelessWidget {
             // ),
             body: SingleChildScrollView(
               child: Column(
+
                 children: [
                   SizedBox(
                     height: 70.h,
@@ -182,20 +183,23 @@ class ForgetPasswordScreen extends StatelessWidget {
                         start: 35.w,
                         end: 35.w
                     ),
-                    child: TextFormField(
-                      controller: emaillController,
-                      decoration: const InputDecoration(
-                        prefixIcon: Icon(Icons.email,color: Color(0xff519dd5),),
-                        hintText: 'Email',
-                        //: TextInputType.emailAddress,
+                    child: Form(
+                      key: formKey,
+                      child: TextFormField(
+                        controller: emaillController,
+                        decoration: const InputDecoration(
+                          prefixIcon: Icon(Icons.email,color: Color(0xff519dd5),),
+                          hintText: 'Email',
+                          //: TextInputType.emailAddress,
+                        ),
+                        validator: (value){
+                          if(value?.isEmpty??true)
+                          {
+                            return 'email is required';
+                          }
+                        },
+                        keyboardType: TextInputType.emailAddress,
                       ),
-                      validator: (value){
-                        if(value!.isEmpty)
-                        {
-                          return 'email is required';
-                        }
-                      },
-                      keyboardType: TextInputType.emailAddress,
                     ),
                   ),
                   // defaultTextfield(
@@ -232,15 +236,20 @@ class ForgetPasswordScreen extends StatelessWidget {
                     child: MaterialButton(
                       onPressed:(){
                         // if(formKey.currentState!.validate())
-                        if (formKey.currentState != null && formKey.currentState!.validate())
+                        if ( formKey.currentState!.validate())
                         {
                           ForgetPassCubit.get(context).forgetPass(
                               email: emaillController.text
                           );
-                          Navigator.push(
+                          Navigator.pushAndRemoveUntil(
                               context,
-                              MaterialPageRoute(builder: (context)=>CodeVerifyScreen())
+                              MaterialPageRoute(builder: (context)=>CodeVerifyScreen()),
+                                  (route) => false
                           );
+                          // Navigator.push(
+                          //     context,
+                          //     MaterialPageRoute(builder: (context)=>CodeVerifyScreen())
+                          // );
                         }
                       },
                       child: Text(
