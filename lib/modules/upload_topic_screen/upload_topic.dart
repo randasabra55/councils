@@ -1,7 +1,11 @@
+import 'package:councils/shared/component/component.dart';
+import 'package:councils/shared/network/local/cache_helper.dart';
+import 'package:dio/dio.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 import '../topics/topics_screen.dart';
 import 'cubit/cubit.dart';
@@ -20,7 +24,25 @@ class UploadTopic extends StatelessWidget {
       create: (BuildContext context) =>TopicUploadCubit(),
 
       child: BlocConsumer<TopicUploadCubit,UploadTopics>(
-        listener: (BuildContext context, state) {  },
+        listener: (BuildContext context, state) {
+          if(state is UploadTopicSuccessState)
+            {
+               Navigator.push(
+                   context,
+                   MaterialPageRoute(builder: (context)=>const TopicsScreen())
+               );
+            }
+          else if(state is UploadTopicErrorState)
+            {
+              showToast(text: 'title can\'t uploaded', state: ToastStates.ERROR);
+            }
+          // if (state is UploadFileSelectedState) {
+          //   // Show a message or update the UI to indicate that a file has been selected
+          //   ScaffoldMessenger.of(context).showSnackBar(
+          //     SnackBar(content: Text('File selected: ${state.selectedFile.name}')),
+          //   );
+          // }
+        },
         builder: (BuildContext context,  state) {
           TopicUploadCubit cubit=TopicUploadCubit.get(context);
           bool isChooseUplood=cubit.isUploadButton;
@@ -197,127 +219,101 @@ class UploadTopic extends StatelessWidget {
                         start: 32.w,
                         end: 32.w
                     ),
-                    child: DottedBorder(
-                      borderType: BorderType.RRect,
-                      radius: Radius.circular(12.r),
-                      dashPattern: const [6, 3],
-                      color: Colors.grey,
-                      child: SizedBox(
-                        width: double.infinity,
-                        height: 140.h,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Icon(Icons.upload_file, size: 40.sp, color: Colors.black),
-                            SizedBox(height: 5.h,),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text(
-                                  'Drag & Drop or',
-                                  style: TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 14.sp,
-                                      fontWeight: FontWeight.bold
-                                  ),
+                    child: GestureDetector(
+                      onTap: ()
+                      {
+                        TopicUploadCubit.get(context).uploadTopicFromPhone();
+                      },
+                      child: DottedBorder(
+                        borderType: BorderType.RRect,
+                        radius: Radius.circular(12.r),
+                        dashPattern: const [6, 3],
+                        color: Colors.grey,
+                        child: SizedBox(
+                          width: double.infinity,
+                          height: 140.h,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(Icons.upload_file, size: 40.sp, color: Colors.black),
+                              SizedBox(height: 10.h,),
+
+                              Text(
+                                cubit.selectedFile==null?'Upload a PDF file':(cubit.selectedFile!.name),
+                                style: TextStyle(
+                                    color: Colors.grey,
+                                    fontSize: 14.sp,
+                                    fontWeight: FontWeight.bold
                                 ),
-                                TextButton(
-                                  onPressed: (){},
-                                  child: Text(
-                                    'choose',
-                                    style: TextStyle(
-                                        color: Colors.blue,
-                                        fontSize: 14.sp,
-                                        fontWeight: FontWeight.bold
-              
-                                    ),
-                                  ),
-                                ),
-                                Text(
-                                  'file to upload',
-                                  style: TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 14.sp,
-                                      fontWeight: FontWeight.bold
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Text(
-                              'Select a PDF file',
-                              style: TextStyle(
-                                  color: Colors.grey,
-                                  fontSize: 14.sp,
-                                  fontWeight: FontWeight.bold
-                              ),
-                            )
-                          ],
+                              )
+                            ],
+                          ),
                         ),
                       ),
                     ),
                   ),
                   SizedBox(
-                    height: 120.h,
+                    height: 40.h,
                   ),
-                  Padding(
-                    padding:  EdgeInsetsDirectional.only(
-                        start: 32.w,
-                        end: 32.w
-                    ),
-                    child: Row(
-                      children: [
-                        Expanded(
-                          child: MaterialButton(
-                            onPressed: () {
-                              cubit.cancelButton();
-                             // cubit.uploadButton();
-                            },
-                            height: 43.h,
-                            minWidth: 160.w,
-                            shape: RoundedRectangleBorder(
-                              //  side:new  BorderSide(color: Color(0xFF2A8068)), //the outline color
-                                borderRadius: BorderRadius.all(Radius.circular(10.r))),
-                            // color: const Color(0xff2752e7),
-                            color:!isChooseUplood? Colors.white:Colors.blue,
-                          //  color: Colors.blue,
-                            child: Text(
-                              'Cancel',
-                              style: TextStyle(
-                                  fontSize: 17.sp,
-                                   color:isChooseUplood? Colors.white:Colors.black
-                              ),
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          width: 10.w,
-                        ),
-                        Expanded(
-                          child: MaterialButton(
-                            onPressed: () {
-                              cubit.uploadButton();
-                            },
-                            height: 43.h,
-                            minWidth: 160.w,
-                            shape: RoundedRectangleBorder(
-                              //  side:new  BorderSide(color: Color(0xFF2A8068)), //the outline color
-                                borderRadius: BorderRadius.all(Radius.circular(10.r))),
-                            // color: const Color(0xff2752e7),
-                            color:!isChooseUplood? Colors.blue:Colors.white,
-                           // color: Colors.blue,
-                            child: Text(
-                              'Upload',
-                              style: TextStyle(
-                                  fontSize: 17.sp,
-                                  color:isChooseUplood? Colors.white:Colors.black
-                                 // color: Colors.white
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
+                  // Padding(
+                  //   padding:  EdgeInsetsDirectional.only(
+                  //       start: 32.w,
+                  //       end: 32.w
+                  //   ),
+                  //   child: Row(
+                  //     children: [
+                  //       Expanded(
+                  //         child: MaterialButton(
+                  //           onPressed: () {
+                  //             cubit.cancelButton();
+                  //            // cubit.uploadButton();
+                  //           },
+                  //           height: 43.h,
+                  //           minWidth: 160.w,
+                  //           shape: RoundedRectangleBorder(
+                  //             //  side:new  BorderSide(color: Color(0xFF2A8068)), //the outline color
+                  //               borderRadius: BorderRadius.all(Radius.circular(10.r))),
+                  //           // color: const Color(0xff2752e7),
+                  //           color:!isChooseUplood? Colors.blue:Colors.white,
+                  //         //  color: Colors.blue,
+                  //           child: Text(
+                  //             'Cancel',
+                  //             style: TextStyle(
+                  //                 fontSize: 17.sp,
+                  //                  color:!isChooseUplood? Colors.white:Colors.black
+                  //             ),
+                  //           ),
+                  //         ),
+                  //       ),
+                  //       SizedBox(
+                  //         width: 10.w,
+                  //       ),
+                  //       Expanded(
+                  //         child: MaterialButton(
+                  //           onPressed: () {
+                  //             cubit.uploadButton();
+                  //           },
+                  //           height: 43.h,
+                  //           minWidth: 160.w,
+                  //           shape: RoundedRectangleBorder(
+                  //             //  side:new  BorderSide(color: Color(0xFF2A8068)), //the outline color
+                  //               borderRadius: BorderRadius.all(Radius.circular(10.r))),
+                  //           // color: const Color(0xff2752e7),
+                  //           color:isChooseUplood? Colors.blue:Colors.white,
+                  //          // color: Colors.blue,
+                  //           child: Text(
+                  //             'Upload',
+                  //             style: TextStyle(
+                  //                 fontSize: 17.sp,
+                  //                 color:isChooseUplood? Colors.white:Colors.black
+                  //                // color: Colors.white
+                  //             ),
+                  //           ),
+                  //         ),
+                  //       ),
+                  //     ],
+                  //   ),
+                  // ),
                   SizedBox(
                     height: 25.h,
                   ),
@@ -327,11 +323,18 @@ class UploadTopic extends StatelessWidget {
                      // end: 30.w
                     ),
                     child: MaterialButton(
-                      onPressed: (){
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context)=>const TopicsScreen())
+                      onPressed: () async {
+                        cubit.uploadTopic(
+                            title: titleController.text,
+                            type: typeController.text,
+                            attachment: cubit.selectedFile!.path.toString(),
+                          councilId: CacheHelper.getData(key: 'councilId'),
+                           // attachment: cubit.selectedFile
                         );
+                        // Navigator.push(
+                        //     context,
+                        //     MaterialPageRoute(builder: (context)=>const TopicsScreen())
+                        // );
                       },
                       color: const Color(0xff2752e7),
                       minWidth: 250.w,
