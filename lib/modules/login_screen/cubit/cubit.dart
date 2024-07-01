@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:councils/modules/login_screen/cubit/states.dart';
 import 'package:councils/shared/network/end_point.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -41,7 +43,7 @@ class UserLoginCubit extends Cubit<UserLoginStates>{
       //print(loginModel?.data?.name);
     //  emit(UserLoginSuccessState(loginModel!));
     }).catchError((error){
-      print(error.toString());
+      log(error.toString());
       emit(UserLoginErrorState(error.toString()));
     });
     }

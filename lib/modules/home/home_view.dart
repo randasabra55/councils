@@ -11,6 +11,7 @@ import '../../Services/data_service.dart';
 import '../../Widgets/components/home_component/drawer.dart';
 import '../../Widgets/components/home_component/upcoming_meeting.dart';
 import '../../Widgets/components/home_component/upcoming_meeting_title.dart';
+import '../../models/custom_icon_model/custom_icon.dart';
 import '../../models/user_model/user_model.dart';
 import '../notifications/notification_screen.dart';
 // import '../Models/custom_icon.dart';
@@ -91,10 +92,13 @@ class _HomeViewState extends State<HomeView> {
               onTap: () {
                 Scaffold.of(context).openDrawer();
               },
-              child: IconButton(
-                icon: Icon(Icons.menu),
-                onPressed: (){},
+              child: Container(
+                child: SvgPicture.string(CustomIcon().sideMunu),
               ),
+              // child: IconButton(
+              //   icon: Icon(Icons.menu),
+              //   onPressed: (){},
+              // ),
               // child: SvgPicture.asset(
               //   fit: BoxFit.fill,
               //   height: 18.h,

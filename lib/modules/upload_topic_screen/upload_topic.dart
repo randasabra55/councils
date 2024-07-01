@@ -1,12 +1,10 @@
+import 'dart:developer';
 import 'package:councils/shared/component/component.dart';
-import 'package:councils/shared/network/local/cache_helper.dart';
-import 'package:dio/dio.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:fluttertoast/fluttertoast.dart';
-
+import '../../shared/network/local/cache_helper.dart';
 import '../topics/topics_screen.dart';
 import 'cubit/cubit.dart';
 import 'cubit/states.dart';
@@ -15,7 +13,7 @@ class UploadTopic extends StatelessWidget {
  // const UploadTopic({super.key});
   var typeController=TextEditingController();
   var titleController=TextEditingController();
-
+  var councilId=CacheHelper.getData(key: 'councilId');
   UploadTopic({super.key});
   @override
   Widget build(BuildContext context) {
@@ -27,14 +25,18 @@ class UploadTopic extends StatelessWidget {
         listener: (BuildContext context, state) {
           if(state is UploadTopicSuccessState)
             {
-               Navigator.push(
+              log('==================');
+              log(state.message);
+              showToast(text: state.message, state: ToastStates.SUCCESS);
+
+              Navigator.push(
                    context,
                    MaterialPageRoute(builder: (context)=>const TopicsScreen())
                );
             }
           else if(state is UploadTopicErrorState)
             {
-              showToast(text: 'title can\'t uploaded', state: ToastStates.ERROR);
+              showToast(text: 'topic can\'t uploaded', state: ToastStates.ERROR);
             }
           // if (state is UploadFileSelectedState) {
           //   // Show a message or update the UI to indicate that a file has been selected
@@ -45,7 +47,7 @@ class UploadTopic extends StatelessWidget {
         },
         builder: (BuildContext context,  state) {
           TopicUploadCubit cubit=TopicUploadCubit.get(context);
-          bool isChooseUplood=cubit.isUploadButton;
+         // bool isChooseUplood=cubit.isUploadButton;
           return Scaffold(
             body: SingleChildScrollView(
               child: Column(
@@ -323,19 +325,43 @@ class UploadTopic extends StatelessWidget {
                      // end: 30.w
                     ),
                     child: MaterialButton(
-                      onPressed: () async {
+                      onPressed: () {
+                        // Validate and log the inputs
+                        log('Title: ${titleController.text}');
+                        log('Type: ${typeController.text}');
+                        log('Attachment: ${cubit.selectedFile?.name}');
+                        log('council id ${cubit.councilId}');
+                        // Make the API call
                         cubit.uploadTopic(
-                            title: titleController.text,
-                            type: typeController.text,
-                            attachment: cubit.selectedFile!.path.toString(),
-                          councilId: CacheHelper.getData(key: 'councilId'),
-                           // attachment: cubit.selectedFile
+                          title: titleController.text,
+                          type: typeController.text,
+                          councilId: councilId,
+                         // attachment: cubit.selectedFile,
                         );
+
+                        // Navigate to the next screen after upload
                         // Navigator.push(
-                        //     context,
-                        //     MaterialPageRoute(builder: (context)=>const TopicsScreen())
+                        //   context,
+                        //   MaterialPageRoute(builder: (context) => const TopicsScreen()),
                         // );
                       },
+
+                      // onPressed: ()  {
+                      //   cubit.uploadTopic(
+                      //       title: titleController.text,
+                      //       type: typeController.text,
+                      //      //attachment: cubit.selectedFile,
+                      //      // attachment: cubit.selectedFile!.path.toString(),
+                      //     councilId: councilId,
+                      //
+                      //      // attachment: cubit.selectedFile
+                      //   );
+                      //   log("========${councilId.toString()}");
+                      //   Navigator.push(
+                      //       context,
+                      //       MaterialPageRoute(builder: (context)=>const TopicsScreen())
+                      //   );
+                      // },
                       color: const Color(0xff2752e7),
                       minWidth: 250.w,
                       height:45.h ,

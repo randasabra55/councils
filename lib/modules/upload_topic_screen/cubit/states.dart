@@ -7,7 +7,7 @@ class UploadInitialTopic extends UploadTopics{}
 class ChooseUploadButtonState extends UploadTopics{}
 
 class ChooseCancelButtonState extends UploadTopics{}
-
+//////////////////////////////////////////////////////////////////////////////////////////////
 class UploadFileLoadingState extends UploadTopics {}
 
 class UploadFileSelectedState extends UploadTopics {
@@ -16,7 +16,18 @@ class UploadFileSelectedState extends UploadTopics {
   UploadFileSelectedState(this.selectedFile);
 }
 
-class UploadTopicSuccessState extends UploadTopics {}
+class UploadFileErrorState extends UploadTopics{
+  final String error;
+
+  UploadFileErrorState(this.error);
+
+}
+
+class UploadTopicSuccessState extends UploadTopics {
+  final String message;
+
+  UploadTopicSuccessState(this.message);
+}
 
 class UploadTopicErrorState extends UploadTopics {
   final String error;

@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:bloc/bloc.dart';
 import 'package:councils/modules/logo_page/logo_page.dart';
 import 'package:councils/shared/component/constants.dart';
@@ -16,6 +18,8 @@ void main() async {
   // final isFirstLoanch=prefs.getBool('isFirstLoanch')??true;
   DioHelper.init();
   await CacheHelper.init();
+  councilId=CacheHelper.getData(key: 'councilId');
+ // log(councilId.);
  // String token;
   //token=CacheHelper.getData(key: 'token');
   runApp(const MyApp());

@@ -7,7 +7,8 @@ const LOGOUT='api/User/Logout';
 const PROFILE='api/User/Profile';
 const UPLOADTOPIC='api/Topics/AddTopic';
 const GETALLNEXTCOUNCIL='api/User/GetAllNextCouncilforUser';
-const GETALLTOPICS='api/Topics/GetAllTopics';
+const GETALLTOPICS='api/Topics/GetAllTopicsByIdCouncil';
+const GETALLTOPICBYNAME='api/Topics/GetTopicsOrderedByTitle';
 
 
 //const LOGIN='';

@@ -204,7 +204,7 @@ class DioHelper {
   static init() {
     dio = Dio(
       BaseOptions(
-        baseUrl: 'http://councilmanagementsystem2.somee.com/',
+        baseUrl: 'http://finalproject3.runasp.net/',
         receiveDataWhenStatusError: true,
       ),
     );
@@ -238,14 +238,17 @@ class DioHelper {
   static Future<Response> postData({
     required String url,
     Map<String, dynamic>? query,
-    required Map<String, dynamic> data,
+    required dynamic data,
     String? lang = 'en',
     String? token,
   }) async {
     dio.options.headers = {
-      'Content-Type': 'application/json',
+     // 'Content-Type': 'application/json',
+      'Content-Type': data is FormData ? 'multipart/form-data' : 'application/json',
       'lang': lang,
-      'Authorization': 'Bearer $token'
+     // 'Authorization': token != null ? 'Bearer $token' : null,
+
+       'Authorization': 'Bearer $token'
     };
     return await dio.post(
       url,
@@ -262,8 +265,10 @@ class DioHelper {
     String? token,
   }) async {
     dio.options.headers = {
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer $token'
+      'Content-Type': data is FormData ? 'multipart/form-data' : 'application/json',
+      //'Content-Type': 'application/json',
+      //'Authorization': 'Bearer $token'
+      'Authorization': token != null ? 'Bearer $token' : null,
     };
     return await dio.put(
       url,

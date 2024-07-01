@@ -1,7 +1,7 @@
 import 'package:councils/models/get_councils_model.dart';
-import 'package:councils/models/meeting_model/meeting_item_model.dart';
 import 'package:councils/modules/meeting/cubit/cubit.dart';
 import 'package:councils/modules/meeting/cubit/states.dart';
+import 'package:councils/modules/meeting_view/meeting_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -29,64 +29,88 @@ class MeetingScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return  BlocProvider(
 
-      create: (BuildContext context) =>GetAllMeetingCubit(),
+      create: (BuildContext context) =>GetAllMeetingCubit()..getCouncils(),
 
       child: BlocConsumer<GetAllMeetingCubit,GetAllMeetingStates>(
 
-        listener: (BuildContext context, GetAllMeetingStates state) {  },
+        listener: (BuildContext context, GetAllMeetingStates state) {
+          if (state is GetAllMeetingErrorState) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(content: Text('Error: ${state.error}')),
+            );
+          }
+        },
         builder: (BuildContext context, GetAllMeetingStates state) {
-          return Scaffold(
-            body: Column(
-              children: [
-                SizedBox(
-                  height: 50.h,
-                ),
-                Row(
-                  //  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SizedBox(
-                      width: 8.w,
-                    ),
-                    IconButton(
-                        onPressed: (){
-                          Navigator.pop(context);
-                        },
-                        icon:  Icon(Icons.arrow_back,size: 30.sp,)
-                    ),
-                    SizedBox(
-                      width: 5.w,
-                    ),
-                    Text(
-                      'Meetings',
-                      style: TextStyle(
-                          fontSize: 28.sp,
-                          fontWeight: FontWeight.w400
+          final cubit = GetAllMeetingCubit.get(context);
+          final councilModel = cubit.getCouncilModel;
+        //  cubit.getCouncils();
+          if(state is GetAllMeetingLoadingState)
+            {
+              return const Center(child: CircularProgressIndicator());
+            }
+          else if(state is GetAllMeetingErrorState)
+            {
+              return MeetingView();
+             // Navigator.push(context, MaterialPageRoute(builder: (context)=>const MeetingView()));
+            }
+          else {
+            return Scaffold(
+              body: Column(
+                children: [
+                  SizedBox(
+                    height: 50.h,
+                  ),
+                  Row(
+                    //  mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      SizedBox(
+                        width: 8.w,
                       ),
-                    ),
-                    SizedBox(
-                      width: 120.w,
-                    ),
-                    IconButton(
-                        onPressed: (){},
-                        icon: Icon(Icons.search,size: 35.sp,)
-                    ),
-                  ],
-                ),
-
-                Expanded(
-                  child: ListView.builder(
-                      itemBuilder: (context,index)=>
+                      IconButton(
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                          icon: Icon(Icons.arrow_back, size: 30.sp,)
+                      ),
+                      SizedBox(
+                        width: 5.w,
+                      ),
+                      Text(
+                        'Meetings',
+                        style: TextStyle(
+                            fontSize: 28.sp,
+                            fontWeight: FontWeight.w400
+                        ),
+                      ),
+                      SizedBox(
+                        width: 120.w,
+                      ),
+                      IconButton(
+                          onPressed: () {},
+                          icon: Icon(Icons.search, size: 35.sp,)
+                      ),
+                    ],
+                  ),
+                  // if (  councilModel?.values==[])
+                  //   const Center(
+                  //     child: Text('No meetings available.'),
+                  //   )
+                  // else
+                  Expanded(
+                    child: ListView.builder(
+                      itemBuilder: (context, index) =>
                           meetingItem(
-                              GetAllMeetingCubit.get(context).getCouncilModel!.values![index],
+                              councilModel?.values[index],
                               context
                           ),
-                      itemCount: 10
-                  ),
-                )
+                      itemCount: councilModel?.values.length,
+                    ),
+                  )
+                ],
+              ),
+            );
+          }
 
-              ],
-            ),
-          );
         },
 
       ),
@@ -96,11 +120,11 @@ class MeetingScreen extends StatelessWidget {
 
 
 
-Widget meetingItem(meetingInfo model,context){
+Widget meetingItem(meetingInfo? model,context){
   return GestureDetector(
     onTap: (){
       Navigator.push(
-        context, MaterialPageRoute(builder: (context)=>const AddTopicScreen())
+        context, MaterialPageRoute(builder: (context)=> AddTopicScreen(model: model,))
       );
     },
     child: Padding(
@@ -128,7 +152,7 @@ Widget meetingItem(meetingInfo model,context){
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                model.date??'',
+                model?.date??'',
                // 'Wed,App 28.5:30 PM',
                 style: TextStyle(
                     color: Colors.blueAccent,
@@ -139,7 +163,7 @@ Widget meetingItem(meetingInfo model,context){
                 height: 5.h,
               ),
               Text(
-                model.title??'',
+                model?.title??'',
                // 'Meeting 1',
                 style: TextStyle(
                     fontSize: 18.sp,
@@ -166,14 +190,14 @@ Widget meetingItem(meetingInfo model,context){
                   SizedBox(
                     width: 10.w,
                   ),
-                  // Text(
-                  //   model.hall,
-                  //  // 'Dr:Mohamed Refat Hall',
-                  //   style: TextStyle(
-                  //       fontSize: 14.sp,
-                  //       color: Colors.grey
-                  //   ),
-                  // ),
+                  Text(
+                    model?.hall??'',
+                   // 'Dr:Mohamed Refat Hall',
+                    style: TextStyle(
+                        fontSize: 14.sp,
+                        color: Colors.grey
+                    ),
+                  ),
                 ],
               ),
             ],
