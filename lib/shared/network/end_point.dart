@@ -9,7 +9,9 @@ const UPLOADTOPIC='api/Topics/AddTopic';
 const GETALLNEXTCOUNCIL='api/User/GetAllNextCouncilforUser';
 const GETALLTOPICS='api/Topics/GetAllTopicsByIdCouncil';
 const GETALLTOPICBYNAME='api/Topics/GetTopicsOrderedByTitle';
-
+const GETALLTOPICBYDATE='api/Topics/GetTopicsOrderedByDate';
+const ADDRESULTTOTOPIC='api/Topics/AddResultToTopic';
+const GETNOTIFICATION='api/Notification/GetAllNotificationForUser';
 
 //const LOGIN='';
 

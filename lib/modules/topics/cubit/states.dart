@@ -37,6 +37,19 @@ class GetTopicsByNameErrorState extends TopicStates{
 
 }
 
+class GetTopicsByDateSuccessState extends TopicStates{
+  final GetAllTopicModel getAllTopicModel;
+
+  GetTopicsByDateSuccessState(this.getAllTopicModel);
+}
+
+class GetTopicsByDateErrorState extends TopicStates{
+  final String error;
+
+  GetTopicsByDateErrorState(this.error);
+
+}
+
 
 
 

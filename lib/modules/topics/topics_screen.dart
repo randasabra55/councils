@@ -1,5 +1,6 @@
 import 'package:councils/models/getAllTopic.dart';
 import 'package:councils/modules/meeting/cubit/cubit.dart';
+import 'package:councils/modules/topic_decission/topic_decission_screen.dart';
 import 'package:councils/modules/topics/cubit/cubit.dart';
 import 'package:councils/modules/topics/cubit/states.dart';
 import 'package:flutter/material.dart';
@@ -17,7 +18,7 @@ class TopicsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
 
-      create: (BuildContext context) =>TopicCubit()..getAllTopics(),
+      create: (BuildContext context) =>TopicCubit()..getAllTopics()..getTopicByName(),
       child: BlocConsumer<TopicCubit,TopicStates>(
 
         listener: (BuildContext context, state) {
@@ -191,7 +192,8 @@ class TopicsScreen extends StatelessWidget {
                                   children: [
                                     GestureDetector(
                                       onTap:(){
-                                        cubit.SelectedItem('Date');
+                                        cubit.SelectItem('Date');
+                                      //  cubit.SelectedItem('Date');
                                        // selectedCategory='Date';
                                       },
                                       child: Text(
@@ -219,8 +221,9 @@ class TopicsScreen extends StatelessWidget {
                                   children: [
                                     GestureDetector(
                                       onTap:(){
-                                        cubit.SelectedItem('Name');
-                                        cubitt.getTopicByName();
+                                        cubit.SelectItem('Name');
+                                       // cubit.SelectedItem('Name');
+                                      //  cubitt.getTopicByName();
 
                                        // selectedCategory='Name';
                                       },
@@ -252,7 +255,7 @@ class TopicsScreen extends StatelessWidget {
 
                 Expanded(
                   child: ListView.builder(
-                      itemBuilder: (context,index)=>topicItem(topicModel?[index]),
+                      itemBuilder: (context,index)=>topicItem(topicModel?[index],context),
                       itemCount: topicModel?.length,
                   ),
                 )
@@ -266,7 +269,7 @@ class TopicsScreen extends StatelessWidget {
   }
 }
 
-Widget topicItem(topicInfo? model) {
+Widget topicItem(topicInfo? model,context) {
  // bool isDes = false;
  // List<String> list = <String>['Public', 'Private'];
   return Padding(
@@ -341,8 +344,33 @@ Widget topicItem(topicInfo? model) {
                           image: AssetImage('assets/images/legal-01.png'),
                         ),
                       ),
-                      IconButton(
-                        onPressed: () {},
+                      // IconButton(
+                      //   onPressed: () {},
+                      //   icon: const Image(
+                      //     image: AssetImage('assets/images/dots.png'),
+                      //   ),
+                      //
+                      // ),
+                      PopupMenuButton<String>(
+                        onSelected: (value) {
+                          if (value == 'Made Decision') {
+                            // Navigate to the Made Decision page
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => TopicDecissionScreen(),
+                              ),
+                            );
+                          }
+                        },
+                        itemBuilder: (BuildContext context) {
+                          return [
+                            PopupMenuItem<String>(
+                              value: 'Made Decision',
+                              child: Text('Made Decision'),
+                            ),
+                          ];
+                        },
                         icon: const Image(
                           image: AssetImage('assets/images/dots.png'),
                         ),

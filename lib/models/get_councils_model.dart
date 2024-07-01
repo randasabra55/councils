@@ -1,36 +1,36 @@
-class GetCouncilModel{
-  String? idd;
-  List<meetingInfo> values=[];
-  GetCouncilModel({this.idd, required this.values});
- // GetCouncilModel.fromjson
-  GetCouncilModel.fromjson(Map<String,dynamic>json)
-  {
-    idd=json['\$id'];
-   // if (json['\$values'] != null) {
-      //values = [];
-      json['\$values'].forEach((element) {
-        values.add(meetingInfo.fromjson(element));
-      });
-    }
-//  }
-
-}
-
-class meetingInfo{
-  String? id;
-  int? councilId;
-  String? title;
-  String? date;
-  String? hall;
-  meetingInfo.fromjson(Map<String,dynamic>json)
-  {
-    id=json['\$id'];
-    councilId=json['id'];
-    title=json['title'];
-    date=json['date'];
-    hall=json['hall'];
-  }
-}
+// class GetCouncilModel{
+//   String? idd;
+//   List<meetingInfo> values=[];
+//   GetCouncilModel({this.idd, required this.values});
+//  // GetCouncilModel.fromjson
+//   GetCouncilModel.fromjson(Map<String,dynamic>json)
+//   {
+//     idd=json['\$id'];
+//    // if (json['\$values'] != null) {
+//       //values = [];
+//       json['\$values'].forEach((element) {
+//         values.add(meetingInfo.fromjson(element));
+//       });
+//     }
+// //  }
+//
+// }
+//
+// class meetingInfo{
+//   String? id;
+//   int? councilId;
+//   String? title;
+//   String? date;
+//   String? hall;
+//   meetingInfo.fromjson(Map<String,dynamic>json)
+//   {
+//     id=json['\$id'];
+//     councilId=json['id'];
+//     title=json['title'];
+//     date=json['date'];
+//     hall=json['hall'];
+//   }
+// }
 
 // class GetCouncilModel {
 //   List<MeetingInfo> values;
@@ -123,3 +123,37 @@ class meetingInfo{
 //     );
 //   }
 // }
+
+class GetCouncilModel {
+  String? idd;
+  List<MeetingInfo> values = [];
+
+  GetCouncilModel({this.idd, required this.values});
+
+  GetCouncilModel.fromjson(Map<String, dynamic> json) {
+    idd = json['\$id'];
+    if (json['\$values'] != null) {
+      values = List<MeetingInfo>.from(
+        json['\$values'].map((element) => MeetingInfo.fromjson(element)),
+      );
+    }
+  }
+}
+
+class MeetingInfo {
+  String? id;
+  int? councilId;
+  String? title;
+  String? date;
+  String? hall;
+
+  MeetingInfo({this.id, this.councilId, this.title, this.date, this.hall});
+
+  MeetingInfo.fromjson(Map<String, dynamic> json) {
+    id = json['\$id'];
+    councilId = json['id'];
+    title = json['title'];
+    date = json['date'];
+    hall = json['hall'];
+  }
+}

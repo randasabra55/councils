@@ -9,7 +9,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AddTopicScreen extends StatelessWidget {
   const AddTopicScreen({super.key, required this.model});
-  final meetingInfo? model;
+  final MeetingInfo? model;
   @override
   Widget build(BuildContext context) {
     return Scaffold(

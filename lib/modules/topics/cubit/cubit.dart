@@ -28,15 +28,16 @@ class TopicCubit extends Cubit<TopicStates> {
     emit(ShowDecisionListState());
   }
 
-  String isSelected = 'Priority';
+  String isSelected = 'Name';
   int? councilId = CacheHelper.getData(key: 'councilId');
   String? token=CacheHelper.getData(key: 'token');
  // int councilId=CacheHelper.getData(key: 'councilId');
-  void SelectedItem(String item) {
-    isSelected = item;
-    emit(CategoryListState());
-  }
+ //  void SelectedItem(String item) {
+ //    isSelected = item;
+ //    emit(CategoryListState());
+ //  }
   GetAllTopicModel? getAllTopicModel;
+  int? topicId;
   void getAllTopics(){
     DioHelper.postData(
         url: GETALLTOPICS,
@@ -48,6 +49,9 @@ class TopicCubit extends Cubit<TopicStates> {
     ).then((value) {
       log(councilId.toString());
       getAllTopicModel=GetAllTopicModel.fromjson(value.data);
+      topicId=getAllTopicModel?.values.first.topicId;
+      CacheHelper.saveData(key: 'topicId', value: topicId);
+
       log('message');
       log('data is ${getAllTopicModel?.values.toString()}');
       log(value.data.toString());
@@ -58,7 +62,8 @@ class TopicCubit extends Cubit<TopicStates> {
     });
 }
 ///////////////////////////////////////////////////////
-  GetAllTopicModel? getTopicByNameModel;
+ // GetAllTopicModel? getTopicByNameModel;
+//  GetAllTopicModel? getTopicByDateModel;
   void getTopicByName()
   {
     DioHelper.getData(
@@ -67,13 +72,45 @@ class TopicCubit extends Cubit<TopicStates> {
     ).then((value) {
       log('success');
       log(value.data.toString());
-      getTopicByNameModel=GetAllTopicModel.fromjson(value.data);
+      getAllTopicModel=GetAllTopicModel.fromjson(value.data);
+      // getTopicByNameModel=GetAllTopicModel.fromjson(value.data);
       emit(GetTopicsByNameSuccessState(getAllTopicModel!));
       //emit(GetTopicByNameSuccessState(getTopicByNameModel!));
     }).catchError((error){
       log('error : ${error.toString()}');
       emit(GetTopicsByNameErrorState(error));
     });
+  }
+
+  void getTopicByDate()
+  {
+    DioHelper.getData(
+        url:GETALLTOPICBYDATE,
+        token: token
+    ).then((value) {
+      log('success date');
+      log(value.data.toString());
+      getAllTopicModel=GetAllTopicModel.fromjson(value.data);
+      //  getTopicByDateModel=GetAllTopicModel.fromjson(value.data);
+      emit(GetTopicsByDateSuccessState(getAllTopicModel!));
+      //emit(GetTopicByNameSuccessState(getTopicByNameModel!));
+    }).catchError((error){
+      log('error : ${error.toString()}');
+      emit(GetTopicsByDateErrorState(error));
+    });
+  }
+//////////////////////////////////
+  void SelectItem(String category) {
+    isSelected = category;
+    if (category == 'Date') {
+      getTopicByDate();
+    }else if (category == 'Name') {
+      getTopicByName();
+    }
+    else
+      {
+        getAllTopics();
+      }
   }
 }
 

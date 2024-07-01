@@ -14,7 +14,7 @@ class GetAllTopicModel{
 }
 class topicInfo{
   String? idd;
-  int? id;
+  int? topicId;
   String? title;
   String? type;
   bool? isDisscussed;
@@ -27,7 +27,7 @@ class topicInfo{
 
   topicInfo.fromjson(Map<String,dynamic>json){
     idd=json['\$id'];
-    id=json['id'];
+    topicId=json['id'];
     title=json['title'];
     type=json['type'];
     isDisscussed=json['isDiscussed'];
