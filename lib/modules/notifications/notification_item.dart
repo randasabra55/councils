@@ -1,14 +1,16 @@
+import 'package:councils/models/notofication_model.dart';
 import 'package:councils/modules/notifications/cubit/cubit.dart';
 import 'package:councils/modules/notifications/cubit/states.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../models/notification_model/notification_item_model.dart';
+
 
 class NotificationItemScreen extends StatefulWidget {
   const NotificationItemScreen({super.key, required this.model});
-  final NotificationModel model;
+  //final NotificationModel model;
+  final notificationInfo model;
   @override
   State<NotificationItemScreen> createState() => _NotificationItemScreenState();
 }
@@ -52,7 +54,8 @@ class _NotificationItemScreenState extends State<NotificationItemScreen> {
                     ),
                     Flexible(
                       child: Text(
-                        widget.model.text,
+                        //widget.model.text,
+                        widget.model.councilTitle??'',
                         // 'You have been invited to \n attend a Meeting 1 ',
                         maxLines: 3,
                         overflow: TextOverflow.ellipsis,
@@ -66,7 +69,8 @@ class _NotificationItemScreenState extends State<NotificationItemScreen> {
                    //    width: 150.w,
                    //  ),
                     Text(
-                      widget.model.time,
+                     // widget.model.time,
+                      widget.model.date??'',
                       //'just now',
                       style: const TextStyle(color: Colors.grey),
                     ),

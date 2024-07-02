@@ -1,3 +1,8 @@
+
+import 'dart:developer';
+
+import 'package:councils/models/notification_model/notification_item_model.dart';
+import 'package:councils/models/notofication_model.dart';
 import 'package:councils/modules/notifications/cubit/states.dart';
 import 'package:councils/shared/network/end_point.dart';
 import 'package:councils/shared/network/local/cache_helper.dart';
@@ -10,12 +15,22 @@ class NotificationCubit extends Cubit<NotificationStates> {
 
   static NotificationCubit get(context) => BlocProvider.of(context);
   String token=CacheHelper.getData(key: 'token');
+
+  GetNotificationModel? getNotificationModel;
   void getNotification()
   {
     DioHelper.getData(
         url:GETNOTIFICATION,
         token: token
-    );
+    ).then((value) {
+      log('success');
+      log(value.data.toString());
+      getNotificationModel=GetNotificationModel.fromjson(value.data);
+      emit(GetNotificationSuccessState(getNotificationModel!));
+    }).catchError((error){
+      log('error : ${error.toString()}');
+      emit(GetNotificationErrorState(error));
+    });
   }
 
 //  bool isAccepted=true;

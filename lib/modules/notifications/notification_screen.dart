@@ -22,17 +22,20 @@ class NotificationScreen extends StatelessWidget {
 
         listener: (BuildContext context, NotificationStates state) {  },
         builder: (BuildContext context, NotificationStates state) {
+          final cubit=NotificationCubit.get(context);
+          final model=cubit.getNotificationModel;
+
         //  NotificationCubit cubit=NotificationCubit.get(context);
 
-          List<NotificationModel>model=[
-            NotificationModel(text: 'You have been invited to attend a Meeting 1 ', time: 'just now', ),
-             NotificationModel(text: 'gggggg', time:'just now',),
-             NotificationModel(text: 'gggggg', time: 'just now',),
-             NotificationModel(text: 'gggggg', time: 'just now',),
-             NotificationModel(text: 'gggggg', time: 'just now',),
-          ];
+          // List<NotificationModel>model=[
+          //   NotificationModel(text: 'You have been invited to attend a Meeting 1 ', time: 'just now', ),
+          //    NotificationModel(text: 'gggggg', time:'just now',),
+          //    NotificationModel(text: 'gggggg', time: 'just now',),
+          //    NotificationModel(text: 'gggggg', time: 'just now',),
+          //    NotificationModel(text: 'gggggg', time: 'just now',),
+          // ];
          //  List<NotificationModel>model=[];
-          if(model.isEmpty) {
+          if(model?.values==null) {
             return Scaffold(
               body: Column(
                 children: [
@@ -50,7 +53,7 @@ class NotificationScreen extends StatelessWidget {
                           // color: Colors.blue,
                         ),
                         onPressed: (){
-                          // Navigator.pop(context);
+                           Navigator.pop(context);
                         },
                       ),
                       SizedBox(
@@ -126,8 +129,8 @@ class NotificationScreen extends StatelessWidget {
                 ),
                 Expanded(
                   child: ListView.builder(
-                      itemBuilder:(context,index)=>NotificationItemScreen(model: model[index]),
-                      itemCount: model.length,
+                      itemBuilder:(context,index)=>NotificationItemScreen(model: model!.values[index],),
+                      itemCount: model?.values.length,
                   ),
                 )
                 // Expanded(

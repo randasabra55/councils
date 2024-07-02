@@ -19,8 +19,8 @@ void main() async {
   // final isFirstLoanch=prefs.getBool('isFirstLoanch')??true;
   DioHelper.init();
   await CacheHelper.init();
- // councilId=CacheHelper.getData(key: 'councilId');
-  topicId=CacheHelper.getData(key: 'topicId');
+  councilId=CacheHelper.getData(key: 'councilId');
+ // topicId=CacheHelper.getData(key: 'topicId');
  // log(councilId.);
  // String token;
   //token=CacheHelper.getData(key: 'token');

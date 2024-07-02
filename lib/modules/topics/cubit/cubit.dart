@@ -37,7 +37,10 @@ class TopicCubit extends Cubit<TopicStates> {
  //    emit(CategoryListState());
  //  }
   GetAllTopicModel? getAllTopicModel;
+  List<int> councilIds = [];
   int? topicId;
+ // int index=0;
+  //int? topicId=CacheHelper.getData(key: 'councilIds');
   void getAllTopics(){
     DioHelper.postData(
         url: GETALLTOPICS,
@@ -48,9 +51,25 @@ class TopicCubit extends Cubit<TopicStates> {
         token: token
     ).then((value) {
       log(councilId.toString());
+
       getAllTopicModel=GetAllTopicModel.fromjson(value.data);
-      topicId=getAllTopicModel?.values.first.topicId;
-      CacheHelper.saveData(key: 'topicId', value: topicId);
+      // التحقق من أن getAllTopicModel ليست null وأنها تحتوي على القيم المتوقعة
+      if (getAllTopicModel != null && getAllTopicModel!.values.isNotEmpty) {
+        topicId = getAllTopicModel!.values.first.topicId;
+        CacheHelper.saveData(key: 'topicId', value: topicId);
+        log('Saved Topic ID: $topicId');
+      } else {
+        log('No topics found or invalid response format.');
+      }
+      // topicId=getAllTopicModel?.values.first.topicId;
+      // councilIds = getAllTopicModel?.values
+      //     .map((council) => council.councilId)
+      //     .where((id) => id != null)
+      //     .cast<int>()
+      //     .toList() ?? [];
+      // //topicId=getAllTopicModel?.values.first.topicId;
+      // CacheHelper.saveData(key: 'topicId', value: topicId);
+     // CacheHelper.saveData(key: 'topicId', value: councilIds);
 
       log('message');
       log('data is ${getAllTopicModel?.values.toString()}');
