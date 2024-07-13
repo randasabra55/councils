@@ -1,6 +1,8 @@
 // ignore_for_file: file_names
 
 
+import 'package:councils/modules/meeting/cubit/cubit.dart';
+import 'package:councils/modules/notifications/cubit/cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -71,9 +73,11 @@ class _HomeViewState extends State<HomeView> {
         actions: [
           InkWell(
             onTap: () {
+              NotificationCubit.get(context).getNotification();
                Navigator.push(
                 context,
                 MaterialPageRoute(
+                //  builder: (context)=>
                   builder: (context) =>  const NotificationScreen(),
                 ),
               );

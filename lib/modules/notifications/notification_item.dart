@@ -1,6 +1,7 @@
 import 'package:councils/models/notofication_model.dart';
 import 'package:councils/modules/notifications/cubit/cubit.dart';
 import 'package:councils/modules/notifications/cubit/states.dart';
+import 'package:councils/modules/notifications/reject_notification_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -95,6 +96,7 @@ class _NotificationItemScreenState extends State<NotificationItemScreen> {
                           setState(() {
                             widget.model.reject();
                           });
+                          Navigator.push(context, MaterialPageRoute(builder: (context)=>RejectNotificationScreen()));
                           // cubit.reject();
                         },
                         shape: RoundedRectangleBorder(
@@ -122,6 +124,9 @@ class _NotificationItemScreenState extends State<NotificationItemScreen> {
                         onPressed: () {
                           setState(() {
                             widget.model.accept();
+                            NotificationCubit.get(context).acceptNotification(
+                                isAttending: true
+                            );
                           });
                           // cubit.accept();
                         },

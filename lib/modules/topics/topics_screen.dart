@@ -336,14 +336,14 @@ Widget topicItem(topicInfo? model,context) {
                       ),
                       const Spacer(),
 
-                      IconButton(
-                        onPressed: () {
-                          // TopicCubit.get(context).decesions();
-                        },
-                        icon: const Image(
-                          image: AssetImage('assets/images/legal-01.png'),
-                        ),
-                      ),
+                      // IconButton(
+                      //   onPressed: () {
+                      //     // TopicCubit.get(context).decesions();
+                      //   },
+                      //   icon: const Image(
+                      //     image: AssetImage('assets/images/legal-01.png'),
+                      //   ),
+                      // ),
                       // IconButton(
                       //   onPressed: () {},
                       //   icon: const Image(

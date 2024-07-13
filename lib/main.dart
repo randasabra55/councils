@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:bloc/bloc.dart';
 import 'package:councils/modules/logo_page/logo_page.dart';
+import 'package:councils/modules/notifications/reject_notification_screen.dart';
 import 'package:councils/modules/topic_decission/topic_decission_screen.dart';
 import 'package:councils/shared/component/constants.dart';
 import 'package:councils/shared/network/local/cache_helper.dart';
@@ -60,7 +61,7 @@ class MyApp extends StatelessWidget {
             //  scaffoldBackgroundColor:  Colors.blue,
             ),
         debugShowCheckedModeBanner: false,
-       //home: TopicDecissionScreen(),
+      // home: RejectNotificationScreen(),
         home: const LogoPage(),
       ),
     );

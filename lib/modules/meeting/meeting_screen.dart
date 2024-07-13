@@ -217,7 +217,9 @@ import 'dart:developer';
 import 'package:councils/models/get_councils_model.dart';
 import 'package:councils/modules/meeting/cubit/cubit.dart';
 import 'package:councils/modules/meeting/cubit/states.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../add_topic/add_topic_screen.dart';
@@ -264,11 +266,11 @@ class MeetingScreen extends StatelessWidget {
                         'Meetings',
                         style: TextStyle(fontSize: 28.sp, fontWeight: FontWeight.w400),
                       ),
-                      Spacer(),
-                      IconButton(
-                        onPressed: () {},
-                        icon: Icon(Icons.search, size: 35.sp),
-                      ),
+                      // Spacer(),
+                      // IconButton(
+                      //   onPressed: () {},
+                      //   icon: Icon(Icons.search, size: 35.sp),
+                      // ),
                     ],
                   ),
                   Expanded(
@@ -304,12 +306,13 @@ Widget meetingItem(MeetingInfo? model, BuildContext context) {
       }
     },
     child: Padding(
-      padding: EdgeInsetsDirectional.only(start: 20.w, bottom: 22.h),
+      padding: EdgeInsetsDirectional.only(start: 20.w, bottom: 22.h,end: 6.w),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
+
         children: [
           Container(
-            height: 95.h,
+            height: 93.h,
             width: 88.w,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10.r),
@@ -317,30 +320,39 @@ Widget meetingItem(MeetingInfo? model, BuildContext context) {
             ),
           ),
           SizedBox(width: 10.w),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                model?.date ?? '',
-                style: TextStyle(color: Colors.blueAccent, fontSize: 14.sp),
-              ),
-              SizedBox(height: 5.h),
-              Text(
-                model?.title ?? '',
-                style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.w400),
-              ),
-              SizedBox(height: 5.h),
-              Row(
-                children: [
-                  const Icon(Icons.location_on, color: Colors.grey),
-                  SizedBox(width: 10.w),
-                  Text(
-                    model?.hall ?? '',
-                    style: TextStyle(fontSize: 14.sp, color: Colors.grey),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  model?.date ?? '',
+                  style: TextStyle(color: Colors.blueAccent, fontSize: 14.sp),
+                ),
+                SizedBox(height: 5.h),
+                Text(
+                  model?.title ?? '',
+                  style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.w400),
+                ),
+                SizedBox(height: 5.h),
+                SizedBox(
+                 // width: 100.w,
+                 // width: MediaQuery.of(context).size.width,
+                  child: Row(
+                    children: [
+                      const Icon(Icons.location_on, color: Colors.grey),
+                      SizedBox(width: 8.w),
+                      Expanded(
+                        child: Text(
+                          model?.hall ?? '',
+                          style: TextStyle(fontSize: 14.sp, color: Colors.grey,),
+                          maxLines: 2,
+                        ),
+                      ),
+                    ],
                   ),
-                ],
-              ),
-            ],
+                ),
+              ],
+            ),
           ),
         ],
       ),

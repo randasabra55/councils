@@ -455,7 +455,10 @@ import 'package:councils/models/profile_model/profile_model.dart';
 import 'package:councils/modules/chair_man_profile/cubit/cubit.dart';
 import 'package:councils/modules/chair_man_profile/cubit/states.dart';
 import 'package:councils/modules/edit_profile/edit_profile_screen.dart';
+import 'package:councils/modules/login_screen/login.dart';
 import 'package:councils/modules/settings/settings_screen.dart';
+import 'package:councils/shared/component/component.dart';
+import 'package:councils/shared/network/local/cache_helper.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -720,58 +723,61 @@ class ChairManProfile extends StatelessWidget {
                   SizedBox(
                     height: 14.h,
                   ),
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => SettingScreen()),
-                      );
-                    },
-                    child: Padding(
-                      padding: const EdgeInsetsDirectional.only(
-                          start: 25, end: 25),
-                      child: Card(
-                        elevation: 2,
-                        child: Container(
-                          height: 50.h,
-                          width: MediaQuery
-                              .sizeOf(context)
-                              .width,
-                          decoration: BoxDecoration(
-                            color: const Color(0xffffffff),
-                            borderRadius: BorderRadiusDirectional.circular(5.r),
-                          ),
-                          child: Row(
-                            children: [
-                              SizedBox(
-                                width: 25.w,
-                              ),
-                              Icon(Icons.settings_outlined,
-                                  color: Colors.grey[600]),
-                              SizedBox(
-                                width: 10.w,
-                              ),
-                              Text(
-                                'Settings',
-                                style: TextStyle(
-                                  fontSize: 18.sp,
-                                  fontWeight: FontWeight.w500,
-                                  color: Colors.grey[600],
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
+                  // GestureDetector(
+                  //   onTap: () {
+                  //     Navigator.push(
+                  //       context,
+                  //       MaterialPageRoute(
+                  //           builder: (context) => SettingScreen()),
+                  //     );
+                  //   },
+                  //   child: Padding(
+                  //     padding: const EdgeInsetsDirectional.only(
+                  //         start: 25, end: 25),
+                  //     child: Card(
+                  //       elevation: 2,
+                  //       child: Container(
+                  //         height: 50.h,
+                  //         width: MediaQuery
+                  //             .sizeOf(context)
+                  //             .width,
+                  //         decoration: BoxDecoration(
+                  //           color: const Color(0xffffffff),
+                  //           borderRadius: BorderRadiusDirectional.circular(5.r),
+                  //         ),
+                  //         child: Row(
+                  //           children: [
+                  //             SizedBox(
+                  //               width: 25.w,
+                  //             ),
+                  //             Icon(Icons.settings_outlined,
+                  //                 color: Colors.grey[600]),
+                  //             SizedBox(
+                  //               width: 10.w,
+                  //             ),
+                  //             Text(
+                  //               'Settings',
+                  //               style: TextStyle(
+                  //                 fontSize: 18.sp,
+                  //                 fontWeight: FontWeight.w500,
+                  //                 color: Colors.grey[600],
+                  //               ),
+                  //             ),
+                  //           ],
+                  //         ),
+                  //       ),
+                  //     ),
+                  //   ),
+                  // ),
                   SizedBox(
                     height: 18.h,
                   ),
                   GestureDetector(
                     onTap: () {
                       log('ranoda');
+                      CacheHelper.removeData(key: 'token');
+                      showToast(text: 'please log in again', state: ToastStates.SUCCESS);
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>LoginScreen()));
                     },
                     child: Padding(
                       padding: const EdgeInsetsDirectional.only(
@@ -813,28 +819,28 @@ class ChairManProfile extends StatelessWidget {
                   SizedBox(
                     height: 30.h,
                   ),
-                  MaterialButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => EditProfileScreen()),
-                      );
-                    },
-                    color: const Color(0xff2752e7),
-                    minWidth: 250.w,
-                    height: 38.h,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadiusDirectional.circular(10.r),
-                    ),
-                    child: Text(
-                      'Edit',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 16.sp,
-                      ),
-                    ),
-                  ),
+                  // MaterialButton(
+                  //   onPressed: () {
+                  //     Navigator.push(
+                  //       context,
+                  //       MaterialPageRoute(
+                  //           builder: (context) => EditProfileScreen()),
+                  //     );
+                  //   },
+                  //   color: const Color(0xff2752e7),
+                  //   minWidth: 250.w,
+                  //   height: 38.h,
+                  //   shape: RoundedRectangleBorder(
+                  //     borderRadius: BorderRadiusDirectional.circular(10.r),
+                  //   ),
+                  //   child: Text(
+                  //     'Edit',
+                  //     style: TextStyle(
+                  //       color: Colors.white,
+                  //       fontSize: 16.sp,
+                  //     ),
+                  //   ),
+                  // ),
                   SizedBox(
                     height: 35.h,
                   ),

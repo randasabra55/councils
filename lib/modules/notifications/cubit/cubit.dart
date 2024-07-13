@@ -14,7 +14,8 @@ class NotificationCubit extends Cubit<NotificationStates> {
   NotificationCubit():super(NotificationInitialState());
 
   static NotificationCubit get(context) => BlocProvider.of(context);
-  String token=CacheHelper.getData(key: 'token');
+  String? token=CacheHelper.getData(key: 'token');
+  int? councilId=CacheHelper.getData(key: 'councilId');
 
   GetNotificationModel? getNotificationModel;
   void getNotification()
@@ -33,6 +34,27 @@ class NotificationCubit extends Cubit<NotificationStates> {
     });
   }
 
+  void acceptNotification({
+    required bool isAttending,
+    String? reason,
+
+})
+  {
+    DioHelper.putData(
+        url: ACCEPTNOTIFICATION,
+        data: {
+          'isAttending':isAttending,
+          'reasonNonAttendance':reason,
+          'councilId':councilId
+        }
+    ).then((value) {
+      log(value.data.toString());
+      emit(AcceptSuccessState());
+    }).catchError((error){
+      log('error is : ${error.toString()}');
+      emit(AcceptErrorState(error));
+    });
+  }
 //  bool isAccepted=true;
 //   NotificationModel? model;
 //  // bool c=model!.isAccept;

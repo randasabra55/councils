@@ -23,3 +23,11 @@ class GetNotificationErrorState extends NotificationStates{
 
 }
 
+class AcceptSuccessState extends NotificationStates{}
+
+class AcceptErrorState extends NotificationStates{
+  final String error;
+  AcceptErrorState(this.error);
+
+}
+
