@@ -3,6 +3,7 @@ import 'package:councils/models/notification_model/notification_item_model.dart'
 import 'package:councils/modules/notifications/cubit/cubit.dart';
 import 'package:councils/modules/notifications/cubit/states.dart';
 import 'package:councils/modules/notifications/notification_item.dart';
+import 'package:councils/shared/component/component.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -20,7 +21,12 @@ class NotificationScreen extends StatelessWidget {
       create: (BuildContext context) =>NotificationCubit()..getNotification(),
       child: BlocConsumer<NotificationCubit,NotificationStates>(
 
-        listener: (BuildContext context, NotificationStates state) {  },
+        listener: (BuildContext context, NotificationStates state) {
+          if(state is AcceptSuccessState)
+            {
+              showToast(text: 'applogy uploaded', state: ToastStates.SUCCESS);
+            }
+        },
         builder: (BuildContext context, NotificationStates state) {
           final cubit=NotificationCubit.get(context);
           final model=cubit.getNotificationModel;
@@ -108,20 +114,20 @@ class NotificationScreen extends StatelessWidget {
                           fontWeight: FontWeight.w500
                       ),
                     ),
-                    const Spacer(),
-                    IconButton(
-                      icon: Icon(
-                        Icons.search,
-                        color: Colors.blue,
-                        size: 30.sp,
-                      ),
-                      onPressed: (){
-                        // Navigator.pop(context);
-                      },
-                    ),
-                    SizedBox(
-                      width: 12.w,
-                    ),
+                    // const Spacer(),
+                    // IconButton(
+                    //   icon: Icon(
+                    //     Icons.search,
+                    //     color: Colors.blue,
+                    //     size: 30.sp,
+                    //   ),
+                    //   onPressed: (){
+                    //     // Navigator.pop(context);
+                    //   },
+                    // ),
+                    // SizedBox(
+                    //   width: 12.w,
+                    // ),
                   ],
                 ),
                 SizedBox(

@@ -126,7 +126,9 @@ class NotificationCubit extends Cubit<NotificationStates> {
         'isAttending': isAttending,
         'reasonNonAttendance': reason,
         'councilId': councilId,
+
       },
+      token: token
     ).then((value) {
       log(councilId.toString());
       log(value.data.toString());
