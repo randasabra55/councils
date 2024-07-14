@@ -17,7 +17,7 @@ class NotificationScreen extends StatelessWidget {
 
     return  BlocProvider(
 
-      create: (BuildContext context) =>NotificationCubit(),
+      create: (BuildContext context) =>NotificationCubit()..getNotification(),
       child: BlocConsumer<NotificationCubit,NotificationStates>(
 
         listener: (BuildContext context, NotificationStates state) {  },
@@ -95,7 +95,7 @@ class NotificationScreen extends StatelessWidget {
                         // color: Colors.blue,
                       ),
                       onPressed: (){
-                        // Navigator.pop(context);
+                         Navigator.pop(context);
                       },
                     ),
                     SizedBox(
@@ -129,8 +129,8 @@ class NotificationScreen extends StatelessWidget {
                 ),
                 Expanded(
                   child: ListView.builder(
-                      itemBuilder:(context,index)=>NotificationItemScreen(model: model!.values[index],),
-                      itemCount: model?.values.length,
+                      itemBuilder:(context,index)=>NotificationItemScreen(model: model!.values![index]),
+                      itemCount: model?.values?.length,
                   ),
                 )
                 // Expanded(

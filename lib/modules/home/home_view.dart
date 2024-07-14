@@ -73,7 +73,7 @@ class _HomeViewState extends State<HomeView> {
         actions: [
           InkWell(
             onTap: () {
-              NotificationCubit.get(context).getNotification();
+             // NotificationCubit.get(context).getNotification();
                Navigator.push(
                 context,
                 MaterialPageRoute(
