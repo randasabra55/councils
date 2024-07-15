@@ -13,39 +13,36 @@ import '../../shared/network/local/cache_helper.dart';
 import 'cubit/states.dart';
 
 class LoginScreen extends StatelessWidget {
-
-  var emailController=TextEditingController();
-  var passwordController=TextEditingController();
-  var formKey=GlobalKey<FormState>();
+  var emailController = TextEditingController();
+  var passwordController = TextEditingController();
+  var formKey = GlobalKey<FormState>();
 
   LoginScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (BuildContext context) =>UserLoginCubit(),
-      child: BlocConsumer<UserLoginCubit,UserLoginStates>(
+      create: (BuildContext context) => UserLoginCubit(),
+      child: BlocConsumer<UserLoginCubit, UserLoginStates>(
         listener: (BuildContext context, state) {
-          if(state is UserLoginSuccessState)
-          {
-            if (state.loginModel.result!)
-            {
+          if (state is UserLoginSuccessState) {
+            if (state.loginModel.result!) {
               //print(state.loginModel.message);
               log('${state.loginModel.token}');
-              CacheHelper.saveData(key: 'token', value: state.loginModel.token).then((value) {
-                token= state.loginModel.token!;
+              CacheHelper.saveData(key: 'token', value: state.loginModel.token)
+                  .then((value) {
+                token = state.loginModel.token!;
                 Navigator.pushAndRemoveUntil(
                     context,
-                    MaterialPageRoute(builder: (context)=>HomeLayoutScreen()),
-                        (route) => false
-                );
-               // navigateAndFinish(context, HomeLayoutScreen());
+                    MaterialPageRoute(builder: (context) => HomeLayoutScreen()),
+                    (route) => false);
+                // navigateAndFinish(context, HomeLayoutScreen());
               });
-            }
-            else
-            {
-             // print(state.loginModel.message);
-              showToast(text: 'email or password not correct', state: ToastStates.ERROR);
+            } else {
+              // print(state.loginModel.message);
+              showToast(
+                  text: 'email or password not correct',
+                  state: ToastStates.ERROR);
             }
           }
           // if (state is UserLoginSuccessState) {
@@ -73,10 +70,9 @@ class LoginScreen extends StatelessWidget {
           //   }
           // }
         },
-       // }},
+        // }},
         builder: (BuildContext context, Object? state) {
-          return  Scaffold(
-
+          return Scaffold(
             body: Form(
               key: formKey,
               child: SingleChildScrollView(
@@ -93,7 +89,7 @@ class LoginScreen extends StatelessWidget {
                         ),
                         IconButton(
                           icon: const Icon(Icons.arrow_back_ios_new),
-                          onPressed: (){
+                          onPressed: () {
                             Navigator.pop(context);
                           },
                         ),
@@ -113,14 +109,12 @@ class LoginScreen extends StatelessWidget {
                         ),
                         IconButton(
                           icon: const Icon(Icons.arrow_forward_ios_outlined),
-                          onPressed: (){
-                            if(formKey.currentState!.validate())
-                            {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(builder: (context)=>HomeLayoutScreen())
-                              );
-                            }
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => HomeLayoutScreen()));
+
                             //Navigator.pop(context);
                           },
                         ),
@@ -135,7 +129,6 @@ class LoginScreen extends StatelessWidget {
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 24.sp,
-
                         ),
                       ),
                     ),
@@ -145,12 +138,11 @@ class LoginScreen extends StatelessWidget {
                     const Center(
                       child: Text(
                         'Welcome back, please \n        sign in again',
-                        style: TextStyle(
-                            color: Colors.grey
-                          //  fontWeight: FontWeight.bold,
-                          //  fontSize: 24.sp,
+                        style: TextStyle(color: Colors.grey
+                            //  fontWeight: FontWeight.bold,
+                            //  fontSize: 24.sp,
 
-                        ),
+                            ),
                       ),
                     ),
                     SizedBox(
@@ -158,88 +150,69 @@ class LoginScreen extends StatelessWidget {
                     ),
                     defaultTextfield(
                         controller: emailController,
-                        validate: (value)
-                        {
-                          if(value.isEmpty)
-                          {
+                        validate: (value) {
+                          if (value.isEmpty) {
                             return "email must not be empty";
                           }
                         },
-                        hintText:'Email',
+                        hintText: 'Email',
                         prefix: Icons.email,
-                        type: TextInputType.emailAddress
-                    ),
+                        type: TextInputType.emailAddress),
                     SizedBox(
                       height: 25.h,
                     ),
                     defaultTextfield(
                         controller: passwordController,
-                        validate: (value)
-                        {
-                          if(value.isEmpty)
-                          {
+                        validate: (value) {
+                          if (value.isEmpty) {
                             return "password must not be empty";
                           }
                         },
-                        hintText:'Password',
+                        hintText: 'Password',
                         prefix: Icons.lock,
-                        type: TextInputType.visiblePassword
-                    ),
-
+                        type: TextInputType.visiblePassword),
                     TextButton(
-                        onPressed: (){
+                        onPressed: () {
                           Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context)=>ForgetPasswordScreen())
-                          );
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      ForgetPasswordScreen()));
                         },
                         child: const Padding(
-                          padding: EdgeInsetsDirectional.only(
-                              end: 20,
-                              top: 8
-                          ),
+                          padding: EdgeInsetsDirectional.only(end: 20, top: 8),
                           child: Align(
                             alignment: Alignment.bottomRight,
                             child: Text(
                               'Forget password?',
-                              style: TextStyle(
-                                  color:Color(0xff519dd5)
-                              ),
+                              style: TextStyle(color: Color(0xff519dd5)),
                             ),
                           ),
-                        )
-                    ),
+                        )),
                     SizedBox(
                       height: 8.h,
                     ),
                     defaultBottom(
-
-
-                        radius:30,
+                        radius: 30,
                         color: Color(0xff2752e7),
-                        text:'Login',
-                        onpressed: (){
-                          if(formKey.currentState!.validate())
-                          {
+                        text: 'Login',
+                        onpressed: () {
+                          if (formKey.currentState!.validate()) {
                             UserLoginCubit.get(context).userLogin(
                                 email: emailController.text,
-                                password: passwordController.text
-                            );
+                                password: passwordController.text);
                             // Navigator.push(
                             //     context,
                             //     MaterialPageRoute(builder: (context)=> HomeLayoutScreen())
                             // );
                           }
-
-                        }
-                    )
+                        })
                   ],
                 ),
               ),
             ),
           );
         },
-
       ),
     );
   }

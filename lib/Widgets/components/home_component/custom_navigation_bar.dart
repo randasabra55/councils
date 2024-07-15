@@ -1,13 +1,13 @@
 
+import 'package:councils/models/custom_icon_model/custom_icon.dart';
+import 'package:councils/modules/Search_Views/search_council_view.dart';
+import 'package:councils/modules/home/home_view.dart';
+import 'package:councils/modules/meeting_view/meeting_view.dart';
+import 'package:councils/modules/profile_view.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
-import '../../../models/custom_icon_model/custom_icon.dart';
-import '../../../modules/home/home_view.dart';
-import '../../../modules/meeting_view/meeting_view.dart';
-import '../../../modules/profile_view.dart';
-import '../../../modules/search/search_view_no_data.dart';
 
 // ignore: must_be_immutable
 class CustomNavigationBar extends StatefulWidget {
@@ -19,7 +19,7 @@ class CustomNavigationBar extends StatefulWidget {
 }
 
 class _CustomNavigationBarState extends State<CustomNavigationBar> {
-  final List<StatefulWidget> screen = const [
+  final List<Widget> screen =  [
     HomeView(),
     MeetingView(),
     SearchView(),
@@ -31,13 +31,13 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> {
     return NavigationBar(
       labelBehavior: NavigationDestinationLabelBehavior.onlyShowSelected,
       indicatorColor: Colors.transparent,
-      overlayColor:  MaterialStatePropertyAll(Colors.transparent),
+      overlayColor: const WidgetStatePropertyAll(Colors.transparent),
       elevation: 0,
       height: 80.h,
       selectedIndex: widget.selectedIndex,
       onDestinationSelected: (value) {
         setState(
-              () {
+          () {
             Navigator.pushReplacement(
               context,
               MaterialPageRoute(

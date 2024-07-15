@@ -1,11 +1,11 @@
-
+import 'package:councils/Widgets/components/app_bar_custom.dart';
+import 'package:councils/Widgets/components/home_component/custom_navigation_bar.dart';
+import 'package:councils/models/custom_icon_model/custom_icon.dart';
 import 'package:councils/modules/meeting_view/schedule_meeting.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-
-import '../../Widgets/components/app_bar_custom.dart';
-import '../../models/custom_icon_model/custom_icon.dart';
+import 'package:path/path.dart';
 
 class MeetingView extends StatefulWidget {
   const MeetingView({super.key});
@@ -48,11 +48,11 @@ class _MeetingViewState extends State<MeetingView> {
           ),
         ),
       ),
-      appBar: appBarCustom(pageName: pageName, fontSize: 25),
+      appBar: appBarCustom(pageName: pageName, fontSize: 25, context: context),
       body: const NoUpcomingMeeting(),
-      // bottomNavigationBar: const CustomNavigationBar(
-      //   selectedIndex: 1,
-      // ),
+      bottomNavigationBar: const CustomNavigationBar(
+        selectedIndex: 1,
+      ),
     );
   }
 }
