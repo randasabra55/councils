@@ -1,11 +1,80 @@
+// import 'package:bloc/bloc.dart';
+// import 'package:councils/modules/logo_page/logo_page.dart';
+// import 'package:councils/shared/network/local/cache_helper.dart';
+// import 'package:councils/shared/network/remote/dio_helper.dart';
+// import 'package:flutter/material.dart';
+// import 'package:flutter/services.dart';
+// import 'package:flutter_screenutil/flutter_screenutil.dart';
+//
+// import 'bloc_observer.dart';
+//
+// void main() async {
+//   WidgetsFlutterBinding.ensureInitialized();
+//   Bloc.observer = MyBlocObserver();
+//   // final prefs=await SharedPreferences.getInstance();
+//   // final isFirstLoanch=prefs.getBool('isFirstLoanch')??true;
+//   DioHelper.init();
+//   await CacheHelper.init();
+//   String token;
+//   //token=CacheHelper.getData(key: 'token');
+//   runApp(const MyApp());
+//   // runApp( MyApp(isFirstLoanch:isFirstLoanch));
+// }
+//
+// class MyApp extends StatelessWidget {
+//   const MyApp({super.key});
+//
+//   // final bool isFirstLoanch;
+//
+//   // const MyApp({super.key, required this.isFirstLoanch});
+//
+//   // const MyApp({super.key, required bool isFirstLoanch});
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return ScreenUtilInit(
+//       designSize: const Size(360, 690),
+//       splitScreenMode: true,
+//       minTextAdapt: true,
+//       child: MaterialApp(
+//         theme: ThemeData(
+//             appBarTheme: const AppBarTheme(
+//                 systemOverlayStyle: SystemUiOverlayStyle(
+//           statusBarColor: Colors.white,
+//         ))
+//             // snackBarTheme: SnackBarThemeData(
+//             //   backgroundColor: Colors.white,
+//             // )
+//             // snackBarTheme: SnackBarThemeData(
+//             //   backgroundColor: Colors.blue
+//             // )
+//             //  primarySwatch: Colors.blue
+//             // primaryColor: Colors.blue
+//             //  scaffoldBackgroundColor:  Colors.blue,
+//             ),
+//         debugShowCheckedModeBanner: false,
+//       // home: LoginScreen(),
+//         home: const LogoPage(),
+//       ),
+//     );
+//   }
+// }
+
+
+
+//push
+
 import 'package:bloc/bloc.dart';
+import 'package:councils/Services/data_service.dart';
+import 'package:councils/modules/Search_Views/cubit/CouncilSearch_Cubit.dart';
 import 'package:councils/modules/logo_page/logo_page.dart';
+import 'package:councils/shared/component/constants.dart';
 import 'package:councils/shared/network/local/cache_helper.dart';
 import 'package:councils/shared/network/remote/dio_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import 'bloc_observer.dart';
 
 void main() async {
@@ -15,7 +84,7 @@ void main() async {
   // final isFirstLoanch=prefs.getBool('isFirstLoanch')??true;
   DioHelper.init();
   await CacheHelper.init();
-  String token;
+  // String token;
   //token=CacheHelper.getData(key: 'token');
   runApp(const MyApp());
   // runApp( MyApp(isFirstLoanch:isFirstLoanch));
@@ -36,12 +105,14 @@ class MyApp extends StatelessWidget {
       designSize: const Size(360, 690),
       splitScreenMode: true,
       minTextAdapt: true,
-      child: MaterialApp(
-        theme: ThemeData(
-            appBarTheme: const AppBarTheme(
-                systemOverlayStyle: SystemUiOverlayStyle(
-          statusBarColor: Colors.white,
-        ))
+      child: BlocProvider(
+        create: (context) => SearchCubit(DataService(authToken: CacheHelper.getData(key: 'token'))),
+        child: MaterialApp(
+          theme: ThemeData(
+              appBarTheme: const AppBarTheme(
+                  systemOverlayStyle: SystemUiOverlayStyle(
+                    statusBarColor: Colors.white,
+                  ))
             // snackBarTheme: SnackBarThemeData(
             //   backgroundColor: Colors.white,
             // )
@@ -51,15 +122,12 @@ class MyApp extends StatelessWidget {
             //  primarySwatch: Colors.blue
             // primaryColor: Colors.blue
             //  scaffoldBackgroundColor:  Colors.blue,
-            ),
-        debugShowCheckedModeBanner: false,
-      // home: LoginScreen(),
-        home: const LogoPage(),
+          ),
+          debugShowCheckedModeBanner: false,
+          // home: LoginScreen(),
+          home: const LogoPage(),
+        ),
       ),
     );
   }
 }
-
-
-
-//push

@@ -8,8 +8,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../shared/network/end_point.dart';
 
-
-
 class VerifyCodeCubit extends Cubit<CodeVerificationStates>
 {
   VerifyCodeCubit():super(CodeVerInitialState());

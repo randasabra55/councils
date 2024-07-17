@@ -1,5 +1,3 @@
-
-
 class OTPModel{
   String? id;
   String? token;

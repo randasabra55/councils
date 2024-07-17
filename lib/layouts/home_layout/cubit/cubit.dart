@@ -5,6 +5,7 @@ import 'package:councils/modules/meeting/meeting_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../modules/Search_Views/search_council_view.dart';
 import '../../../modules/chair_man_profile/chair_man_profile.dart';
 import '../../../modules/home/home_view.dart';
 
