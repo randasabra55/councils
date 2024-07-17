@@ -1,5 +1,4 @@
 import 'package:councils/layouts/home_layout/cubit/states.dart';
-import 'package:councils/modules/Search_Views/search_council_view.dart';
 
 import 'package:councils/modules/meeting/meeting_screen.dart';
 
@@ -36,7 +35,7 @@ class HomeLayoutCubit extends Cubit<HomeLayoutStates>{
   List<Widget>screens=[
      HomeView(),
      MeetingScreen(),
-    const SearchView(),
+     SearchView(),
     ChairManProfile(),
   ];
   void clickButtonNavigation(int index)

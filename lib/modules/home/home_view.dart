@@ -11,7 +11,6 @@ import '../../Services/data_service.dart';
 import '../../Widgets/components/home_component/drawer.dart';
 import '../../Widgets/components/home_component/upcoming_meeting.dart';
 import '../../Widgets/components/home_component/upcoming_meeting_title.dart';
-import '../../models/user_model/user_model.dart';
 import '../notifications/notification_screen.dart';
 // import '../Models/custom_icon.dart';
 
