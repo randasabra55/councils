@@ -1,4 +1,5 @@
 import 'package:councils/layouts/home_layout/cubit/states.dart';
+import 'package:councils/modules/Search_Views/search_council_view.dart';
 
 import 'package:councils/modules/meeting/meeting_screen.dart';
 
@@ -7,7 +8,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../modules/chair_man_profile/chair_man_profile.dart';
 import '../../../modules/home/home_view.dart';
-import '../../../modules/search/search_view_no_data.dart';
 
 class HomeLayoutCubit extends Cubit<HomeLayoutStates>{
 
@@ -34,7 +34,7 @@ class HomeLayoutCubit extends Cubit<HomeLayoutStates>{
     )
   ];
   List<Widget>screens=[
-    const HomeView(),
+     HomeView(),
      MeetingScreen(),
     const SearchView(),
     ChairManProfile(),

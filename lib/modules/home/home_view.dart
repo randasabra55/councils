@@ -1,8 +1,6 @@
 // ignore_for_file: file_names
 
 
-import 'package:councils/modules/meeting/cubit/cubit.dart';
-import 'package:councils/modules/notifications/cubit/cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -13,7 +11,6 @@ import '../../Services/data_service.dart';
 import '../../Widgets/components/home_component/drawer.dart';
 import '../../Widgets/components/home_component/upcoming_meeting.dart';
 import '../../Widgets/components/home_component/upcoming_meeting_title.dart';
-import '../../models/custom_icon_model/custom_icon.dart';
 import '../../models/user_model/user_model.dart';
 import '../notifications/notification_screen.dart';
 // import '../Models/custom_icon.dart';
@@ -73,11 +70,9 @@ class _HomeViewState extends State<HomeView> {
         actions: [
           InkWell(
             onTap: () {
-             // NotificationCubit.get(context).getNotification();
                Navigator.push(
                 context,
                 MaterialPageRoute(
-                //  builder: (context)=>
                   builder: (context) =>  const NotificationScreen(),
                 ),
               );
@@ -90,26 +85,17 @@ class _HomeViewState extends State<HomeView> {
             ),
           ),
           14.horizontalSpace,
-
           Builder(
             builder: (context) => InkWell(
               onTap: () {
                 Scaffold.of(context).openDrawer();
               },
-              child: Container(
-                child: SvgPicture.string(CustomIcon().sideMunu),
+              child: SvgPicture.asset(
+                fit: BoxFit.fill,
+                height: 18.h,
+                width: 14.w,
+                'assets/icons/side_menu.svg',
               ),
-              // child: IconButton(
-              //   icon: Icon(Icons.menu),
-              //   onPressed: (){},
-              // ),
-              // child: SvgPicture.asset(
-              //   fit: BoxFit.fill,
-              //   height: 18.h,
-              //   width: 14.w,
-              //
-              //   'assets/icons/side_menu.svg',
-              // ),
             ),
           ),
           14.horizontalSpace,
