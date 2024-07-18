@@ -22,10 +22,11 @@ class NotificationScreen extends StatelessWidget {
       child: BlocConsumer<NotificationCubit,NotificationStates>(
 
         listener: (BuildContext context, NotificationStates state) {
-          if(state is AcceptSuccessState)
+          if(state is RejectSuccessState)
             {
-              showToast(text: 'applogy uploaded', state: ToastStates.SUCCESS);
+              showToast(text: 'apology uploaded', state: ToastStates.SUCCESS);
             }
+        //  Navigator.pop(context);
         },
         builder: (BuildContext context, NotificationStates state) {
           final cubit=NotificationCubit.get(context);

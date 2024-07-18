@@ -11,6 +11,8 @@ class NotificationRejectState extends NotificationStates{}
 
 class NotificationShowAccept_RejectState extends NotificationStates{}
 
+////////////////////////////////////////////////////////////////////////////
+
 class GetNotificationSuccessState extends NotificationStates{
   final GetNotificationModel getNotificationModel;
 
@@ -22,12 +24,21 @@ class GetNotificationErrorState extends NotificationStates{
   GetNotificationErrorState(this.error);
 
 }
-
+/////////////////////////////////////////////////////////////////////////////////
 class AcceptSuccessState extends NotificationStates{}
 
 class AcceptErrorState extends NotificationStates{
   final String error;
   AcceptErrorState(this.error);
+
+}
+
+class RejectSuccessState extends NotificationStates{}
+
+class RejectErrorState extends NotificationStates{
+  final String error;
+
+  RejectErrorState(this.error);
 
 }
 

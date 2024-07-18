@@ -226,56 +226,64 @@ class _ScheduleMeetingState extends State<ScheduleMeeting> {
               SizedBox(height: 30.h),
               Text(
                 'Location',
+
                 style: TextStyle(
                   color: Colors.black,
                   fontSize: 18.sp,
                 ),
               ),
               SizedBox(height: 20.h),
-              DropdownButtonFormField<HallModel>(
-                icon: Container(
-                  height: 20.h,
-                  width: 20.w,
-                  child: SvgPicture.string(
-                    CustomIcon().arrowDown,
-                  ),
-                ),
-                value: _selectedHall,
-                items: _halls.map((hall) {
-                  return DropdownMenuItem<HallModel>(
-                    value: hall,
-                    child: Text(hall.name),
-                  );
-                }).toList(),
-                onChanged: (value) {
-                  setState(() {
-                    _selectedHall = value;
-                  });
-                },
-                decoration: InputDecoration(
-                  filled: true,
-                  fillColor: Colors.white,
-                  hintText: 'Select location',
-                  constraints: BoxConstraints(
-                      maxWidth: MediaQuery.of(context).size.width * 0.85),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                  prefixIcon: Padding(
-                    padding: const EdgeInsets.all(8.0),
+              Container(
+                constraints: BoxConstraints(
+                    maxWidth: MediaQuery.of(context).size.width * 0.85),
+                child: DropdownButtonFormField<HallModel>(
+                  icon: Container(
+                    height: 20.h,
+                    width: 20.w,
                     child: SvgPicture.string(
-                      CustomIcon().location,
-                      width: 20.w,
-                      height: 20.h,
+                      CustomIcon().arrowDown,
                     ),
                   ),
+                  value: _selectedHall,
+                  items: _halls.map((hall) {
+                    return DropdownMenuItem<HallModel>(
+                      value: hall,
+                      child: Text(hall.name,overflow: TextOverflow.ellipsis,),
+                    );
+                  }).toList(),
+                  onChanged: (value) {
+                    setState(() {
+                      _selectedHall = value;
+                    });
+                  },
+                  decoration: InputDecoration(
+                    filled: true,
+                    fillColor: Colors.white,
+                    hintText: 'Select location',
+                   // padding: const EdgeInsets.all(8.0),
+                    constraints: BoxConstraints(
+
+                        maxWidth: MediaQuery.of(context).size.width * 0.85),
+                    //  maxWidth: 50.w,
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    prefixIcon: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: SvgPicture.string(
+                        CustomIcon().location,
+                        width: 20.w,
+                        height: 20.h,
+                      ),
+                    ),
+                  ),
+                  validator: (value) {
+                    if (value == null) {
+                      return 'Please select a location';
+                    }
+                    return null;
+                  },
                 ),
-                validator: (value) {
-                  if (value == null) {
-                    return 'Please select a location';
-                  }
-                  return null;
-                },
               ),
               SizedBox(height: 200.h),
               Row(
@@ -338,3 +346,4 @@ class _ScheduleMeetingState extends State<ScheduleMeeting> {
     );
   }
 }
+

@@ -6,9 +6,15 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../shared/component/component.dart';
 
-class RejectNotificationScreen extends StatelessWidget {
+class RejectNotificationScreen extends StatefulWidget {
+  @override
+  State<RejectNotificationScreen> createState() => _RejectNotificationScreenState();
+}
+
+class _RejectNotificationScreenState extends State<RejectNotificationScreen> {
  // RejectNotificationScreen({super.key});
   NotificationCubit? cubit;
+
   var apologyController=TextEditingController();
 
   // RejectNotificationScreen({super.key, required this.cubit});
@@ -89,7 +95,12 @@ class RejectNotificationScreen extends StatelessWidget {
                     radius: 20,
                     text: 'Submit',
                     onpressed: (){
-                      cubit?.acceptNotification(isAttending: false,reason: apologyController.text);
+                      setState(() {
+                        cubit?.rejectNotification(
+                            isAttending: false,
+                            reason: apologyController.text
+                        );
+                      });
 
                       // NotificationCubit.get(context).acceptNotification(
                       //     isAttending: false,

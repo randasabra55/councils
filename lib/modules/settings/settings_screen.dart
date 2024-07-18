@@ -2,6 +2,7 @@ import 'package:councils/modules/change_password/change_password_screen.dart';
 import 'package:councils/modules/edit_profile/edit_profile_screen.dart';
 import 'package:councils/modules/settings/cubit/cubit.dart';
 import 'package:councils/modules/settings/cubit/states.dart';
+import 'package:councils/shared/component/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -201,6 +202,7 @@ class SettingScreen extends StatelessWidget {
                   ),
                   Padding(
                     padding: const EdgeInsetsDirectional.only(
+
                         start: 20,
                         end: 20
                     ),
@@ -319,241 +321,243 @@ class SettingScreen extends StatelessWidget {
                             SizedBox(
                               height: 10.h,
                             ),
-                            Padding(
-                              padding:  const EdgeInsetsDirectional.only(
-                                  start: 15,
-                                  end: 25
-                              ),
-                              child: Row(
-                                children: [
-                                  CircleAvatar(
-                                    backgroundColor: const Color(0xff62c1e7),
-                                    radius: 11.r,
-                                    child: Icon(
-                                      Icons.light_mode_rounded,
-                                    //  Icons.verified_user_outlined
-                                     // Icons.shield_moon,
-                                      size: 14.sp,
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    width: 10.w,
-                                  ),
-                                  Text(
-                                    'Theme',
-                                    style: TextStyle(
-                                      fontSize: 14.sp,
-                                      // fontWeight: FontWeight.w500,
-                                      // color: Colors.grey[600]
-                                    ),
-                                  ),
-                                  const Spacer(),
-                                  IconButton(
-                                      onPressed: (){
-                                        cubit.showOption();
-                                      },
-                                      icon:isClicked? Icon(
-                                        Icons.arrow_circle_up,
-                                        size: 18.sp,
-                                      ): Icon(
-                                        Icons.arrow_circle_down,
-                                        size: 18.sp,
-                                      )
-                                  ),
-              
-              
-                                ],
-                              ),
-                            ),
-                            if(isClicked) Column(
-                              children: [
-                                Padding(
-                                  padding:  EdgeInsetsDirectional.only(
-                                    start: 33.w,
-                                    end: 40.w
-                                  ),
-                                  child: const Divider(
-                                    thickness: 1,
-                                    color: Colors.black,
-                                  ),
-                                ),
-                                Padding(
-                                  padding:  EdgeInsetsDirectional.only(
-                                    start: 40.w,
-
-                                  ),
-                                  child: Row(
-                                    children: [
-                                      Checkbox(
-                                        value: isLight,
-                                        activeColor:Colors.blue,
-
-                                        onChanged: (newValue) {
-                                          cubit.whiteMode();
-                                          // Handle checkbox state change
-                                        },
-                                      ),
-                                       Text(
-                                          'White mode',
-                                        style: TextStyle(
-                                          fontSize: 14.sp,
-                                          fontWeight: FontWeight.w500
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-
-                                Padding(
-                                  padding: EdgeInsetsDirectional.only(
-                                    start: 40.w
-                                  ),
-                                  child: Row(
-                                    children: [
-                                      Checkbox(
-                                        value: !isLight,
-                                        activeColor: Colors.blue,//Colors.grey[400],// Set your initial value here
-                                        onChanged: (newValue) {
-                                          cubit.DarkMode();
-                                          // Handle checkbox state change
-                                        },
-                                      ),
-                                       Text(
-                                           'Dark mode',
-                                         style: TextStyle(
-                                           fontSize: 14.sp,
-                                           fontWeight: FontWeight.w500
-                                         ),
-                                       ),
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
+                            // Padding(
+                            //   padding:  const EdgeInsetsDirectional.only(
+                            //       start: 15,
+                            //       end: 25
+                            //   ),
+                            //   child: Row(
+                            //     children: [
+                            //       CircleAvatar(
+                            //         backgroundColor: const Color(0xff62c1e7),
+                            //         radius: 11.r,
+                            //         child: Icon(
+                            //           Icons.light_mode_rounded,
+                            //         //  Icons.verified_user_outlined
+                            //          // Icons.shield_moon,
+                            //           size: 14.sp,
+                            //           color: Colors.white,
+                            //         ),
+                            //       ),
+                            //       SizedBox(
+                            //         width: 10.w,
+                            //       ),
+                            //       Text(
+                            //         'Theme',
+                            //         style: TextStyle(
+                            //           fontSize: 14.sp,
+                            //           // fontWeight: FontWeight.w500,
+                            //           // color: Colors.grey[600]
+                            //         ),
+                            //       ),
+                            //       const Spacer(),
+                            //       IconButton(
+                            //           onPressed: (){
+                            //             cubit.showOption();
+                            //           },
+                            //           icon:isClicked? Icon(
+                            //             Icons.arrow_circle_up,
+                            //             size: 18.sp,
+                            //           ): Icon(
+                            //             Icons.arrow_circle_down,
+                            //             size: 18.sp,
+                            //           )
+                            //       ),
+                            //
+                            //
+                            //     ],
+                            //   ),
+                            // ),
+                            // if(isClicked) Column(
+                            //   children: [
+                            //     Padding(
+                            //       padding:  EdgeInsetsDirectional.only(
+                            //         start: 33.w,
+                            //         end: 40.w
+                            //       ),
+                            //       child: const Divider(
+                            //         thickness: 1,
+                            //         color: Colors.black,
+                            //       ),
+                            //     ),
+                            //     Padding(
+                            //       padding:  EdgeInsetsDirectional.only(
+                            //         start: 40.w,
+                            //
+                            //       ),
+                            //       child: Row(
+                            //         children: [
+                            //           Checkbox(
+                            //             value: isLight,
+                            //             activeColor:Colors.blue,
+                            //
+                            //             onChanged: (newValue) {
+                            //               cubit.whiteMode();
+                            //               // Handle checkbox state change
+                            //             },
+                            //           ),
+                            //            Text(
+                            //               'White mode',
+                            //             style: TextStyle(
+                            //               fontSize: 14.sp,
+                            //               fontWeight: FontWeight.w500
+                            //             ),
+                            //           ),
+                            //         ],
+                            //       ),
+                            //     ),
+                            //
+                            //     Padding(
+                            //       padding: EdgeInsetsDirectional.only(
+                            //         start: 40.w
+                            //       ),
+                            //       child: Row(
+                            //         children: [
+                            //           Checkbox(
+                            //             value: !isLight,
+                            //             activeColor: Colors.blue,//Colors.grey[400],// Set your initial value here
+                            //             onChanged: (newValue) {
+                            //               cubit.DarkMode();
+                            //               // Handle checkbox state change
+                            //             },
+                            //           ),
+                            //            Text(
+                            //                'Dark mode',
+                            //              style: TextStyle(
+                            //                fontSize: 14.sp,
+                            //                fontWeight: FontWeight.w500
+                            //              ),
+                            //            ),
+                            //         ],
+                            //       ),
+                            //     ),
+                            //   ],
+                            // ),
                               // :SizedBox(),
-                            Padding(
-                              padding: const EdgeInsetsDirectional.only(
-                                  start: 15,
-                                  end: 25
-                              ),
-                              child: Row(
-                                children: [
-              
-                                  CircleAvatar(
-                                    backgroundColor: const Color(0xff62c1e7),
-                                    radius: 11.r,
-                                    child: Icon(
-                                      Icons.language,
-                                      size: 14.sp,
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    width: 10.w,
-                                  ),
-                                  Text(
-                                    'Language',
-                                    style: TextStyle(
-                                      fontSize: 14.sp,
-                                      // fontWeight: FontWeight.w500,
-                                      //  color: Colors.grey[600]
-                                    ),
-                                  ),
-                                  const Spacer(),
-                                  IconButton(
-                                      onPressed: (){
-                                        cubit.languageOption();
-                                      },
-                                      icon:isLanguage? Icon(
-                                        Icons.arrow_circle_up,
-                                        size: 18.sp,
-                                      ): Icon(
-                                        Icons.arrow_circle_down,
-                                        size: 18.sp,
-                                      )
-                                  ),
-                                 // IconButton(onPressed: (){}, icon: Icon(Icons.add,size: 15.sp,)),
-              
-                                ],
-                              ),
-                            ),
-                            if(isLanguage) Column(
-                              children: [
-                                Padding(
-                                  padding:  EdgeInsetsDirectional.only(
-                                      start: 33.w,
-                                      end: 40.w
-                                  ),
-                                  child: const Divider(
-                                    thickness: 1,
-                                    color: Colors.black,
-                                  ),
-                                ),
-                                Padding(
-                                  padding:  EdgeInsetsDirectional.only(
-                                    start: 40.w,
-
-                                  ),
-                                  child: Row(
-                                    children: [
-                                      Checkbox(
-                                        value: !isArabic,
-                                        activeColor:Colors.blue,
-
-                                        onChanged: (newValue) {
-                                          cubit.englishMode();
-                                          // Handle checkbox state change
-                                        },
-                                      ),
-                                      Text(
-                                        'English',
-                                        style: TextStyle(
-                                            fontSize: 14.sp,
-                                            fontWeight: FontWeight.w500
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-
-                                Padding(
-                                  padding: EdgeInsetsDirectional.only(
-                                      start: 40.w
-                                  ),
-                                  child: Row(
-                                    children: [
-                                      Checkbox(
-                                        value: isArabic,
-                                        activeColor: Colors.blue,//Colors.grey[400],// Set your initial value here
-                                        onChanged: (newValue) {
-                                          cubit.arabicMode();
-                                          // Handle checkbox state change
-                                        },
-                                      ),
-                                      Text(
-                                        'Arabic',
-                                        style: TextStyle(
-                                            fontSize: 14.sp,
-                                            fontWeight: FontWeight.w500
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
-                            SizedBox(
-                              height: 12.h,
-                            ),
+                            // Padding(
+                            //   padding: const EdgeInsetsDirectional.only(
+                            //       start: 15,
+                            //       end: 25
+                            //   ),
+                            //   child: Row(
+                            //     children: [
+                            //
+                            //       // CircleAvatar(
+                            //       //   backgroundColor: const Color(0xff62c1e7),
+                            //       //   radius: 11.r,
+                            //       //   child: Icon(
+                            //       //     Icons.language,
+                            //       //     size: 14.sp,
+                            //       //     color: Colors.white,
+                            //       //   ),
+                            //       // ),
+                            //       // SizedBox(
+                            //       //   width: 10.w,
+                            //       // ),
+                            //       // Text(
+                            //       //   'Language',
+                            //       //   style: TextStyle(
+                            //       //     fontSize: 14.sp,
+                            //       //     // fontWeight: FontWeight.w500,
+                            //       //     //  color: Colors.grey[600]
+                            //       //   ),
+                            //       // ),
+                            //       // const Spacer(),
+                            //       // IconButton(
+                            //       //     onPressed: (){
+                            //       //       cubit.languageOption();
+                            //       //     },
+                            //       //     icon:isLanguage? Icon(
+                            //       //       Icons.arrow_circle_up,
+                            //       //       size: 18.sp,
+                            //       //     ): Icon(
+                            //       //       Icons.arrow_circle_down,
+                            //       //       size: 18.sp,
+                            //       //     )
+                            //       // ),
+                            //      // IconButton(onPressed: (){}, icon: Icon(Icons.add,size: 15.sp,)),
+                            //
+                            //     ],
+                            //   ),
+                            // ),
+                            // if(isLanguage) Column(
+                            //   children: [
+                            //     Padding(
+                            //       padding:  EdgeInsetsDirectional.only(
+                            //           start: 33.w,
+                            //           end: 40.w
+                            //       ),
+                            //       child: const Divider(
+                            //         thickness: 1,
+                            //         color: Colors.black,
+                            //       ),
+                            //     ),
+                            //     Padding(
+                            //       padding:  EdgeInsetsDirectional.only(
+                            //         start: 40.w,
+                            //
+                            //       ),
+                            //       child: Row(
+                            //         children: [
+                            //           Checkbox(
+                            //             value: !isArabic,
+                            //             activeColor:Colors.blue,
+                            //
+                            //             onChanged: (newValue) {
+                            //               cubit.englishMode();
+                            //               // Handle checkbox state change
+                            //             },
+                            //           ),
+                            //           Text(
+                            //             'English',
+                            //             style: TextStyle(
+                            //                 fontSize: 14.sp,
+                            //                 fontWeight: FontWeight.w500
+                            //             ),
+                            //           ),
+                            //         ],
+                            //       ),
+                            //     ),
+                            //
+                            //     Padding(
+                            //       padding: EdgeInsetsDirectional.only(
+                            //           start: 40.w
+                            //       ),
+                            //       child: Row(
+                            //         children: [
+                            //           Checkbox(
+                            //             value: isArabic,
+                            //             activeColor: Colors.blue,//Colors.grey[400],// Set your initial value here
+                            //             onChanged: (newValue) {
+                            //               cubit.arabicMode();
+                            //               // Handle checkbox state change
+                            //             },
+                            //           ),
+                            //           Text(
+                            //             'Arabic',
+                            //             style: TextStyle(
+                            //                 fontSize: 14.sp,
+                            //                 fontWeight: FontWeight.w500
+                            //             ),
+                            //           ),
+                            //         ],
+                            //       ),
+                            //     ),
+                            //   ],
+                            // ),
+                            // SizedBox(
+                            //   height: 12.h,
+                            // ),
                             GestureDetector(
                               onTap: (){
-                                print('randa');
+                                signOut(context);
+                               // print('randa');
                               },
                               child: Padding(
-                                padding: const EdgeInsetsDirectional.only(
-                                    start: 15,
-                                    end: 25
+                                padding:  EdgeInsetsDirectional.only(
+                                    start: 15.w,
+                                    end: 25.w,
+                                  top: 5.h
                                 ),
                                 child: Row(
                                   children: [
@@ -584,7 +588,7 @@ class SettingScreen extends StatelessWidget {
                               ),
                             ),
                             SizedBox(
-                              height: 25.h,
+                              height: 20.h,
                             ),
                           ],
                         ),

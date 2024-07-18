@@ -8,6 +8,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_svg/svg.dart';
 
+import '../notifications/notification_screen.dart';
+
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
 
@@ -56,7 +58,15 @@ class _HomeViewState extends State<HomeView> {
         ),
         actions: [
           InkWell(
-            onTap: () {},
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  //  builder: (context)=>
+                  builder: (context) =>  const NotificationScreen(),
+                ),
+              );
+            },
             child: SvgPicture.string(
               CustomIcon().notification,
               fit: BoxFit.fill,

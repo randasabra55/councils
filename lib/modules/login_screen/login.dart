@@ -34,7 +34,7 @@ class LoginScreen extends StatelessWidget {
                 token = state.loginModel.token!;
                 Navigator.pushAndRemoveUntil(
                     context,
-                    MaterialPageRoute(builder: (context) => HomeLayoutScreen()),
+                    MaterialPageRoute(builder: (context) => const HomeLayoutScreen()),
                     (route) => false);
                 // navigateAndFinish(context, HomeLayoutScreen());
               });

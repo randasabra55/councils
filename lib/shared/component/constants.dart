@@ -1,5 +1,26 @@
+import 'package:councils/modules/login_screen/login.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+
+import '../network/local/cache_helper.dart';
+
 String token='';
 int? councilId;
+
+void signOut(context)
+{
+  CacheHelper.removeData(key: 'token').then((value) {
+    if(value)
+    {
+      Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(builder: (context)=>LoginScreen()),
+          (route)=>false
+      );
+      //navigateAndFinish(context, ShopLoginScreen());
+    }
+  });
+}
 //int? topicId;
 
 

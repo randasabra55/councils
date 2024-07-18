@@ -138,5 +138,29 @@ class NotificationCubit extends Cubit<NotificationStates> {
       emit(AcceptErrorState(error));
     });
   }
+
+  /////////////////////////////////
+  void rejectNotification({
+    required bool isAttending,
+    required String reason,
+  }) {
+    DioHelper.putData(
+        url: ACCEPTNOTIFICATION,
+        data: {
+          'isAttending': isAttending,
+          'reasonNonAttendance': reason,
+          'councilId': councilId,
+
+        },
+        token: token
+    ).then((value) {
+      log(councilId.toString());
+      log(value.data.toString());
+      emit(RejectSuccessState());
+    }).catchError((error) {
+      log('error is : ${error.toString()}');
+      emit(RejectErrorState(error));
+    });
+  }
 }
 
