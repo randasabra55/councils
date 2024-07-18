@@ -1,3 +1,4 @@
+import 'package:councils/layouts/home_layout/home_layout_screen.dart';
 import 'package:councils/models/custom_icon_model/custom_icon.dart';
 import 'package:councils/modules/home/home_view.dart';
 import 'package:flutter/material.dart';
@@ -16,10 +17,11 @@ AppBar appBarCustom(
       iconSize: 30,
       onPressed: () {
         Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => const HomeView(),
-            ));
+          context,
+          MaterialPageRoute(
+            builder: (context) => const HomeLayoutScreen(),
+          ),
+        );
       },
       icon: Container(
         width: 40,

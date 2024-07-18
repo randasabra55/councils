@@ -1,7 +1,5 @@
 
-import 'package:councils/modules/login_screen/login.dart';
 import 'package:councils/modules/settings/settings_screen.dart';
-import 'package:councils/modules/topics/topics_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -10,8 +8,6 @@ import '../../../models/custom_icon_model/custom_icon.dart';
 import '../../../modules/chair_man_profile/chair_man_profile.dart';
 import '../../../modules/home/home_view.dart';
 import '../../../modules/meeting_view/meeting_view.dart';
-import '../../../shared/component/component.dart';
-import '../../../shared/network/local/cache_helper.dart';
 
 class CustomDrawer extends StatelessWidget {
   const CustomDrawer({
@@ -169,13 +165,7 @@ class CustomDrawer extends StatelessWidget {
             width: 200.w,
             height: 50.h,
             child: InkWell(
-              onTap: () => Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) =>  const TopicsScreen(),
-                ),
-              ),
-           //   onTap: () => const NavigatorPopHandler(child: HomeView()),
+              onTap: () => const NavigatorPopHandler(child: HomeView()),
               child: Row(
                 children: [
                   SvgPicture.string(
@@ -197,57 +187,46 @@ class CustomDrawer extends StatelessWidget {
               ),
             ),
           ),
-          // Container(
-          //   margin: EdgeInsets.symmetric(horizontal: 25.w, vertical: 10.h),
-          //   alignment: Alignment.topLeft,
-          //   width: 200.w,
-          //   height: 50.h,
-          //   child: InkWell(
-          //     onTap: () => Navigator.push(
-          //       context,
-          //       MaterialPageRoute(
-          //         builder: (context) =>  const SettingScreen(),
-          //       ),
-          //     ),
-          //   //  onTap: () => const NavigatorPopHandler(child: HomeView()),
-          //     child: Row(
-          //       children: [
-          //         SvgPicture.string(
-          //           CustomIcon().data[4]['ico'],
-          //           height: 35.h,
-          //           width: 35.w,
-          //         ),
-          //         10.horizontalSpace,
-          //         Text(CustomIcon().drItem[4]['txt']),
-          //         const Spacer(
-          //           flex: 1,
-          //         ),
-          //         SvgPicture.string(
-          //           CustomIcon().exIcon,
-          //           height: 30.h,
-          //           width: 30.w,
-          //         ),
-          //       ],
-          //     ),
-          //   ),
-          // ),
           Container(
             margin: EdgeInsets.symmetric(horizontal: 25.w, vertical: 10.h),
             alignment: Alignment.topLeft,
             width: 200.w,
             height: 50.h,
             child: InkWell(
-              onTap: (){
-                CacheHelper.removeData(key: 'token');
-                showToast(text: 'please log in again', state: ToastStates.SUCCESS);
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>LoginScreen()));
-              },
-              // onTap: () => Navigator.push(
-              //   context,
-              //   MaterialPageRoute(
-              //     builder: (context) => LoginScreen(),
-              //   ),
-              // ),
+              onTap: () => const NavigatorPopHandler(child: HomeView()),
+              child: Row(
+                children: [
+                  SvgPicture.string(
+                    CustomIcon().data[4]['ico'],
+                    height: 35.h,
+                    width: 35.w,
+                  ),
+                  10.horizontalSpace,
+                  Text(CustomIcon().drItem[4]['txt']),
+                  const Spacer(
+                    flex: 1,
+                  ),
+                  SvgPicture.string(
+                    CustomIcon().exIcon,
+                    height: 30.h,
+                    width: 30.w,
+                  ),
+                ],
+              ),
+            ),
+          ),
+          Container(
+            margin: EdgeInsets.symmetric(horizontal: 25.w, vertical: 10.h),
+            alignment: Alignment.topLeft,
+            width: 200.w,
+            height: 50.h,
+            child: InkWell(
+              onTap: () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) =>  const SettingScreen(),
+                ),
+              ),
              // onTap: () => const NavigatorPopHandler(child: HomeView()),
               child: Row(
                 children: [

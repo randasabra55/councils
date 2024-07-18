@@ -1,11 +1,11 @@
 import 'package:councils/layouts/home_layout/cubit/states.dart';
+import 'package:councils/modules/Search_Views/search_council_view.dart';
 
 import 'package:councils/modules/meeting/meeting_screen.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../modules/Search_Views/search_council_view.dart';
 import '../../../modules/chair_man_profile/chair_man_profile.dart';
 import '../../../modules/home/home_view.dart';
 
@@ -36,7 +36,7 @@ class HomeLayoutCubit extends Cubit<HomeLayoutStates>{
   List<Widget>screens=[
      HomeView(),
      MeetingScreen(),
-     SearchView(),
+    const SearchView(),
     ChairManProfile(),
   ];
   void clickButtonNavigation(int index)

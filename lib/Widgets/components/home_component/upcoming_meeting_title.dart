@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../modules/meeting_view/meeting_view.dart';
+import '../../../modules/meeting/no_meeting_view.dart';
 
 class UpcomingMeetingTitle extends StatelessWidget {
   const UpcomingMeetingTitle({
@@ -26,20 +26,17 @@ class UpcomingMeetingTitle extends StatelessWidget {
             width: 45.w,
           ),
           ElevatedButton(
-            style:  ButtonStyle(
-                backgroundColor:MaterialStatePropertyAll( Colors.transparent),
+            style: ButtonStyle(
+                backgroundColor: MaterialStatePropertyAll(Colors.transparent),
                 elevation: MaterialStatePropertyAll(0)),
-              onPressed: () {
-                Navigator.pushAndRemoveUntil(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const MeetingView(),
-                    ),
-                        (route) => false);
-              },
-
-
-
+            onPressed: () {
+              Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const NoMeetingView(),
+                  ),
+                  (route) => false);
+            },
             child: Row(
               children: [
                 Text(

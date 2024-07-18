@@ -3,10 +3,7 @@ import 'package:councils/Widgets/components/app_bar_custom.dart';
 import 'package:councils/models/custom_icon_model/custom_icon.dart';
 import 'package:councils/modules/Search_Views/cubit/CouncilSearch_Cubit.dart';
 import 'package:councils/modules/Search_Views/cubit/CouncilSearch_State.dart';
-<<<<<<< HEAD
-=======
 import 'package:councils/modules/print_topics_view/print_topics_view.dart';
->>>>>>> 993459e (mer)
 import 'package:councils/shared/network/local/cache_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -14,11 +11,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
 
-<<<<<<< HEAD
-import '../print_topics_view/print_topics_view.dart';
-
-=======
->>>>>>> 993459e (mer)
 
 class SearchView extends StatefulWidget {
   const SearchView({Key? key}) : super(key: key);
