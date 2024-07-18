@@ -3,6 +3,7 @@ import 'package:councils/models/notification_model/notification_item_model.dart'
 import 'package:councils/modules/notifications/cubit/cubit.dart';
 import 'package:councils/modules/notifications/cubit/states.dart';
 import 'package:councils/modules/notifications/notification_item.dart';
+import 'package:councils/shared/component/component.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -17,22 +18,30 @@ class NotificationScreen extends StatelessWidget {
 
     return  BlocProvider(
 
-      create: (BuildContext context) =>NotificationCubit(),
+      create: (BuildContext context) =>NotificationCubit()..getNotification(),
       child: BlocConsumer<NotificationCubit,NotificationStates>(
 
-        listener: (BuildContext context, NotificationStates state) {  },
+        listener: (BuildContext context, NotificationStates state) {
+          if(state is AcceptSuccessState)
+            {
+              showToast(text: 'applogy uploaded', state: ToastStates.SUCCESS);
+            }
+        },
         builder: (BuildContext context, NotificationStates state) {
+          final cubit=NotificationCubit.get(context);
+          final model=cubit.getNotificationModel;
+
         //  NotificationCubit cubit=NotificationCubit.get(context);
 
-          List<NotificationModel>model=[
-            NotificationModel(text: 'You have been invited to attend a Meeting 1 ', time: 'just now', ),
-             NotificationModel(text: 'gggggg', time:'just now',),
-             NotificationModel(text: 'gggggg', time: 'just now',),
-             NotificationModel(text: 'gggggg', time: 'just now',),
-             NotificationModel(text: 'gggggg', time: 'just now',),
-          ];
+          // List<NotificationModel>model=[
+          //   NotificationModel(text: 'You have been invited to attend a Meeting 1 ', time: 'just now', ),
+          //    NotificationModel(text: 'gggggg', time:'just now',),
+          //    NotificationModel(text: 'gggggg', time: 'just now',),
+          //    NotificationModel(text: 'gggggg', time: 'just now',),
+          //    NotificationModel(text: 'gggggg', time: 'just now',),
+          // ];
          //  List<NotificationModel>model=[];
-          if(model.isEmpty) {
+          if(model?.values==null) {
             return Scaffold(
               body: Column(
                 children: [
@@ -50,7 +59,7 @@ class NotificationScreen extends StatelessWidget {
                           // color: Colors.blue,
                         ),
                         onPressed: (){
-                          // Navigator.pop(context);
+                           Navigator.pop(context);
                         },
                       ),
                       SizedBox(
@@ -92,7 +101,7 @@ class NotificationScreen extends StatelessWidget {
                         // color: Colors.blue,
                       ),
                       onPressed: (){
-                        // Navigator.pop(context);
+                         Navigator.pop(context);
                       },
                     ),
                     SizedBox(
@@ -105,20 +114,20 @@ class NotificationScreen extends StatelessWidget {
                           fontWeight: FontWeight.w500
                       ),
                     ),
-                    const Spacer(),
-                    IconButton(
-                      icon: Icon(
-                        Icons.search,
-                        color: Colors.blue,
-                        size: 30.sp,
-                      ),
-                      onPressed: (){
-                        // Navigator.pop(context);
-                      },
-                    ),
-                    SizedBox(
-                      width: 12.w,
-                    ),
+                    // const Spacer(),
+                    // IconButton(
+                    //   icon: Icon(
+                    //     Icons.search,
+                    //     color: Colors.blue,
+                    //     size: 30.sp,
+                    //   ),
+                    //   onPressed: (){
+                    //     // Navigator.pop(context);
+                    //   },
+                    // ),
+                    // SizedBox(
+                    //   width: 12.w,
+                    // ),
                   ],
                 ),
                 SizedBox(
@@ -126,8 +135,8 @@ class NotificationScreen extends StatelessWidget {
                 ),
                 Expanded(
                   child: ListView.builder(
-                      itemBuilder:(context,index)=>NotificationItemScreen(model: model[index]),
-                      itemCount: model.length,
+                      itemBuilder:(context,index)=>NotificationItemScreen(model: model!.values![index]),
+                      itemCount: model?.values?.length,
                   ),
                 )
                 // Expanded(

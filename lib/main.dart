@@ -40,7 +40,8 @@ class MyApp extends StatelessWidget {
       splitScreenMode: true,
       minTextAdapt: true,
       child: BlocProvider(
-        create: (context) => SearchCubit(DataService(authToken: CacheHelper.getData(key: 'token'))),
+        create: (context) => SearchCubit(
+            DataService(authToken: CacheHelper.getData(key: 'token'))),
         child: MaterialApp(
           theme: ThemeData(
               appBarTheme: const AppBarTheme(

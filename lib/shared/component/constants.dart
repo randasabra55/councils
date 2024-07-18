@@ -1,4 +1,6 @@
 String token='';
+int? councilId;
+//int? topicId;
 
 
 // class AppConstants{

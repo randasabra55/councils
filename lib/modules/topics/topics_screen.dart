@@ -1,10 +1,13 @@
-
-import 'package:councils/models/topic_item_model/topic_item_model.dart';
+import 'package:councils/models/getAllTopic.dart';
+import 'package:councils/modules/meeting/cubit/cubit.dart';
+import 'package:councils/modules/topic_decission/topic_decission_screen.dart';
 import 'package:councils/modules/topics/cubit/cubit.dart';
 import 'package:councils/modules/topics/cubit/states.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../../shared/component/component.dart';
 
 class TopicsScreen extends StatelessWidget {
   const TopicsScreen({super.key});
@@ -15,28 +18,43 @@ class TopicsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
 
-      create: (BuildContext context) =>TopicCubit(),
+      create: (BuildContext context) =>TopicCubit()..getAllTopics()..getTopicByName(),
       child: BlocConsumer<TopicCubit,TopicStates>(
 
-        listener: (BuildContext context, state) {  },
+        listener: (BuildContext context, state) {
+          if(state is GetAllTopicSuccessState)
+            {
+              if(GetAllMeetingCubit.get(context).getCouncilModel==null) {
+                showToast(text: 'empty list', state:ToastStates.ERROR ,);
+              }
+            }
+          else if(state is GetAllTopicErrorState)
+            {
+              showToast(text: 'error', state:ToastStates.ERROR ,);
+            }
+        },
         builder: (BuildContext context, Object? state) {
           TopicCubit cubit=TopicCubit.get(context);
+        //  final getTopic=cubit.getAllTopicModel;
           bool isShowCategoryList=cubit.isShowCategoryList;
-          List<TopicItemModel>model=[
-            TopicItemModel(name: 'Topic 1', code: '6510'),
-            TopicItemModel(name: 'Topic 2', code: '6511'),
-            TopicItemModel(name: 'Topic 3', code: '6512'),
-            TopicItemModel(name: 'Topic 4', code: '6513'),
-            TopicItemModel(name: 'Topic 5', code: '6514'),
-            TopicItemModel(name: 'Topic 1', code: '6510'),
-            TopicItemModel(name: 'Topic 2', code: '6511'),
-            TopicItemModel(name: 'Topic 3', code: '6512'),
-            TopicItemModel(name: 'Topic 4', code: '6513'),
-            TopicItemModel(name: 'Topic 5', code: '6514'),
-          ];
+          // List<TopicItemModel>model=[
+          //   TopicItemModel(name: 'Topic 1', code: '6510'),
+          //   TopicItemModel(name: 'Topic 2', code: '6511'),
+          //   TopicItemModel(name: 'Topic 3', code: '6512'),
+          //   TopicItemModel(name: 'Topic 4', code: '6513'),
+          //   TopicItemModel(name: 'Topic 5', code: '6514'),
+          //   TopicItemModel(name: 'Topic 1', code: '6510'),
+          //   TopicItemModel(name: 'Topic 2', code: '6511'),
+          //   TopicItemModel(name: 'Topic 3', code: '6512'),
+          //   TopicItemModel(name: 'Topic 4', code: '6513'),
+          //   TopicItemModel(name: 'Topic 5', code: '6514'),
+          // ];
           String selectedCategory=cubit.isSelected;
           String decision='Made Decision';
           bool isDes=cubit.isDecision;
+         // GetAllTopicModel? model=TopicCubit.get(context).getAllTopicModel;
+          final cubitt = TopicCubit.get(context);
+          final topicModel = cubitt.getAllTopicModel?.values;
           return Scaffold(
             body: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -128,7 +146,7 @@ class TopicsScreen extends StatelessWidget {
                         color: Colors.white,
                         child: Container(
 
-                          height: 85.h,
+                          height: 75.h,
                           width: 120.w,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10.r),
@@ -142,31 +160,31 @@ class TopicsScreen extends StatelessWidget {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Row(
-                                  children: [
-                                    GestureDetector(
-                                      onTap: (){
-                                        cubit.SelectedItem('Priority');
-                                       // selectedCategory='Priority';
-                                      },
-                                      child: Text(
-                                        'Priority',
-                                        style: TextStyle(
-                                          fontSize: 16.sp,
-                                          color: selectedCategory=='Priority'?const Color(0xff5669ff):Colors.black,
-
-                                        ),
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      width: 30.w,
-                                    ),
-                                    Icon(
-                                      Icons.check,
-                                      color: selectedCategory=='Priority'?const Color(0xff5669ff):Colors.white,
-                                    )
-                                  ],
-                                ),
+                                // Row(
+                                //   children: [
+                                //     GestureDetector(
+                                //       onTap: (){
+                                //         cubit.SelectedItem('Priority');
+                                //        // selectedCategory='Priority';
+                                //       },
+                                //       child: Text(
+                                //         'Priority',
+                                //         style: TextStyle(
+                                //           fontSize: 16.sp,
+                                //           color: selectedCategory=='Priority'?const Color(0xff5669ff):Colors.black,
+                                //
+                                //         ),
+                                //       ),
+                                //     ),
+                                //     SizedBox(
+                                //       width: 30.w,
+                                //     ),
+                                //     Icon(
+                                //       Icons.check,
+                                //       color: selectedCategory=='Priority'?const Color(0xff5669ff):Colors.white,
+                                //     )
+                                //   ],
+                                // ),
                                 SizedBox(
                                   height: 3.h,
                                 ),
@@ -174,7 +192,8 @@ class TopicsScreen extends StatelessWidget {
                                   children: [
                                     GestureDetector(
                                       onTap:(){
-                                        cubit.SelectedItem('Date');
+                                        cubit.SelectItem('Date');
+                                      //  cubit.SelectedItem('Date');
                                        // selectedCategory='Date';
                                       },
                                       child: Text(
@@ -202,7 +221,10 @@ class TopicsScreen extends StatelessWidget {
                                   children: [
                                     GestureDetector(
                                       onTap:(){
-                                        cubit.SelectedItem('Name');
+                                        cubit.SelectItem('Name');
+                                       // cubit.SelectedItem('Name');
+                                      //  cubitt.getTopicByName();
+
                                        // selectedCategory='Name';
                                       },
                                       child: Text(
@@ -233,8 +255,8 @@ class TopicsScreen extends StatelessWidget {
 
                 Expanded(
                   child: ListView.builder(
-                      itemBuilder: (context,index)=>topicItem(model[index]),
-                      itemCount: model.length,
+                      itemBuilder: (context,index)=>topicItem(topicModel?[index],context),
+                      itemCount: topicModel?.length,
                   ),
                 )
               ],
@@ -247,9 +269,9 @@ class TopicsScreen extends StatelessWidget {
   }
 }
 
-Widget topicItem(TopicItemModel model) {
-  bool isDes = false;
-  List<String> list = <String>['Public', 'Private'];
+Widget topicItem(topicInfo? model,context) {
+ // bool isDes = false;
+ // List<String> list = <String>['Public', 'Private'];
   return Padding(
     padding: EdgeInsetsDirectional.only(
       start: 20.w,
@@ -286,43 +308,69 @@ Widget topicItem(TopicItemModel model) {
                         children: [
                           Text(
                             // 'Topic 1',
-                            model.name,
+                            model?.title??'',
+                           // model.name,
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 14.sp,
                             ),
                           ),
-                          Row(
-                            children: [
-                              const Text(
-                                'Code:',
-                                style: TextStyle(
-                                  // fontWeight: FontWeight.bold
-                                ),
-                              ),
-                              Text(
-                                // '1650',
-                                model.code,
-                                style: const TextStyle(
-                                  // fontWeight: FontWeight.bold
-                                ),
-                              ),
-                            ],
-                          ),
+                          // Row(
+                          //   children: [
+                          //     const Text(
+                          //       'Code:',
+                          //       style: TextStyle(
+                          //         // fontWeight: FontWeight.bold
+                          //       ),
+                          //     ),
+                          //     Text(
+                          //       // '1650',
+                          //       model.code,
+                          //       style: const TextStyle(
+                          //         // fontWeight: FontWeight.bold
+                          //       ),
+                          //     ),
+                          //   ],
+                          // ),
                         ],
                       ),
                       const Spacer(),
 
-                      IconButton(
-                        onPressed: () {
-                          // TopicCubit.get(context).decesions();
+                      // IconButton(
+                      //   onPressed: () {
+                      //     // TopicCubit.get(context).decesions();
+                      //   },
+                      //   icon: const Image(
+                      //     image: AssetImage('assets/images/legal-01.png'),
+                      //   ),
+                      // ),
+                      // IconButton(
+                      //   onPressed: () {},
+                      //   icon: const Image(
+                      //     image: AssetImage('assets/images/dots.png'),
+                      //   ),
+                      //
+                      // ),
+                      PopupMenuButton<String>(
+                        onSelected: (value) {
+                          if (value == 'Made Decision') {
+                            // Navigate to the Made Decision page
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => TopicDecissionScreen(),
+                              ),
+                            );
+                          }
                         },
-                        icon: const Image(
-                          image: AssetImage('assets/images/legal-01.png'),
-                        ),
-                      ),
-                      IconButton(
-                        onPressed: () {},
+                        itemBuilder: (BuildContext context) {
+                          return [
+                            PopupMenuItem<String>(
+                              value: 'Made Decision',
+                              child: Text('Made Decision'),
+                            ),
+                          ];
+                        },
                         icon: const Image(
                           image: AssetImage('assets/images/dots.png'),
                         ),

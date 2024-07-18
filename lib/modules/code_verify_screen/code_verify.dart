@@ -15,12 +15,13 @@ import 'cubit/states.dart';
 class CodeVerifyScreen extends StatelessWidget {
 
   var formKey=GlobalKey<FormState>();
+  String? code;
   // var code1=TextEditingController();
   // var code2=TextEditingController();
   // var code3=TextEditingController();
   // var code4=TextEditingController();
 
-  CodeVerifyScreen({super.key});
+ // CodeVerifyScreen({super.key, required this.code});
 
 
   @override
@@ -80,7 +81,7 @@ class CodeVerifyScreen extends StatelessWidget {
                          IconButton(
                            icon: const Icon(Icons.arrow_forward_ios_outlined),
                            onPressed: (){
-                             if (formKey.currentState != null && formKey.currentState!.validate())
+                             if ( formKey.currentState!.validate())
                              {
                                Navigator.push(
                                    context,
@@ -170,111 +171,27 @@ class CodeVerifyScreen extends StatelessWidget {
 
                        //runs when every textfield is filled
                        onSubmit: (String verificationCode){
-                         VerifyCodeCubit.get(context).OTP(
-                             token: token,
-                             otp: verificationCode
-                         );
-                         // if(verificationCode.isEmpty)
-                         // return "code not correct";
-                         // showDialog(
-                         //     context: context,
-                         //     builder: (context){
-                         //       return AlertDialog(
-                         //         title: const Text("Verification Code"),
-                         //         content: Text('Code entered is $verificationCode'),
-                         //       );
-                         //     }
+                        // log(verificationCode);
+                         code=verificationCode;
+                         // VerifyCodeCubit.get(context).OTP(
+                         //     token: token,
+                         //     otp: verificationCode
                          // );
+                         // if (state is CodeVerSuccessState)
+                         // {
+                         //   Navigator.pushAndRemoveUntil(
+                         //       context,
+                         //       MaterialPageRoute(builder: (context)=>NewPasswordScreen()),
+                         //           (route) => false
+                         //   );
+                         // }
+                         // else if(state is CodeVerErrorState){
+                         //   showToast(text: 'errorrrrr', state: ToastStates.ERROR);
+                         // }
+
                        }, // end onSubmit
                      ),
-                     // Row(
-                     //   children: [
-                     //     SizedBox(
-                     //       width: 36.w,
-                     //     ),
-                     //     SizedBox(
-                     //       width: 50.w,
-                     //       height: 50.h,
-                     //       child: TextFormField(
-                     //         controller: code1,
-                     //         keyboardType: TextInputType.number,
-                     //         decoration: const InputDecoration(
-                     //           border: OutlineInputBorder()
-                     //         ),
-                     //         validator: (value){
-                     //           if(value!.isEmpty)
-                     //             {
-                     //               return '';
-                     //             }
-                     //           return null;
-                     //         },
-                     //       ),
-                     //     ),
-                     //     SizedBox(
-                     //       width: 30.w,
-                     //     ),
-                     //     SizedBox(
-                     //       width: 50.w,
-                     //       height: 50.h,
-                     //       child: TextFormField(
-                     //         controller: code2,
-                     //         keyboardType: TextInputType.number,
-                     //         decoration: const InputDecoration(
-                     //             border: OutlineInputBorder()
-                     //         ),
-                     //         validator: (value){
-                     //           if(value!.isEmpty)
-                     //           {
-                     //             return '';
-                     //           }
-                     //           return null;
-                     //         },
-                     //       ),
-                     //     ),
-                     //     SizedBox(
-                     //       width: 30.w,
-                     //     ),
-                     //     SizedBox(
-                     //       width: 50.w,
-                     //       height: 50.h,
-                     //       child: TextFormField(
-                     //         controller: code3,
-                     //         keyboardType: TextInputType.number,
-                     //         decoration: const InputDecoration(
-                     //             border: OutlineInputBorder()
-                     //         ),
-                     //         validator: (value){
-                     //           if(value!.isEmpty)
-                     //           {
-                     //             return '';
-                     //           }
-                     //           return null;
-                     //         },
-                     //       ),
-                     //     ),
-                     //     SizedBox(
-                     //       width: 30.w,
-                     //     ),
-                     //     SizedBox(
-                     //       width: 50.w,
-                     //       height: 50.h,
-                     //       child: TextFormField(
-                     //         controller: code4,
-                     //         keyboardType: TextInputType.number,
-                     //         decoration: const InputDecoration(
-                     //             border: OutlineInputBorder()
-                     //         ),
-                     //         validator: (value){
-                     //           if(value!.isEmpty)
-                     //           {
-                     //             return '';
-                     //           }
-                     //           return null;
-                     //         },
-                     //       ),
-                     //     ),
-                     //   ],
-                     // ),
+
                      SizedBox(
                        height: 25.h,
                      ),
@@ -310,80 +227,37 @@ class CodeVerifyScreen extends StatelessWidget {
                          {
                            if(formKey.currentState!.validate())
                            {
-                           //  VerifyCodeCubit.get(context).OTP(token: token, otp: otp)
-                             // Navigator.push(
-                             //     context,
-                             //     MaterialPageRoute(builder: (context)=>LoginAfterForget())
-                             // );
+
+                             {
+                               log(code!);
+                               VerifyCodeCubit.get(context).OTP(
+                                   token: token,
+                                   otp: code
+                               );
+                               log('beforrrre');
+                               if (state is CodeVerSuccessState)
+                               {
+                                 log('success');
+                                 Navigator.pushAndRemoveUntil(
+                                     context,
+                                     MaterialPageRoute(builder: (context)=>NewPasswordScreen()),
+                                         (route) => false
+                                 );
+                               }
+                               else if(state is CodeVerErrorState){
+                                 showToast(text: 'errorrrrr', state: ToastStates.ERROR);
+                               }
+                               else
+                                 {
+                                   log('jjjjjjjjj');
+                                 }
+
+                             }
+
                            }
 
                          }
                      )
-                     // Row(
-                     //   children: [
-                     //     TextFormfield(
-                     //
-                     //        //  controller: code1,
-                     //        //  hintText: '',
-                     //        // validate: (value){
-                     //        //    if(value.isEmpty)
-                     //        //      {
-                     //        //        return 'this must not be empty';
-                     //        //      }
-                     //        // },
-                     //        // // prefix: prefix,
-                     //        //  type: TextInputType.number
-                     //     ),
-                     //     SizedBox(
-                     //       width: 5.w,
-                     //     ),
-                     //     defaultTextfield(
-                     //         controller: code2,
-                     //         hintText: '',
-                     //         validate: (value){
-                     //           if(value.isEmpty)
-                     //           {
-                     //             return 'this must not be empty';
-                     //           }
-                     //         },
-                     //         // prefix: prefix,
-                     //         type: TextInputType.number
-                     //     ),
-                     //     SizedBox(
-                     //       width: 5.w,
-                     //     ),
-                     //     defaultTextfield(
-                     //         controller: code3,
-                     //         hintText: '',
-                     //         validate: (value){
-                     //           if(value.isEmpty)
-                     //           {
-                     //             return 'this must not be empty';
-                     //           }
-                     //         },
-                     //         // prefix: prefix,
-                     //         type: TextInputType.number
-                     //     ),
-                     //     SizedBox(
-                     //       width: 5.w,
-                     //     ),
-                     //     defaultTextfield(
-                     //         controller: code4,
-                     //         hintText: '',
-                     //         validate: (value){
-                     //           if(value.isEmpty)
-                     //           {
-                     //             return 'this must not be empty';
-                     //           }
-                     //         },
-                     //         // prefix: prefix,
-                     //         type: TextInputType.number
-                     //     ),
-                     //     // SizedBox(
-                     //     //   width: 5.w,
-                     //     // ),
-                     //   ],
-                     // ),
 
                    ],
                  ),

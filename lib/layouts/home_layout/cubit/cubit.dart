@@ -1,49 +1,68 @@
-import 'package:councils/layouts/home_layout/cubit/states.dart';
+import 'package:councils/models/custom_icon_model/custom_icon.dart';
 import 'package:councils/modules/Search_Views/search_council_view.dart';
-
-import 'package:councils/modules/meeting/meeting_screen.dart';
-
+import 'package:councils/modules/chair_man_profile/chair_man_profile.dart';
+import 'package:councils/modules/home/home_view.dart';
+import 'package:councils/modules/meeting/no_meeting_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:councils/layouts/home_layout/cubit/states.dart';
 
-import '../../../modules/chair_man_profile/chair_man_profile.dart';
-import '../../../modules/home/home_view.dart';
+class HomeLayoutCubit extends Cubit<HomeLayoutStates> {
+  HomeLayoutCubit() : super(InitialState());
 
-class HomeLayoutCubit extends Cubit<HomeLayoutStates>{
+  static HomeLayoutCubit get(BuildContext context) => BlocProvider.of(context);
 
-  HomeLayoutCubit():super(InitialState());
-  static HomeLayoutCubit get(context)=>BlocProvider.of(context);
+  int currentIndex = 0;
 
-  int currentIndex=0;
-  List<BottomNavigationBarItem>items=[
-    const BottomNavigationBarItem(
-        icon: Icon(Icons.home,),
-        label: 'Home'
+  final List<BottomNavigationBarItem> items = [
+    BottomNavigationBarItem(
+      icon: SvgPicture.string(
+        CustomIcon().nv[0]['ico'],
+      ),
+      activeIcon: SvgPicture.string(
+        CustomIcon().nv[0]['icoSelect'],
+      ),
+      label: 'Home',
     ),
-    const BottomNavigationBarItem(
-        icon: Icon(Icons.shopping_bag_rounded),
-        label: 'Meetings'
+    BottomNavigationBarItem(
+      icon: SvgPicture.string(
+        CustomIcon().nv[1]['ico'],
+      ),
+      activeIcon: SvgPicture.string(
+        CustomIcon().nv[1]['icoSelect'],
+      ),
+      label: 'Meetings',
     ),
-    const BottomNavigationBarItem(
-        icon: Icon(Icons.search),
-        label: 'Search'
+    BottomNavigationBarItem(
+      icon: SvgPicture.string(
+        CustomIcon().nv[2]['ico'],
+      ),
+      activeIcon: SvgPicture.string(
+        CustomIcon().nv[2]['icoSelect'],
+      ),
+      label: 'Search',
     ),
-    const BottomNavigationBarItem(
-        icon: Icon(Icons.person),
-        label: 'Profile'
-    )
+    BottomNavigationBarItem(
+      icon: SvgPicture.string(
+        CustomIcon().nv[3]['ico'],
+      ),
+      activeIcon: SvgPicture.string(
+        CustomIcon().nv[3]['icoSelect'],
+      ),
+      label: 'Profile',
+    ),
   ];
-  List<Widget>screens=[
-     HomeView(),
-     MeetingScreen(),
-    const SearchView(),
+
+  final List<Widget> screens = [
+    HomeView(),
+    NoMeetingView(),
+    SearchView(),
     ChairManProfile(),
   ];
-  void clickButtonNavigation(int index)
-  {
-    currentIndex=index;
+
+  void clickButtonNavigation(int index) {
+    currentIndex = index;
     emit(ButtonNavigationState());
   }
-
-
 }

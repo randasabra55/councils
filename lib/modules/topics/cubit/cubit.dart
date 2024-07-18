@@ -1,5 +1,12 @@
+import 'dart:developer';
+import 'package:councils/models/getAllTopic.dart';
 import 'package:councils/modules/topics/cubit/states.dart';
+import 'package:councils/shared/component/constants.dart';
+import 'package:councils/shared/network/end_point.dart';
+import 'package:councils/shared/network/local/cache_helper.dart';
+import 'package:councils/shared/network/remote/dio_helper.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 
 class TopicCubit extends Cubit<TopicStates> {
 
@@ -21,11 +28,108 @@ class TopicCubit extends Cubit<TopicStates> {
     emit(ShowDecisionListState());
   }
 
-  String isSelected = 'Priority';
+  String isSelected = 'Name';
+  int? councilId = CacheHelper.getData(key: 'councilId');
+  String? token=CacheHelper.getData(key: 'token');
+ // int councilId=CacheHelper.getData(key: 'councilId');
+ //  void SelectedItem(String item) {
+ //    isSelected = item;
+ //    emit(CategoryListState());
+ //  }
+  GetAllTopicModel? getAllTopicModel;
+  List<int> councilIds = [];
+  int? topicId;
+ // int index=0;
+  //int? topicId=CacheHelper.getData(key: 'councilIds');
+  void getAllTopics(){
+    DioHelper.postData(
+        url: GETALLTOPICS,
+        data: {
+          'councilId':councilId,
+          'token':token
+        },
+        token: token
+    ).then((value) {
+      log(councilId.toString());
 
-  void SelectedItem(String item) {
-    isSelected = item;
-    emit(CategoryListState());
+      getAllTopicModel=GetAllTopicModel.fromjson(value.data);
+      // التحقق من أن getAllTopicModel ليست null وأنها تحتوي على القيم المتوقعة
+      if (getAllTopicModel != null && getAllTopicModel!.values.isNotEmpty) {
+        topicId = getAllTopicModel!.values.first.topicId;
+        CacheHelper.saveData(key: 'topicId', value: topicId);
+        log('Saved Topic ID: $topicId');
+      } else {
+        log('No topics found or invalid response format.');
+      }
+      // topicId=getAllTopicModel?.values.first.topicId;
+      // councilIds = getAllTopicModel?.values
+      //     .map((council) => council.councilId)
+      //     .where((id) => id != null)
+      //     .cast<int>()
+      //     .toList() ?? [];
+      // //topicId=getAllTopicModel?.values.first.topicId;
+      // CacheHelper.saveData(key: 'topicId', value: topicId);
+     // CacheHelper.saveData(key: 'topicId', value: councilIds);
+
+      log('message');
+      log('data is ${getAllTopicModel?.values.toString()}');
+      log(value.data.toString());
+      emit(GetAllTopicSuccessState(getAllTopicModel!));
+    }).catchError((error){
+      log('error : ${error.toString()}');
+      emit(GetAllTopicErrorState(error));
+    });
+}
+///////////////////////////////////////////////////////
+ // GetAllTopicModel? getTopicByNameModel;
+//  GetAllTopicModel? getTopicByDateModel;
+  void getTopicByName()
+  {
+    DioHelper.getData(
+        url:GETALLTOPICBYNAME,
+        token: token
+    ).then((value) {
+      log('success');
+      log(value.data.toString());
+      getAllTopicModel=GetAllTopicModel.fromjson(value.data);
+      // getTopicByNameModel=GetAllTopicModel.fromjson(value.data);
+      emit(GetTopicsByNameSuccessState(getAllTopicModel!));
+      //emit(GetTopicByNameSuccessState(getTopicByNameModel!));
+    }).catchError((error){
+      log('error : ${error.toString()}');
+      emit(GetTopicsByNameErrorState(error));
+    });
+  }
+
+  void getTopicByDate()
+  {
+    DioHelper.getData(
+        url:GETALLTOPICBYDATE,
+        token: token
+    ).then((value) {
+      log('success date');
+      log(value.data.toString());
+      getAllTopicModel=GetAllTopicModel.fromjson(value.data);
+      //  getTopicByDateModel=GetAllTopicModel.fromjson(value.data);
+      emit(GetTopicsByDateSuccessState(getAllTopicModel!));
+      //emit(GetTopicByNameSuccessState(getTopicByNameModel!));
+    }).catchError((error){
+      log('error : ${error.toString()}');
+      emit(GetTopicsByDateErrorState(error));
+    });
+  }
+//////////////////////////////////
+  void SelectItem(String category) {
+    isSelected = category;
+    if (category == 'Date') {
+      getTopicByDate();
+    }else if (category == 'Name') {
+      getTopicByName();
+    }
+    else
+      {
+        getAllTopics();
+      }
   }
 }
 

@@ -1,4 +1,3 @@
-
 import 'package:councils/modules/settings/settings_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -7,7 +6,7 @@ import 'package:flutter_svg/svg.dart';
 import '../../../models/custom_icon_model/custom_icon.dart';
 import '../../../modules/chair_man_profile/chair_man_profile.dart';
 import '../../../modules/home/home_view.dart';
-import '../../../modules/meeting_view/meeting_view.dart';
+import '../../../modules/meeting/no_meeting_view.dart';
 
 class CustomDrawer extends StatelessWidget {
   const CustomDrawer({
@@ -100,11 +99,11 @@ class CustomDrawer extends StatelessWidget {
             height: 50.h,
             child: InkWell(
               onTap: () => Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) =>  ChairManProfile(),
-                  ),
-                  ),
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ChairManProfile(),
+                ),
+              ),
               child: Row(
                 children: [
                   SvgPicture.string(
@@ -133,11 +132,11 @@ class CustomDrawer extends StatelessWidget {
             height: 50.h,
             child: InkWell(
               onTap: () => Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const MeetingView(),
-                  ),
-                  ),
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const NoMeetingView(),
+                ),
+              ),
               child: Row(
                 children: [
                   SvgPicture.string(
@@ -224,10 +223,10 @@ class CustomDrawer extends StatelessWidget {
               onTap: () => Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) =>  const SettingScreen(),
+                  builder: (context) => const SettingScreen(),
                 ),
               ),
-             // onTap: () => const NavigatorPopHandler(child: HomeView()),
+              // onTap: () => const NavigatorPopHandler(child: HomeView()),
               child: Row(
                 children: [
                   SvgPicture.string(

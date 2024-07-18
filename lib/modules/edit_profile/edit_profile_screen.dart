@@ -12,8 +12,13 @@ class EditProfileScreen extends StatelessWidget {
   var emailController=TextEditingController();
   var numberController=TextEditingController();
   var addressController=TextEditingController();
-  var passwordController=TextEditingController();
-  var confirmPassController=TextEditingController();
+  var birthDateController=TextEditingController();
+  var collegeController=TextEditingController();
+ // var Controller=TextEditingController();
+
+
+  // var passwordController=TextEditingController();
+ // var confirmPassController=TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +27,7 @@ class EditProfileScreen extends StatelessWidget {
       create: (BuildContext context) =>EditProfileCubit(),
       child: BlocConsumer<EditProfileCubit,EditProfileStates>(
         listener: (BuildContext context,  state) {  },
-        builder: (BuildContext context, state) {
+        builder: (BuildContext context,  state) {
           EditProfileCubit cubit=EditProfileCubit.get(context);
           bool ispass=cubit.isPass;
           bool isConfirmPass=cubit.isConfirmPass;
@@ -263,32 +268,32 @@ class EditProfileScreen extends StatelessWidget {
                   SizedBox(
                     height: 7.h,
                   ),
-                  Padding(
-                    padding: const EdgeInsetsDirectional.only(
-                        start: 25.0,
-                        end: 25
-                    ),
-                    child: Container(
-                      height: 40.h,
-                      child: TextFormField(
-                        controller: passwordController,
-                       // keyboardType: TextInputType.number,
-                        obscureText: ispass,
-                        decoration: InputDecoration(
-                          suffixIcon: IconButton(
-                            onPressed: (){
-                              cubit.passwordShow();
-                            },
-                            icon:ispass?Icon(Icons.visibility_off):Icon(Icons.visibility),
-                          ),
-                          border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(12.r)
-                          ),
-
-                        ),
-                      ),
-                    ),
-                  ),
+                  // Padding(
+                  //   padding: const EdgeInsetsDirectional.only(
+                  //       start: 25.0,
+                  //       end: 25
+                  //   ),
+                  //   child: Container(
+                  //     height: 40.h,
+                  //     child: TextFormField(
+                  //       controller: passwordController,
+                  //      // keyboardType: TextInputType.number,
+                  //       obscureText: ispass,
+                  //       decoration: InputDecoration(
+                  //         suffixIcon: IconButton(
+                  //           onPressed: (){
+                  //             cubit.passwordShow();
+                  //           },
+                  //           icon:ispass?Icon(Icons.visibility_off):Icon(Icons.visibility),
+                  //         ),
+                  //         border: OutlineInputBorder(
+                  //             borderRadius: BorderRadius.circular(12.r)
+                  //         ),
+                  //
+                  //       ),
+                  //     ),
+                  //   ),
+                  // ),
                   SizedBox(
                     height: 10.h,
                   ),
@@ -309,32 +314,32 @@ class EditProfileScreen extends StatelessWidget {
                   SizedBox(
                     height: 7.h,
                   ),
-                  Padding(
-                    padding: const EdgeInsetsDirectional.only(
-                        start: 25.0,
-                        end: 25
-                    ),
-                    child: Container(
-                      height: 40.h,
-                      child: TextFormField(
-                        controller: confirmPassController,
-                        keyboardType: TextInputType.number,
-                        obscureText: isConfirmPass,
-                        decoration: InputDecoration(
-                          suffixIcon: IconButton(
-                            onPressed: (){
-                              cubit.passwordConfirmShow();
-                            },
-                            icon:isConfirmPass?Icon(Icons.visibility_off):Icon(Icons.visibility),
-                          ),
-                          border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(12.r)
-                          ),
-
-                        ),
-                      ),
-                    ),
-                  ),
+                  // Padding(
+                  //   padding: const EdgeInsetsDirectional.only(
+                  //       start: 25.0,
+                  //       end: 25
+                  //   ),
+                  //   child: Container(
+                  //     height: 40.h,
+                  //     child: TextFormField(
+                  //       controller: confirmPassController,
+                  //       keyboardType: TextInputType.number,
+                  //       obscureText: isConfirmPass,
+                  //       decoration: InputDecoration(
+                  //         suffixIcon: IconButton(
+                  //           onPressed: (){
+                  //             cubit.passwordConfirmShow();
+                  //           },
+                  //           icon:isConfirmPass?Icon(Icons.visibility_off):Icon(Icons.visibility),
+                  //         ),
+                  //         border: OutlineInputBorder(
+                  //             borderRadius: BorderRadius.circular(12.r)
+                  //         ),
+                  //
+                  //       ),
+                  //     ),
+                  //   ),
+                  // ),
                   SizedBox(
                     height: 25.h,
                   ),

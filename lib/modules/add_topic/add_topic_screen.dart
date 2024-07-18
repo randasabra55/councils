@@ -1,11 +1,15 @@
+import 'package:councils/models/get_councils_model.dart';
+import 'package:councils/modules/meeting/cubit/cubit.dart';
+import 'package:councils/modules/meeting/cubit/states.dart';
 import 'package:councils/modules/upload_topic_screen/upload_topic.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 
 class AddTopicScreen extends StatelessWidget {
-  const AddTopicScreen({super.key});
-
+  const AddTopicScreen({super.key, required this.model});
+  final MeetingInfo? model;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -63,14 +67,16 @@ class AddTopicScreen extends StatelessWidget {
                 ),
                 Padding(
                   padding:  EdgeInsetsDirectional.only(
-                    start: 18.w
+                      start: 18.w
                   ),
                   child: Text(
-                   // model.time,
-                     'Wed,App 28.5:30 PM',
+
+                    model?.date??'',
+                    //  getCouncilModel?.values['date'] as String,
+                    // 'Wed,App 28.5:30 PM',
                     style: TextStyle(
-                        color: Colors.blueAccent,
-                        fontSize: 14.sp,
+                      color: Colors.blueAccent,
+                      fontSize: 14.sp,
 
                     ),
                   ),
@@ -80,57 +86,58 @@ class AddTopicScreen extends StatelessWidget {
                 ),
                 Padding(
                   padding:  EdgeInsetsDirectional.only(
-                    start: 18.w
+                      start: 18.w
                   ),
                   child: Text(
-                   // model.name,
-                     'Meeting 1',
+                    model?.title??'',
+                    //  'Meeting 1',
                     style: TextStyle(
                         fontSize: 18.sp,
                         fontWeight: FontWeight.w400
                     ),
                   ),
                 ),
-                Padding(
-                  padding:  EdgeInsetsDirectional.only(
-                    start: 18.w
-                  ),
-                  child: Text(
-                  //  model.about,
-                    'About University Students',
-                    style: TextStyle(
-                        fontSize: 18.sp,
-                        fontWeight: FontWeight.w400
-                    ),
-                  ),
-                ),
+                // Padding(
+                //   padding:  EdgeInsetsDirectional.only(
+                //       start: 18.w
+                //   ),
+                //   child: Text(
+                //     //  model.about,
+                //     'About University Students',
+                //     style: TextStyle(
+                //         fontSize: 18.sp,
+                //         fontWeight: FontWeight.w400
+                //     ),
+                //   ),
+                // ),
                 SizedBox(
                   height: 5.h,
                 ),
-                Padding(
-                  padding: EdgeInsetsDirectional.only(
-                    start: 18.w
-                  ),
-                  child: Row(
-                    children: [
-                      const Icon(
-                        Icons.location_on,
-                        color: Colors.grey,
-                      ),
-                      SizedBox(
-                        width: 10.w,
-                      ),
-                      Text(
-                       // model.hall,
-                         'Dr:Mohamed Refat Hall',
-                        style: TextStyle(
-                            fontSize: 14.sp,
-                            color: Colors.grey
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
+                //////////////////////////////////////////hall
+                // Padding(
+                //   padding: EdgeInsetsDirectional.only(
+                //       start: 18.w
+                //   ),
+                //   child: Row(
+                //     children: [
+                //       const Icon(
+                //         Icons.location_on,
+                //         color: Colors.grey,
+                //       ),
+                //       SizedBox(
+                //         width: 10.w,
+                //       ),
+                //       Text(
+                //          model.hall??'',
+                //        // 'Dr:Mohamed Refat Hall',
+                //         style: TextStyle(
+                //             fontSize: 14.sp,
+                //             color: Colors.grey
+                //         ),
+                //       ),
+                //     ],
+                //   ),
+                // ),
               ],
             ),
           ),
@@ -170,7 +177,7 @@ class AddTopicScreen extends StatelessWidget {
                     width: 70.w,
                   ),
                   CircleAvatar(
-                    radius: 15.r,
+                      radius: 15.r,
                       backgroundColor: Colors.blue,
                       child: const Icon(Icons.arrow_forward,color: Colors.white,)
                   )
