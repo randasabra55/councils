@@ -3,9 +3,12 @@ import 'package:councils/models/add_member_model/add_member_model.dart';
 import 'package:equatable/equatable.dart';
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 >>>>>>> 993459e (mer)
+=======
+>>>>>>> origin/mohamed
 class MemberState extends Equatable {
   final List<AddMemberModel> selectedMembers;
   final List<String> memberEmails;

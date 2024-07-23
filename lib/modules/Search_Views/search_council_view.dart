@@ -11,7 +11,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/mohamed
 class SearchView extends StatefulWidget {
   const SearchView({Key? key}) : super(key: key);
 
@@ -29,8 +32,12 @@ class _SearchViewState extends State<SearchView> {
   void initState() {
     super.initState();
     // Initialize DataService here with the required auth token
+<<<<<<< HEAD
     dataService = DataService(
         authToken: CacheHelper.getData(key: 'token'));
+=======
+    dataService = DataService(authToken: CacheHelper.getData(key: 'token'));
+>>>>>>> origin/mohamed
   }
 
   void _updateSearchOption(String option) {
@@ -196,7 +203,11 @@ class _SearchViewState extends State<SearchView> {
                             Navigator.of(context).push(MaterialPageRoute(
                               builder: (context) {
                                 final councilId = council.id;
+<<<<<<< HEAD
                                 return  PrintTopics(councilId: "4");
+=======
+                                return PrintTopics(councilId: councilId);
+>>>>>>> origin/mohamed
                               },
                             ));
                           },
